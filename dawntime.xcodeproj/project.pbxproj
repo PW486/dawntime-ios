@@ -27,6 +27,8 @@
 		8A6678701FF9D3920001D13F /* PeakTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */; };
 		8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678741FF9F3CA0001D13F /* ReadArticleViewController.swift */; };
 		8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */; };
+		8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678781FFA43FB0001D13F /* UIViewExtension.swift */; };
+		8A66787B1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */; };
 		8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */; };
 		8A6AD0F51FF89DCE00D57DF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F31FF89DCE00D57DF8 /* Main.storyboard */; };
 		8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F81FF89DCE00D57DF8 /* LaunchScreen.storyboard */; };
@@ -86,6 +88,8 @@
 		8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeakTimeViewController.swift; sourceTree = "<group>"; };
 		8A6678741FF9F3CA0001D13F /* ReadArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadArticleViewController.swift; sourceTree = "<group>"; };
 		8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadArticleTableViewCell.swift; sourceTree = "<group>"; };
+		8A6678781FFA43FB0001D13F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A6AD0EC1FF89DCE00D57DF8 /* dawntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dawntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A6AD0F41FF89DCE00D57DF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 			children = (
 				8A6678361FF91C190001D13F /* CommunityViewController.swift */,
 				8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */,
+				8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */,
 				8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */,
 				8A6678741FF9F3CA0001D13F /* ReadArticleViewController.swift */,
 				8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */,
@@ -268,6 +273,7 @@
 				8A6AD0FB1FF89DCE00D57DF8 /* Info.plist */,
 				8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */,
 				8A91C1231FF8CA2200524200 /* NSObject.swift */,
+				8A6678781FFA43FB0001D13F /* UIViewExtension.swift */,
 				8A6678501FF9C4D40001D13F /* Resources */,
 				8A66783A1FF91D8F0001D13F /* Models */,
 				8A6678321FF91AD50001D13F /* ViewControllers */,
@@ -616,6 +622,7 @@
 				8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
 				8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */,
+				8A66787B1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift in Sources */,
 				8A6678371FF91C190001D13F /* CommunityViewController.swift in Sources */,
 				8A6678701FF9D3920001D13F /* PeakTimeViewController.swift in Sources */,
 				8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */,
@@ -623,6 +630,7 @@
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
+				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,
 				8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */,
 				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,
 				8A66786D1FF9CBAE0001D13F /* Message.swift in Sources */,

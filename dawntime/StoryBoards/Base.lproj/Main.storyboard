@@ -8,6 +8,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -34,8 +35,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-y8-3wk">
-                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-y8-3wk">
+                                <rect key="frame" x="0.0" y="79" width="375" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CommunityArticleTableViewCell" rowHeight="96" id="dqp-Wu-wtn" customClass="CommunityArticleTableViewCell" customModule="dawntime" customModuleProvider="target">
@@ -128,17 +129,108 @@
                                     <outlet property="delegate" destination="G8J-35-mUF" id="4hI-7F-3HE"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kUs-JN-jel">
+                                <rect key="frame" x="0.0" y="64" width="375" height="100"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="aBl-um-ore">
+                                        <rect key="frame" x="8" y="8" width="359" height="69"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="TyI-VM-l7X">
+                                            <size key="itemSize" width="50" height="25"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CommunityCategoryCollectionViewCell" id="lPV-LI-RnS" customClass="CommunityCategoryCollectionViewCell" customModule="dawntime" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <subviews>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7X3-HI-sRB">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                            <state key="normal" title="Tag"/>
+                                                        </button>
+                                                    </subviews>
+                                                </view>
+                                                <constraints>
+                                                    <constraint firstAttribute="trailing" secondItem="7X3-HI-sRB" secondAttribute="trailing" id="AKG-1z-mtP"/>
+                                                    <constraint firstItem="7X3-HI-sRB" firstAttribute="top" secondItem="lPV-LI-RnS" secondAttribute="top" id="LSD-pF-qqh"/>
+                                                    <constraint firstItem="7X3-HI-sRB" firstAttribute="leading" secondItem="lPV-LI-RnS" secondAttribute="leading" id="wjf-G1-sI2"/>
+                                                    <constraint firstAttribute="bottom" secondItem="7X3-HI-sRB" secondAttribute="bottom" id="zHB-cU-SVA"/>
+                                                </constraints>
+                                                <connections>
+                                                    <outlet property="categoryButton" destination="7X3-HI-sRB" id="C87-8k-iee"/>
+                                                </connections>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="G8J-35-mUF" id="oGv-mS-nKl"/>
+                                            <outlet property="delegate" destination="G8J-35-mUF" id="tWH-OK-xJs"/>
+                                        </connections>
+                                    </collectionView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfX-uc-mkB">
+                                        <rect key="frame" x="0.0" y="85" width="375" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="AAm-Ub-R8a"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <state key="normal" title="˅">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="menuDropdownAction:" destination="G8J-35-mUF" eventType="touchUpInside" id="Nyj-Jc-8uQ"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="aBl-um-ore" firstAttribute="top" secondItem="kUs-JN-jel" secondAttribute="top" constant="8" id="8WC-T8-QRs"/>
+                                    <constraint firstItem="nfX-uc-mkB" firstAttribute="leading" secondItem="kUs-JN-jel" secondAttribute="leading" id="Gzm-AT-wAp"/>
+                                    <constraint firstItem="nfX-uc-mkB" firstAttribute="top" secondItem="aBl-um-ore" secondAttribute="bottom" constant="8" id="Jae-qy-ajT"/>
+                                    <constraint firstAttribute="trailing" secondItem="aBl-um-ore" secondAttribute="trailing" constant="8" id="LBF-5a-xhI"/>
+                                    <constraint firstAttribute="bottom" secondItem="nfX-uc-mkB" secondAttribute="bottom" id="OMl-1l-TX1"/>
+                                    <constraint firstAttribute="trailing" secondItem="nfX-uc-mkB" secondAttribute="trailing" id="cwC-MI-Ner"/>
+                                    <constraint firstAttribute="height" constant="100" id="pbw-Fg-OZd"/>
+                                    <constraint firstItem="aBl-um-ore" firstAttribute="leading" secondItem="kUs-JN-jel" secondAttribute="leading" constant="8" id="xLn-69-Aez"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Bv3-y8-3wk" firstAttribute="leading" secondItem="Kva-cW-RxT" secondAttribute="leading" id="3zq-oj-pwL"/>
+                            <constraint firstItem="kUs-JN-jel" firstAttribute="trailing" secondItem="Kva-cW-RxT" secondAttribute="trailing" id="IWG-Ga-m8y"/>
                             <constraint firstItem="Kva-cW-RxT" firstAttribute="bottom" secondItem="Bv3-y8-3wk" secondAttribute="bottom" id="N2O-gr-i8M"/>
-                            <constraint firstItem="Bv3-y8-3wk" firstAttribute="top" secondItem="Kva-cW-RxT" secondAttribute="top" id="WMa-22-IHy"/>
+                            <constraint firstItem="Bv3-y8-3wk" firstAttribute="top" secondItem="Kva-cW-RxT" secondAttribute="top" constant="15" id="ZOd-Xy-5sP"/>
+                            <constraint firstItem="kUs-JN-jel" firstAttribute="leading" secondItem="Kva-cW-RxT" secondAttribute="leading" id="fDb-Px-9TX"/>
+                            <constraint firstItem="kUs-JN-jel" firstAttribute="top" secondItem="Kva-cW-RxT" secondAttribute="top" id="gNl-K6-Ecb"/>
                             <constraint firstItem="Kva-cW-RxT" firstAttribute="trailing" secondItem="Bv3-y8-3wk" secondAttribute="trailing" id="nwJ-Am-7cB"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Kva-cW-RxT"/>
                     </view>
-                    <navigationItem key="navigationItem" title="커뮤니티" id="UnK-5I-xmG"/>
+                    <navigationItem key="navigationItem" title="커뮤니티" id="UnK-5I-xmG">
+                        <rightBarButtonItems>
+                            <barButtonItem title="검색" id="R8B-Nl-t7X">
+                                <connections>
+                                    <action selector="searchAction:" destination="G8J-35-mUF" id="L2O-ri-dtp"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="글" id="nc0-h5-KKH">
+                                <connections>
+                                    <action selector="createArticleAction:" destination="G8J-35-mUF" id="spS-E1-AtV"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionView" destination="aBl-um-ore" id="Tgp-lX-Zmu"/>
+                        <outlet property="menuDropdown" destination="nfX-uc-mkB" id="qnH-Zm-7A7"/>
+                        <outlet property="menuDropdownBtn" destination="nfX-uc-mkB" id="XSj-PV-sHn"/>
+                        <outlet property="menuDropdownHeight" destination="pbw-Fg-OZd" id="STn-H3-S1A"/>
+                        <outlet property="tableView" destination="Bv3-y8-3wk" id="f2C-qZ-sSv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gpC-87-HLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
