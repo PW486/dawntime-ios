@@ -9,11 +9,11 @@
 import Foundation
 
 struct Article: Codable {
-    var user_id: Int
-    var board_id: Int
-    var board_title: String
-    var board_tag: Int
-    var board_like: Int
-    var board_image: String?
-    var board_date: String?
+//    var user_id: Int
+//    var board_id: Int
+//    var board_title: String
+//    var board_tag: Int
+//    var board_like: Int
+//    var board_image: String?
+//    var board_date: String?
 }
