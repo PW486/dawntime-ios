@@ -9,5 +9,15 @@
 import UIKit
 
 class HomeShopCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var imageview: UIImageView!
+    @IBOutlet weak var itemImage: UIImageView!
+    @IBOutlet weak var itemLabel: UILabel!
+    
+    override func awakeFromNib() {
+        // Circle Image View
+        itemImage.layer.borderWidth = 1
+        itemImage.layer.masksToBounds = false
+        itemImage.layer.borderColor = UIColor.magenta.cgColor
+        itemImage.layer.cornerRadius = itemImage.frame.height/2
+        itemImage.clipsToBounds = true
+    }
 }

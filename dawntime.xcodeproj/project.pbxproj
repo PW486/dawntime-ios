@@ -11,6 +11,16 @@
 		8A6678371FF91C190001D13F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678361FF91C190001D13F /* CommunityViewController.swift */; };
 		8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */; };
 		8A66783C1FF91F350001D13F /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66783B1FF91F350001D13F /* Article.swift */; };
+		8A66785B1FF9C6BC0001D13F /* NotoSansCJKkr-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678551FF9C4E50001D13F /* NotoSansCJKkr-Black.otf */; };
+		8A66785C1FF9C6BC0001D13F /* NotoSansCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678531FF9C4E10001D13F /* NotoSansCJKkr-Bold.otf */; };
+		8A66785D1FF9C6BC0001D13F /* NotoSansCJKkr-DemiLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678541FF9C4E30001D13F /* NotoSansCJKkr-DemiLight.otf */; };
+		8A66785E1FF9C6BC0001D13F /* NotoSansCJKkr-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678571FF9C4E80001D13F /* NotoSansCJKkr-Light.otf */; };
+		8A66785F1FF9C6BC0001D13F /* NotoSansCJKkr-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678581FF9C4EB0001D13F /* NotoSansCJKkr-Medium.otf */; };
+		8A6678601FF9C6BC0001D13F /* NotoSansCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678561FF9C4E70001D13F /* NotoSansCJKkr-Regular.otf */; };
+		8A6678611FF9C6BC0001D13F /* NotoSansCJKkr-Thin.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678511FF9C4DE0001D13F /* NotoSansCJKkr-Thin.otf */; };
+		8A6678621FF9C6BC0001D13F /* NotoSansMonoCJKkr-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678521FF9C4DF0001D13F /* NotoSansMonoCJKkr-Bold.otf */; };
+		8A6678631FF9C6BC0001D13F /* NotoSansMonoCJKkr-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 8A6678591FF9C4EC0001D13F /* NotoSansMonoCJKkr-Regular.otf */; };
+		8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678661FF9CAAA0001D13F /* GoodsItem.swift */; };
 		8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */; };
 		8A6AD0F51FF89DCE00D57DF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F31FF89DCE00D57DF8 /* Main.storyboard */; };
 		8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F81FF89DCE00D57DF8 /* LaunchScreen.storyboard */; };
@@ -54,6 +64,16 @@
 		8A6678361FF91C190001D13F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleTableViewCell.swift; sourceTree = "<group>"; };
 		8A66783B1FF91F350001D13F /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		8A6678511FF9C4DE0001D13F /* NotoSansCJKkr-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Thin.otf"; sourceTree = "<group>"; };
+		8A6678521FF9C4DF0001D13F /* NotoSansMonoCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansMonoCJKkr-Bold.otf"; sourceTree = "<group>"; };
+		8A6678531FF9C4E10001D13F /* NotoSansCJKkr-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Bold.otf"; sourceTree = "<group>"; };
+		8A6678541FF9C4E30001D13F /* NotoSansCJKkr-DemiLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-DemiLight.otf"; sourceTree = "<group>"; };
+		8A6678551FF9C4E50001D13F /* NotoSansCJKkr-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Black.otf"; sourceTree = "<group>"; };
+		8A6678561FF9C4E70001D13F /* NotoSansCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		8A6678571FF9C4E80001D13F /* NotoSansCJKkr-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Light.otf"; sourceTree = "<group>"; };
+		8A6678581FF9C4EB0001D13F /* NotoSansCJKkr-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansCJKkr-Medium.otf"; sourceTree = "<group>"; };
+		8A6678591FF9C4EC0001D13F /* NotoSansMonoCJKkr-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSansMonoCJKkr-Regular.otf"; sourceTree = "<group>"; };
+		8A6678661FF9CAAA0001D13F /* GoodsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsItem.swift; sourceTree = "<group>"; };
 		8A6AD0EC1FF89DCE00D57DF8 /* dawntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dawntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A6AD0F41FF89DCE00D57DF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,8 +184,34 @@
 			isa = PBXGroup;
 			children = (
 				8A66783B1FF91F350001D13F /* Article.swift */,
+				8A6678661FF9CAAA0001D13F /* GoodsItem.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8A6678501FF9C4D40001D13F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8A91C11D1FF8B66900524200 /* Assets.xcassets */,
+				8A66785A1FF9C5100001D13F /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8A66785A1FF9C5100001D13F /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				8A6678551FF9C4E50001D13F /* NotoSansCJKkr-Black.otf */,
+				8A6678531FF9C4E10001D13F /* NotoSansCJKkr-Bold.otf */,
+				8A6678541FF9C4E30001D13F /* NotoSansCJKkr-DemiLight.otf */,
+				8A6678571FF9C4E80001D13F /* NotoSansCJKkr-Light.otf */,
+				8A6678581FF9C4EB0001D13F /* NotoSansCJKkr-Medium.otf */,
+				8A6678561FF9C4E70001D13F /* NotoSansCJKkr-Regular.otf */,
+				8A6678511FF9C4DE0001D13F /* NotoSansCJKkr-Thin.otf */,
+				8A6678521FF9C4DF0001D13F /* NotoSansMonoCJKkr-Bold.otf */,
+				8A6678591FF9C4EC0001D13F /* NotoSansMonoCJKkr-Regular.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		8A6AD0E31FF89DCE00D57DF8 = {
@@ -193,10 +239,10 @@
 		8A6AD0EE1FF89DCE00D57DF8 /* dawntime */ = {
 			isa = PBXGroup;
 			children = (
+				8A6AD0FB1FF89DCE00D57DF8 /* Info.plist */,
 				8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */,
 				8A91C1231FF8CA2200524200 /* NSObject.swift */,
-				8A91C11D1FF8B66900524200 /* Assets.xcassets */,
-				8A6AD0FB1FF89DCE00D57DF8 /* Info.plist */,
+				8A6678501FF9C4D40001D13F /* Resources */,
 				8A66783A1FF91D8F0001D13F /* Models */,
 				8A6678321FF91AD50001D13F /* ViewControllers */,
 				8A6678341FF91B0B0001D13F /* StoryBoards */,
@@ -348,6 +394,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A66785B1FF9C6BC0001D13F /* NotoSansCJKkr-Black.otf in Resources */,
+				8A66785C1FF9C6BC0001D13F /* NotoSansCJKkr-Bold.otf in Resources */,
+				8A66785D1FF9C6BC0001D13F /* NotoSansCJKkr-DemiLight.otf in Resources */,
+				8A66785E1FF9C6BC0001D13F /* NotoSansCJKkr-Light.otf in Resources */,
+				8A66785F1FF9C6BC0001D13F /* NotoSansCJKkr-Medium.otf in Resources */,
+				8A6678601FF9C6BC0001D13F /* NotoSansCJKkr-Regular.otf in Resources */,
+				8A6678611FF9C6BC0001D13F /* NotoSansCJKkr-Thin.otf in Resources */,
+				8A6678621FF9C6BC0001D13F /* NotoSansMonoCJKkr-Bold.otf in Resources */,
+				8A6678631FF9C6BC0001D13F /* NotoSansMonoCJKkr-Regular.otf in Resources */,
 				8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */,
 				8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */,
 				8A6AD0F51FF89DCE00D57DF8 /* Main.storyboard in Resources */,
@@ -538,6 +593,7 @@
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
 				8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */,
+				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,
 				8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */,
 				8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */,
 			);
@@ -707,7 +763,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = dawntime/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/dawntime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peaktime.dawntime;
@@ -723,7 +779,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = dawntime/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/dawntime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.peaktime.dawntime;

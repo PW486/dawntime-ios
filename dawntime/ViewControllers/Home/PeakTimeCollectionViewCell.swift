@@ -9,4 +9,5 @@
 import UIKit
 
 class PeakTimeCollectionViewCell: UICollectionViewCell {
+    @IBOutlet weak var backgroundImage: UIImageView!
 }

@@ -9,7 +9,8 @@
 import UIKit
 
 class HomeColumnTableViewCell: UITableViewCell {
-
+    @IBOutlet weak var columnImage: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
