@@ -9,6 +9,8 @@ target 'dawntime' do
   pod 'Alamofire'
   pod 'SwiftyJSON'
   pod 'Kingfisher'
+  pod 'ImagePicker'
+  pod 'Lightbox'
 
   target 'dawntimeTests' do
     inherit! :search_paths

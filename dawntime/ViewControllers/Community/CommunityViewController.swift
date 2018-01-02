@@ -18,11 +18,13 @@ class CommunityViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     @IBAction func createArticleAction(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: CreateArticleViewController.reuseIdentifier) as? CreateArticleViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func searchAction(_ sender: Any) {
-        
     }
     
     @IBAction func menuDropdownAction(_ sender: Any) {
@@ -33,7 +35,6 @@ class CommunityViewController: UIViewController {
             self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
             
             menuDropdownHeight.constant = 15
-            self.tabBarController?.tabBar.backgroundColor = UIColor(white: 0.5, alpha: 0)
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
             tableView.isUserInteractionEnabled = true
             collectionView.isHidden = true
@@ -60,6 +61,15 @@ class CommunityViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        if dropdownSelected! == true {
+            menuDropdown.layer.sublayers?.last?.removeFromSuperlayer()
+            self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
+        }
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
     }
     
     override func viewWillAppear(_ animated: Bool) {

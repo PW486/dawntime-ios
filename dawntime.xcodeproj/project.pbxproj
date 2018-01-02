@@ -29,6 +29,8 @@
 		8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */; };
 		8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678781FFA43FB0001D13F /* UIViewExtension.swift */; };
 		8A66787B1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */; };
+		8A66787D1FFB6D530001D13F /* CreateArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66787C1FFB6D530001D13F /* CreateArticleViewController.swift */; };
+		8A66787F1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66787E1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift */; };
 		8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */; };
 		8A6AD0F51FF89DCE00D57DF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F31FF89DCE00D57DF8 /* Main.storyboard */; };
 		8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F81FF89DCE00D57DF8 /* LaunchScreen.storyboard */; };
@@ -90,6 +92,8 @@
 		8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadArticleTableViewCell.swift; sourceTree = "<group>"; };
 		8A6678781FFA43FB0001D13F /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityCategoryCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A66787C1FFB6D530001D13F /* CreateArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleViewController.swift; sourceTree = "<group>"; };
+		8A66787E1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticlePhotoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A6AD0EC1FF89DCE00D57DF8 /* dawntime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = dawntime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8A6AD0F41FF89DCE00D57DF8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -197,6 +201,8 @@
 				8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */,
 				8A6678741FF9F3CA0001D13F /* ReadArticleViewController.swift */,
 				8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */,
+				8A66787C1FFB6D530001D13F /* CreateArticleViewController.swift */,
+				8A66787E1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -550,13 +556,23 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-dawntime/Pods-dawntime-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
+				"${BUILT_PRODUCTS_DIR}/Hue/Hue.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
+				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hue.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -628,10 +644,12 @@
 				8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */,
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
+				8A66787F1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
 				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,
 				8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */,
+				8A66787D1FFB6D530001D13F /* CreateArticleViewController.swift in Sources */,
 				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,
 				8A66786D1FF9CBAE0001D13F /* Message.swift in Sources */,
 				8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */,
@@ -803,6 +821,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K73ZKZ284P;
 				INFOPLIST_FILE = "$(SRCROOT)/dawntime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -819,6 +838,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = K73ZKZ284P;
 				INFOPLIST_FILE = "$(SRCROOT)/dawntime/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
