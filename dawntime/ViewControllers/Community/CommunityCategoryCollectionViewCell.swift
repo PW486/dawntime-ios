@@ -9,5 +9,5 @@
 import UIKit
 
 class CommunityCategoryCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var categoryButton: UIButton!
+    @IBOutlet weak var categoryLabel: UILabel!
 }

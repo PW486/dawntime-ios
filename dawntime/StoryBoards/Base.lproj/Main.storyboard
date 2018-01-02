@@ -35,7 +35,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-y8-3wk">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Bv3-y8-3wk">
                                 <rect key="frame" x="0.0" y="79" width="375" height="539"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -149,20 +149,22 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7X3-HI-sRB">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CLe-nQ-ULZ">
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
-                                                            <state key="normal" title="Tag"/>
-                                                        </button>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
                                                     </subviews>
                                                 </view>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="7X3-HI-sRB" secondAttribute="trailing" id="AKG-1z-mtP"/>
-                                                    <constraint firstItem="7X3-HI-sRB" firstAttribute="top" secondItem="lPV-LI-RnS" secondAttribute="top" id="LSD-pF-qqh"/>
-                                                    <constraint firstItem="7X3-HI-sRB" firstAttribute="leading" secondItem="lPV-LI-RnS" secondAttribute="leading" id="wjf-G1-sI2"/>
-                                                    <constraint firstAttribute="bottom" secondItem="7X3-HI-sRB" secondAttribute="bottom" id="zHB-cU-SVA"/>
+                                                    <constraint firstAttribute="bottom" secondItem="CLe-nQ-ULZ" secondAttribute="bottom" id="R15-ch-vrc"/>
+                                                    <constraint firstItem="CLe-nQ-ULZ" firstAttribute="top" secondItem="lPV-LI-RnS" secondAttribute="top" id="bEn-0O-MMf"/>
+                                                    <constraint firstItem="CLe-nQ-ULZ" firstAttribute="leading" secondItem="lPV-LI-RnS" secondAttribute="leading" id="bGk-Qo-cfD"/>
+                                                    <constraint firstAttribute="trailing" secondItem="CLe-nQ-ULZ" secondAttribute="trailing" id="d4p-tg-6JF"/>
                                                 </constraints>
                                                 <connections>
-                                                    <outlet property="categoryButton" destination="7X3-HI-sRB" id="C87-8k-iee"/>
+                                                    <outlet property="categoryLabel" destination="CLe-nQ-ULZ" id="wqm-DX-HMh"/>
                                                 </connections>
                                             </collectionViewCell>
                                         </cells>
@@ -402,7 +404,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TGa-0k-qKD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2567" y="-807"/>
+            <point key="canvasLocation" x="2590" y="-1264"/>
         </scene>
         <!--Create Article View Controller-->
         <scene sceneID="PcZ-ig-e62">
@@ -516,12 +518,79 @@
                         <viewLayoutGuide key="safeArea" id="njA-K6-ceJ"/>
                     </view>
                     <connections>
+                        <outlet property="categorySelectButton" destination="7dF-60-es5" id="Ioy-po-GTR"/>
                         <outlet property="photoCollectionVeiw" destination="p2L-zL-pvP" id="vWm-wO-0XJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HLI-ok-Spe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1852" y="-509.59520239880067"/>
+        </scene>
+        <!--Create Article Category Select View Controller-->
+        <scene sceneID="wq0-Cv-Kr9">
+            <objects>
+                <viewController storyboardIdentifier="CreateArticleCategorySelectViewController" id="2bN-L8-xmc" customClass="CreateArticleCategorySelectViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="z5A-HY-R5V">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="wTe-Ac-19e">
+                                <rect key="frame" x="18" y="390" width="339" height="70"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="1NB-RJ-j8f"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="20" id="aTh-jB-oFO">
+                                    <size key="itemSize" width="50" height="25"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" contentMode="center" reuseIdentifier="CommunityCategoryCollectionViewCell" id="tWL-hs-5ze" customClass="CommunityCategoryCollectionViewCell" customModule="dawntime" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kTu-eL-ZoT">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="25"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="kTu-eL-ZoT" secondAttribute="bottom" id="ATm-Uo-29R"/>
+                                            <constraint firstAttribute="trailing" secondItem="kTu-eL-ZoT" secondAttribute="trailing" id="Fda-Gm-KJG"/>
+                                            <constraint firstItem="kTu-eL-ZoT" firstAttribute="leading" secondItem="tWL-hs-5ze" secondAttribute="leading" id="S30-EP-65r"/>
+                                            <constraint firstItem="kTu-eL-ZoT" firstAttribute="top" secondItem="tWL-hs-5ze" secondAttribute="top" id="sAY-D0-Vad"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="categoryLabel" destination="kTu-eL-ZoT" id="HHP-QQ-VcV"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="2bN-L8-xmc" id="tyt-hz-MKt"/>
+                                    <outlet property="delegate" destination="2bN-L8-xmc" id="l4f-Bk-HfB"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25311444256756754" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1IV-Yn-UhI" firstAttribute="trailing" secondItem="wTe-Ac-19e" secondAttribute="trailing" constant="18" id="KIb-Cw-Tvx"/>
+                            <constraint firstItem="wTe-Ac-19e" firstAttribute="top" secondItem="1IV-Yn-UhI" secondAttribute="top" constant="370" id="cEL-Tg-6gK"/>
+                            <constraint firstItem="wTe-Ac-19e" firstAttribute="leading" secondItem="1IV-Yn-UhI" secondAttribute="leading" constant="18" id="y3h-Yh-awd"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="1IV-Yn-UhI"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qFd-jx-6jZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2582" y="-511"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5g4-Mf-RaI">

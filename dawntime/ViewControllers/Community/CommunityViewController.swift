@@ -84,6 +84,7 @@ class CommunityViewController: UIViewController {
         collectionView.isHidden = true
     }
 }
+
 extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -91,8 +92,14 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunityCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as! CommunityCategoryCollectionViewCell
+        cell.categoryLabel.text = "\(indexPath.row)"
         
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        delegate?.categoryDidSelect("\(indexPath.row)")
+        self.dismiss(animated: false, completion: nil)
     }
 }
 

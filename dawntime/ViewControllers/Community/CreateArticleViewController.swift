@@ -10,10 +10,16 @@ import UIKit
 import ImagePicker
 import Lightbox
 
+protocol CategorySelectDelegate {
+    func categoryDidSelect(_ category: String)
+}
+
 class CreateArticleViewController: UIViewController {
     var imagePickerController: ImagePickerController?
     var articleImages: [UIImage] = []
+    var category: String?
     
+    @IBOutlet weak var categorySelectButton: UIButton!
     @IBOutlet weak var photoCollectionVeiw: UICollectionView!
     
     @IBAction func photoSelectAction(_ sender: Any) {
@@ -21,6 +27,12 @@ class CreateArticleViewController: UIViewController {
     }
     
     @IBAction func categorySelectAction(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: CreateArticleCategorySelectViewController.reuseIdentifier) as? CreateArticleCategorySelectViewController else { return }
+        vc.modalPresentationStyle = .overFullScreen
+        vc.delegate = self
+        self.present(vc, animated: false, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -30,6 +42,14 @@ class CreateArticleViewController: UIViewController {
         imagePickerController = ImagePickerController()
         imagePickerController?.imageLimit = 10
         imagePickerController?.delegate = self
+    }
+}
+
+extension CreateArticleViewController: CategorySelectDelegate {
+    func categoryDidSelect(_ category: String) {
+        categorySelectButton.setTitle(category, for: .normal)
+        self.category = category
+        print(category)
     }
 }
 
