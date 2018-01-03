@@ -183,6 +183,7 @@
 				8AC05C0E1FFCC8A300D99A23 /* Column */,
 				8A6678351FF91BE50001D13F /* Community */,
 				8A66786E1FF9CFCA0001D13F /* Shop */,
+				8A7A60111FFD3E900042F923 /* MyPage */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -325,6 +326,13 @@
 				8A6AD1111FF89DCE00D57DF8 /* Info.plist */,
 			);
 			path = dawntimeUITests;
+			sourceTree = "<group>";
+		};
+		8A7A60111FFD3E900042F923 /* MyPage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MyPage;
 			sourceTree = "<group>";
 		};
 		8AC05C0E1FFCC8A300D99A23 /* Column */ = {

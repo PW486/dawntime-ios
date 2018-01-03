@@ -1286,12 +1286,42 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V3q-fD-YB4">
                                                     <rect key="frame" x="0.0" y="10" width="375" height="130"/>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KUh-wq-eVf">
+                                                    <rect key="frame" x="0.0" y="75" width="375" height="64"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.098039215686274508" blue="0.37647058823529411" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="64" id="ylt-oc-vCa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이제는 당당히 말할 수 있다이제는 당당히 말할 수 있다" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ywM-Pg-U9b">
+                                                    <rect key="frame" x="15" y="87" width="194.5" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="칼럼니스트 정진호군" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cB9-gx-8zH">
+                                                    <rect key="frame" x="223" y="110" width="137" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="137" id="MIC-53-Gw5"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="ywM-Pg-U9b" firstAttribute="centerY" secondItem="KUh-wq-eVf" secondAttribute="centerY" id="6bc-OO-7bF"/>
+                                                <constraint firstItem="cB9-gx-8zH" firstAttribute="bottom" secondItem="ywM-Pg-U9b" secondAttribute="bottom" id="GdV-vU-qBd"/>
                                                 <constraint firstAttribute="bottom" secondItem="V3q-fD-YB4" secondAttribute="bottom" constant="10" id="KXb-sA-OsS"/>
                                                 <constraint firstItem="V3q-fD-YB4" firstAttribute="top" secondItem="ryF-y8-WVk" secondAttribute="top" constant="10" id="OGn-K1-9Os"/>
+                                                <constraint firstItem="ywM-Pg-U9b" firstAttribute="leading" secondItem="ryF-y8-WVk" secondAttribute="leadingMargin" id="ULx-0p-8dK"/>
                                                 <constraint firstAttribute="trailing" secondItem="V3q-fD-YB4" secondAttribute="trailing" id="UQq-8Z-aYu"/>
+                                                <constraint firstItem="KUh-wq-eVf" firstAttribute="top" secondItem="ryF-y8-WVk" secondAttribute="top" constant="75" id="bCu-vS-cO5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="cB9-gx-8zH" secondAttribute="trailing" id="em3-Rx-pq0"/>
+                                                <constraint firstItem="cB9-gx-8zH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ywM-Pg-U9b" secondAttribute="trailing" constant="10" id="eoL-5c-ncT"/>
                                                 <constraint firstItem="V3q-fD-YB4" firstAttribute="leading" secondItem="ryF-y8-WVk" secondAttribute="leading" id="gzE-f2-bxC"/>
+                                                <constraint firstAttribute="trailing" secondItem="KUh-wq-eVf" secondAttribute="trailing" id="ogI-wh-vmm"/>
+                                                <constraint firstItem="KUh-wq-eVf" firstAttribute="leading" secondItem="ryF-y8-WVk" secondAttribute="leading" id="v7M-GF-28D"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1314,10 +1344,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="lrU-bF-sn2"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="RA8-2S-WQd" id="JHm-Ee-oRV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XKC-ut-BTl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="-1266"/>
+            <point key="canvasLocation" x="2540" y="-1266.1169415292354"/>
         </scene>
         <!--홈-->
         <scene sceneID="CQ0-Aa-v8q">
