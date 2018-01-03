@@ -10,6 +10,7 @@ import UIKit
 
 class CommunityViewController: UIViewController {
     var dropdownSelected: Bool?
+    lazy var searchBar = UISearchBar()
     
     @IBOutlet weak var menuDropdown: UIView!
     @IBOutlet weak var menuDropdownBtn: UIButton!
@@ -25,6 +26,10 @@ class CommunityViewController: UIViewController {
     }
     
     @IBAction func searchAction(_ sender: Any) {
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Your placeholder"
+        self.navigationItem.titleView = searchBar
+        self.navigationItem.rightBarButtonItems = nil
     }
     
     @IBAction func menuDropdownAction(_ sender: Any) {

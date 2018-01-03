@@ -13,6 +13,20 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    @IBAction func columnButtonAction(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: ColumnViewController.reuseIdentifier) as? ColumnViewController else { return }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func readColumnButtonAction(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadColumnViewController.reuseIdentifier) as? ReadColumnViewController else { return }
+        // vc.column = self.columns[indexPath.row]
+        // cell.columnURL = self.columnURL
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
     @IBAction func peakTimeButtonAction(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyBoard.instantiateViewController(withIdentifier: PeakTimeViewController.reuseIdentifier) as? PeakTimeViewController else { return }
