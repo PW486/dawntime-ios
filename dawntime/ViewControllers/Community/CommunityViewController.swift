@@ -9,16 +9,19 @@
 import UIKit
 
 class CommunityViewController: UIViewController {
-    var dropdownSelected: Bool?
+    var dropdownSelected: Bool = false
+    var searchSelected: Bool = false
     lazy var searchBar = UISearchBar()
     
     @objc func searchExit() {
+        searchSelected = false
         self.navigationItem.titleView = nil
         self.navigationController?.navigationBar.topItem?.title = "커뮤니티"
         self.navigationItem.rightBarButtonItems = nil
         let writeBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_write_navy"), style: .done, target: self, action: #selector(createArticleAction))
         let searchBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_search_gray"), style: .done, target: self, action: #selector(searchAction))
         self.navigationItem.rightBarButtonItems = [searchBarButtonItem, writeBarButtonItem]
+        eraseDimBackground(menuDropdown)
     }
     
     @IBOutlet weak var menuDropdown: UIView!
@@ -35,6 +38,7 @@ class CommunityViewController: UIViewController {
     }
     
     @IBAction func searchAction(_ sender: Any) {
+        searchSelected = true
         searchBar.sizeToFit()
         searchBar.placeholder = "검색"
         searchBar.delegate = self
@@ -43,45 +47,63 @@ class CommunityViewController: UIViewController {
         self.navigationItem.rightBarButtonItems = nil
         let rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_cancel_navy"), style: .done, target: self, action: #selector(searchExit))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        if dropdownSelected == true {
+            menuDropdownAction(UIButton())
+        }
+        dimBackground(menuDropdown)
+    }
+    
+    func dimBackground(_ view: UIView) {
+        view.addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
+        
+        let border = CALayer()
+        border.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: UIScreen.main.bounds.size.height)
+        view.layer.addSublayer(border)
+        
+        let border2 = CALayer()
+        border2.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        border2.frame = CGRect(x: 0, y: 0, width: (self.tabBarController?.tabBar.frame.size.width)!, height: (self.tabBarController?.tabBar.frame.size.height)!)
+        self.tabBarController?.tabBar.layer.addSublayer(border2)
+    }
+    
+    func eraseDimBackground(_ view: UIView) {
+        view.layer.sublayers?.last?.removeFromSuperlayer()
+        self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
     }
     
     @IBAction func menuDropdownAction(_ sender: UIButton) {
-        if dropdownSelected! == true {
+        if dropdownSelected == true {
             dropdownSelected = false
-            menuDropdownBtn.setTitle("˅", for: .normal)
-            menuDropdown.layer.sublayers?.last?.removeFromSuperlayer()
-            self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
+            menuDropdownBtn.setImage(#imageLiteral(resourceName: "navi_downarrow_navy"), for: .normal)
+            eraseDimBackground(menuDropdown)
+            
             menuDropdownHeight.constant = 15
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
+            
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
             tableView.isUserInteractionEnabled = true
             collectionView.isHidden = true
         } else {
+            if searchSelected == true {
+                searchExit()
+            }
             dropdownSelected = true
-            menuDropdownBtn.setTitle("^", for: .normal)
+            menuDropdownBtn.setImage(#imageLiteral(resourceName: "navi_uparrow_navy"), for: .normal)
+            dimBackground(menuDropdown)
+            
             self.menuDropdownHeight.constant = 100
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
-            menuDropdown.addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
 
-            let border = CALayer()
-            border.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
-            border.frame = CGRect(x: 0, y: menuDropdown.frame.size.height, width: menuDropdown.frame.size.width, height: UIScreen.main.bounds.size.height)
-            menuDropdown.layer.addSublayer(border)
-            
-            let border2 = CALayer()
-            border2.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
-            border2.frame = CGRect(x: 0, y: 0, width: (self.tabBarController?.tabBar.frame.size.width)!, height: (self.tabBarController?.tabBar.frame.size.height)!)
-            self.tabBarController?.tabBar.layer.addSublayer(border2)
             self.tabBarController?.tabBar.isUserInteractionEnabled = false
             tableView.isUserInteractionEnabled = false
             collectionView.isHidden = false
         }
-//        self.menuDropdownHeight.constant = dropdownSelected! ? 100 : 15
-//        dropdownSelected = !dropdownSelected!
     }
     
     override func viewDidLoad() {
@@ -89,7 +111,7 @@ class CommunityViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if dropdownSelected! == true {
+        if dropdownSelected == true {
             menuDropdown.layer.sublayers?.last?.removeFromSuperlayer()
             self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
         }
@@ -99,18 +121,13 @@ class CommunityViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let img = UIImage()
-    self.navigationController?.navigationBar.shadowImage = img
+        self.navigationController?.navigationBar.shadowImage = img
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
         
-        dropdownSelected = false
-        menuDropdownBtn.setTitle("˅", for: .normal)
         menuDropdownHeight.constant = 15
         menuDropdown.addBottomBorderWithColor(color: UIColor.lightGray, width: 1)
         collectionView.isHidden = true
-      
     }
-    
-    
 }
 
 extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -163,10 +180,8 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CommunityViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchExit()
         print("검색")
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         self.tableView.reloadData()
     }
 }
