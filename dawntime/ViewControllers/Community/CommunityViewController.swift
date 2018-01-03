@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class CommunityViewController: UIViewController {
+    var articles = [Article]()
     var dropdownSelected: Bool = false
     var searchSelected: Bool = false
+    var tableViewRefreshControl = UIRefreshControl()
     lazy var searchBar = UISearchBar()
     
     @objc func searchExit() {
@@ -106,8 +110,50 @@ class CommunityViewController: UIViewController {
         }
     }
     
+    func reloadArticles() {
+        var newArticles = [Article]()
+        let decoder = JSONDecoder()
+        Alamofire.request("http://13.125.78.152:6789/board/bestList", encoding: JSONEncoding.default, headers: nil).responseJSON() {
+            (res) in
+            switch res.result {
+            case .success:
+                if let value = res.result.value {
+                    let json = JSON(value)
+                    for (_, subJson):(String, JSON) in json["data"] {
+                        do {
+                            let article = try decoder.decode(Article.self, from: subJson.rawData())
+                            newArticles.append(article)
+                        }
+                        catch {
+                            print(error)
+                        }
+                    }
+                }
+                self.articles = newArticles
+                self.tableView.reloadData()
+                break
+            case .failure(let err):
+                print(err.localizedDescription)
+                break
+            }
+        }
+    }
+    
+    @objc func startReloadTableView(_ sender: UIRefreshControl) {
+        reloadArticles()
+        sender.endRefreshing()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        reloadArticles()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadArticles()
+        
+        tableView.refreshControl = UIRefreshControl()
+        tableView.refreshControl?.addTarget(self, action: #selector(self.startReloadTableView(_:)), for: .valueChanged)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -153,17 +199,16 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
         guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadArticleViewController.reuseIdentifier) as? ReadArticleViewController else { return }
-        // vc.article = article
+//         vc.article = article
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return articles.count
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // let article = articles[indexPath.row]
-        let article = Article()
+        let article = articles[indexPath.row]
         articleDidSelect(article)
     }
     
@@ -173,6 +218,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier, for: indexPath) as! CommunityArticleTableViewCell
+        cell.article = articles[indexPath.row]
         
         return cell
     }

@@ -9,17 +9,15 @@
 import UIKit
 
 class CommunityArticleTableViewCell: UITableViewCell {
-
-    @IBOutlet weak var userImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var contentLabel: UILabel!
     
     var article: Article? {
         didSet {
-//            self.nameLabel.text = article?.name
-//            self.dateLabel.text = article?.date
-//            self.titleLabel.text = article?.title
+            self.categoryLabel.text = article?.board_tag
+            self.titleLabel.text = article?.board_title
+            self.contentLabel.text = article?.board_content
         }
     }
     

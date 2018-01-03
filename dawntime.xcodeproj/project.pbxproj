@@ -36,6 +36,14 @@
 		8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A6AD0F81FF89DCE00D57DF8 /* LaunchScreen.storyboard */; };
 		8A6AD1051FF89DCE00D57DF8 /* dawntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD1041FF89DCE00D57DF8 /* dawntimeTests.swift */; };
 		8A6AD1101FF89DCE00D57DF8 /* dawntimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD10F1FF89DCE00D57DF8 /* dawntimeUITests.swift */; };
+		8A7A60131FFD57940042F923 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60121FFD57940042F923 /* MyPageViewController.swift */; };
+		8A7A60151FFD57CD0042F923 /* MyPageProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60141FFD57CD0042F923 /* MyPageProfileTableViewCell.swift */; };
+		8A7A60171FFD58150042F923 /* MyPageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60161FFD58150042F923 /* MyPageMenuTableViewCell.swift */; };
+		8A7A60191FFD5B4E0042F923 /* MyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60181FFD5B4E0042F923 /* MyArticleViewController.swift */; };
+		8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */; };
+		8A7A601D1FFD5BCC0042F923 /* MsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A601C1FFD5BCC0042F923 /* MsgViewController.swift */; };
+		8A7A601F1FFD5C130042F923 /* MyWishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */; };
+		8A7A60211FFD5C270042F923 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60201FFD5C270042F923 /* SettingViewController.swift */; };
 		8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A91C11D1FF8B66900524200 /* Assets.xcassets */; };
 		8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1211FF8C69900524200 /* HomeViewController.swift */; };
 		8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1231FF8CA2200524200 /* NSObject.swift */; };
@@ -113,6 +121,14 @@
 		8A6AD10B1FF89DCE00D57DF8 /* dawntimeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = dawntimeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A6AD10F1FF89DCE00D57DF8 /* dawntimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dawntimeUITests.swift; sourceTree = "<group>"; };
 		8A6AD1111FF89DCE00D57DF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A7A60121FFD57940042F923 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		8A7A60141FFD57CD0042F923 /* MyPageProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileTableViewCell.swift; sourceTree = "<group>"; };
+		8A7A60161FFD58150042F923 /* MyPageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMenuTableViewCell.swift; sourceTree = "<group>"; };
+		8A7A60181FFD5B4E0042F923 /* MyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewController.swift; sourceTree = "<group>"; };
+		8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrapViewController.swift; sourceTree = "<group>"; };
+		8A7A601C1FFD5BCC0042F923 /* MsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgViewController.swift; sourceTree = "<group>"; };
+		8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishlistViewController.swift; sourceTree = "<group>"; };
+		8A7A60201FFD5C270042F923 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8A91C11D1FF8B66900524200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A91C1211FF8C69900524200 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A91C1231FF8CA2200524200 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
@@ -331,6 +347,14 @@
 		8A7A60111FFD3E900042F923 /* MyPage */ = {
 			isa = PBXGroup;
 			children = (
+				8A7A60121FFD57940042F923 /* MyPageViewController.swift */,
+				8A7A60141FFD57CD0042F923 /* MyPageProfileTableViewCell.swift */,
+				8A7A60161FFD58150042F923 /* MyPageMenuTableViewCell.swift */,
+				8A7A60181FFD5B4E0042F923 /* MyArticleViewController.swift */,
+				8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */,
+				8A7A601C1FFD5BCC0042F923 /* MsgViewController.swift */,
+				8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */,
+				8A7A60201FFD5C270042F923 /* SettingViewController.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -673,12 +697,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A66783C1FF91F350001D13F /* Article.swift in Sources */,
+				8A7A60191FFD5B4E0042F923 /* MyArticleViewController.swift in Sources */,
 				8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */,
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
+				8A7A60151FFD57CD0042F923 /* MyPageProfileTableViewCell.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
+				8A7A601F1FFD5C130042F923 /* MyWishlistViewController.swift in Sources */,
 				8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */,
 				8A66787B1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift in Sources */,
 				8A6678371FF91C190001D13F /* CommunityViewController.swift in Sources */,
@@ -688,9 +715,13 @@
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
 				8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */,
 				8AC05C051FFBC0CD00D99A23 /* CreateArticleCategorySelectViewController.swift in Sources */,
+				8A7A60171FFD58150042F923 /* MyPageMenuTableViewCell.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
+				8A7A60131FFD57940042F923 /* MyPageViewController.swift in Sources */,
+				8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */,
 				8AC05C141FFCD59300D99A23 /* ReadColumnViewController.swift in Sources */,
 				8A66787F1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift in Sources */,
+				8A7A601D1FFD5BCC0042F923 /* MsgViewController.swift in Sources */,
 				8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
@@ -700,6 +731,7 @@
 				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,
 				8A66786D1FF9CBAE0001D13F /* Message.swift in Sources */,
 				8AC05C161FFCD5D300D99A23 /* ReadColumnTableViewCell.swift in Sources */,
+				8A7A60211FFD5C270042F923 /* SettingViewController.swift in Sources */,
 				8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */,
 				8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */,
 			);

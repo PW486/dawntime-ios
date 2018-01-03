@@ -9,6 +9,7 @@
 import UIKit
 
 class ReadArticleViewController: UIViewController {
+    var article: Article?
     let cellHeights: [CGFloat] = [130,130,85]
     
     @objc func moreMenu() {
@@ -65,6 +66,7 @@ extension ReadArticleViewController: UITableViewDelegate, UITableViewDataSource 
         switch(indexPath.row) {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleTableViewCell.reuseIdentifier) as! ReadArticleTableViewCell
+//            cell.article = self.article
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleImageTableViewCell.reuseIdentifier) as! ReadArticleImageTableViewCell

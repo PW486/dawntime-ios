@@ -25,8 +25,8 @@ class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // let article = articles[indexPath.row]
-        let article = Article()
-        self.delegate.articleDidSelect(article)
+//        let article = Article()
+//        self.delegate.articleDidSelect(article)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

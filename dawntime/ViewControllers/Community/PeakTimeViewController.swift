@@ -28,8 +28,8 @@ extension PeakTimeViewController: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         // let article = articles[indexPath.row]
-        let article = Article()
-        articleDidSelect(article)
+//        let article = Article()
+//        articleDidSelect(article)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
