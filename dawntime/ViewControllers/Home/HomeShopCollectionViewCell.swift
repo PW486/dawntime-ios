@@ -16,7 +16,7 @@ class HomeShopCollectionViewCell: UICollectionViewCell {
         // Circle Image View
         itemImage.layer.borderWidth = 1
         itemImage.layer.masksToBounds = false
-        itemImage.layer.borderColor = UIColor.magenta.cgColor
+        itemImage.layer.borderColor = UIColor.hexStringToUIColor(hex: "#ED508E").cgColor
         itemImage.layer.cornerRadius = itemImage.frame.height/2
         itemImage.clipsToBounds = true
     }

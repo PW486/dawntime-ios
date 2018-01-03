@@ -45,6 +45,9 @@
 		8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */; };
 		8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C12D1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift */; };
 		8AC05C051FFBC0CD00D99A23 /* CreateArticleCategorySelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C041FFBC0CD00D99A23 /* CreateArticleCategorySelectViewController.swift */; };
+		8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */; };
+		8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C0A1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift */; };
+		8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C0C1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift */; };
 		CBD9DBCAC4B78362662CA705 /* Pods_dawntimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */; };
 		E28FDCEE58AB206F9704208E /* Pods_dawntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FBAEEC06602B8634A04847 /* Pods_dawntime.framework */; };
 /* End PBXBuildFile section */
@@ -115,6 +118,9 @@
 		8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePeakTimeTableViewCell.swift; sourceTree = "<group>"; };
 		8A91C12D1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeakTimeCollectionViewCell.swift; sourceTree = "<group>"; };
 		8AC05C041FFBC0CD00D99A23 /* CreateArticleCategorySelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateArticleCategorySelectViewController.swift; sourceTree = "<group>"; };
+		8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		8AC05C0A1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadArticleImageTableViewCell.swift; sourceTree = "<group>"; };
+		8AC05C0C1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadArticleCommentTableViewCell.swift; sourceTree = "<group>"; };
 		A3F90D5F4940CBC6B4229F00 /* Pods-dawntime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF06CCC928FF578FD97CC5C /* Pods-dawntime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.release.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.release.xcconfig"; sourceTree = "<group>"; };
 		D7524E1432674D22CDF851E0 /* Pods-dawntimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntimeTests/Pods-dawntimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -165,9 +171,10 @@
 		8A6678321FF91AD50001D13F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8A66786E1FF9CFCA0001D13F /* Shop */,
 				8A6678331FF91AF40001D13F /* Home */,
+				8AC05C0E1FFCC8A300D99A23 /* Column */,
 				8A6678351FF91BE50001D13F /* Community */,
+				8A66786E1FF9CFCA0001D13F /* Shop */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -203,6 +210,8 @@
 				8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */,
 				8A6678741FF9F3CA0001D13F /* ReadArticleViewController.swift */,
 				8A6678761FFA0B640001D13F /* ReadArticleTableViewCell.swift */,
+				8AC05C0A1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift */,
+				8AC05C0C1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift */,
 				8A66787C1FFB6D530001D13F /* CreateArticleViewController.swift */,
 				8A66787E1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift */,
 				8AC05C041FFBC0CD00D99A23 /* CreateArticleCategorySelectViewController.swift */,
@@ -283,6 +292,7 @@
 				8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */,
 				8A91C1231FF8CA2200524200 /* NSObject.swift */,
 				8A6678781FFA43FB0001D13F /* UIViewExtension.swift */,
+				8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */,
 				8A6678501FF9C4D40001D13F /* Resources */,
 				8A66783A1FF91D8F0001D13F /* Models */,
 				8A6678321FF91AD50001D13F /* ViewControllers */,
@@ -307,6 +317,13 @@
 				8A6AD1111FF89DCE00D57DF8 /* Info.plist */,
 			);
 			path = dawntimeUITests;
+			sourceTree = "<group>";
+		};
+		8AC05C0E1FFCC8A300D99A23 /* Column */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Column;
 			sourceTree = "<group>";
 		};
 		96B319E0E7AC8B11BF3ADEA7 /* Frameworks */ = {
@@ -639,6 +656,7 @@
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */,
+				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
 				8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */,
 				8A66787B1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift in Sources */,
@@ -646,9 +664,11 @@
 				8A6678701FF9D3920001D13F /* PeakTimeViewController.swift in Sources */,
 				8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */,
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
+				8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */,
 				8AC05C051FFBC0CD00D99A23 /* CreateArticleCategorySelectViewController.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
 				8A66787F1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift in Sources */,
+				8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
 				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,

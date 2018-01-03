@@ -9,7 +9,7 @@
 import UIKit
 
 class PeakTimeViewController: UIViewController {
-    let backImages: [UIImage] = [#imageLiteral(resourceName: "1_commu_illu1"),#imageLiteral(resourceName: "1_commu_illu2"),#imageLiteral(resourceName: "1_commu_illu3"),#imageLiteral(resourceName: "1_commu_illu4")]
+    let backImages: [UIImage] = [#imageLiteral(resourceName: "view_peakillu_blue"),#imageLiteral(resourceName: "view_peakillu_violet"),#imageLiteral(resourceName: "view_peakillu2_green"),#imageLiteral(resourceName: "view_peakillu1_purple")]
 
     override func viewDidLoad() {
         super.viewDidLoad()

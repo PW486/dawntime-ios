@@ -9,7 +9,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-    let cellHeights: [CGFloat] = [136,130,1120]
+    let cellHeights: [CGFloat] = [125,125,1120]
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -21,7 +21,9 @@ class HomeViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.navigationBar.topItem?.title = "새벽타임"
+//        self.navigationController?.navigationBar.topItem?.title = "새벽타임"
+        let imageView = UIImageView(image: #imageLiteral(resourceName: "navi_dawntime_navy"))
+        self.navigationItem.titleView = imageView
     }
     
     override func viewDidLoad() {
