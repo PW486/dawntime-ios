@@ -37,7 +37,6 @@
 		8A6AD1051FF89DCE00D57DF8 /* dawntimeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD1041FF89DCE00D57DF8 /* dawntimeTests.swift */; };
 		8A6AD1101FF89DCE00D57DF8 /* dawntimeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6AD10F1FF89DCE00D57DF8 /* dawntimeUITests.swift */; };
 		8A7A60131FFD57940042F923 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60121FFD57940042F923 /* MyPageViewController.swift */; };
-		8A7A60151FFD57CD0042F923 /* MyPageProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60141FFD57CD0042F923 /* MyPageProfileTableViewCell.swift */; };
 		8A7A60171FFD58150042F923 /* MyPageMenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60161FFD58150042F923 /* MyPageMenuTableViewCell.swift */; };
 		8A7A60191FFD5B4E0042F923 /* MyArticleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60181FFD5B4E0042F923 /* MyArticleViewController.swift */; };
 		8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */; };
@@ -122,7 +121,6 @@
 		8A6AD10F1FF89DCE00D57DF8 /* dawntimeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = dawntimeUITests.swift; sourceTree = "<group>"; };
 		8A6AD1111FF89DCE00D57DF8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8A7A60121FFD57940042F923 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
-		8A7A60141FFD57CD0042F923 /* MyPageProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageProfileTableViewCell.swift; sourceTree = "<group>"; };
 		8A7A60161FFD58150042F923 /* MyPageMenuTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageMenuTableViewCell.swift; sourceTree = "<group>"; };
 		8A7A60181FFD5B4E0042F923 /* MyArticleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleViewController.swift; sourceTree = "<group>"; };
 		8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyScrapViewController.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 			isa = PBXGroup;
 			children = (
 				8A7A60121FFD57940042F923 /* MyPageViewController.swift */,
-				8A7A60141FFD57CD0042F923 /* MyPageProfileTableViewCell.swift */,
 				8A7A60161FFD58150042F923 /* MyPageMenuTableViewCell.swift */,
 				8A7A60181FFD5B4E0042F923 /* MyArticleViewController.swift */,
 				8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */,
@@ -701,7 +698,6 @@
 				8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */,
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
-				8A7A60151FFD57CD0042F923 /* MyPageProfileTableViewCell.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
