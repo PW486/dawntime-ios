@@ -55,14 +55,25 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         switch(indexPath.row) {
         case 0:
-            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        case 4:
             guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
             self.navigationController?.pushViewController(vc, animated: true)
         default:
-            print("default")
+            print("Default")
         }
     }
     
