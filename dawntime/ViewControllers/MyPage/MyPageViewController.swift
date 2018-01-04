@@ -12,18 +12,20 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var logInBtn: UIButton!
-    @IBOutlet weak var signUpBtn: UIButton!
     @IBOutlet weak var logInRequireLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
-    var logInStatus = false
+    var logInStatus = true
     var menus: [String] = ["내가 쓴 글", "스크랩", "쪽지", "찜 목록", "설정", ""]
+    
+    @IBAction func logInAction(_ sender: Any) {
+        // 로그인 창으로 present, delegate
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         if logInStatus {
             logInBtn.isHidden = true
-            signUpBtn.isHidden = true
             logInRequireLabel.isHidden = true
             emailLabel.text = "logIn@logIn.com"
             userImage.image = #imageLiteral(resourceName: "view_activeprofile_navy")
@@ -55,7 +57,10 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch(indexPath.row) {
         case 0:
-            break
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
         default:
             print("default")
         }
