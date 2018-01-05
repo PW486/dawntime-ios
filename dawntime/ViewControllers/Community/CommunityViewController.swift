@@ -154,6 +154,8 @@ class CommunityViewController: UIViewController {
         
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(self.startReloadTableView(_:)), for: .valueChanged)
+        
+        self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

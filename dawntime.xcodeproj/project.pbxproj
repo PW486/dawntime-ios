@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3BA89B7C287C557EFAF21B65 /* Pods_dawntimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238A4A2CCC7982365A5DB4B2 /* Pods_dawntimeUITests.framework */; };
+		8A3F8E851FFF9F1300E7990B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */; };
 		8A6678371FF91C190001D13F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678361FF91C190001D13F /* CommunityViewController.swift */; };
 		8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */; };
 		8A66783C1FF91F350001D13F /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A66783B1FF91F350001D13F /* Article.swift */; };
@@ -44,6 +45,11 @@
 		8A7A601F1FFD5C130042F923 /* MyWishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */; };
 		8A7A60211FFD5C270042F923 /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60201FFD5C270042F923 /* SettingViewController.swift */; };
 		8A7A60231FFE6F8E0042F923 /* MyPageReplyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60221FFE6F8E0042F923 /* MyPageReplyTableViewCell.swift */; };
+		8A7A60251FFF39480042F923 /* CommunityArticleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A7A60241FFF39480042F923 /* CommunityArticleTableViewCell.xib */; };
+		8A7A60271FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A7A60261FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib */; };
+		8A7A602A1FFF451D0042F923 /* SettingSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A60291FFF451D0042F923 /* SettingSwitchTableViewCell.swift */; };
+		8A7A602C1FFF508E0042F923 /* UISwitchCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A602B1FFF508E0042F923 /* UISwitchCustom.swift */; };
+		8A7A602E1FFF68840042F923 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A602D1FFF68840042F923 /* LockSettingViewController.swift */; };
 		8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A91C11D1FF8B66900524200 /* Assets.xcassets */; };
 		8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1211FF8C69900524200 /* HomeViewController.swift */; };
 		8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1231FF8CA2200524200 /* NSObject.swift */; };
@@ -87,6 +93,7 @@
 		238A4A2CCC7982365A5DB4B2 /* Pods_dawntimeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dawntimeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FBAEEC06602B8634A04847 /* Pods_dawntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dawntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dawntimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		8A6678361FF91C190001D13F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleTableViewCell.swift; sourceTree = "<group>"; };
 		8A66783B1FF91F350001D13F /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
@@ -129,6 +136,11 @@
 		8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyWishlistViewController.swift; sourceTree = "<group>"; };
 		8A7A60201FFD5C270042F923 /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
 		8A7A60221FFE6F8E0042F923 /* MyPageReplyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageReplyTableViewCell.swift; sourceTree = "<group>"; };
+		8A7A60241FFF39480042F923 /* CommunityArticleTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommunityArticleTableViewCell.xib; sourceTree = "<group>"; };
+		8A7A60261FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyPageReplyTableViewCell.xib; sourceTree = "<group>"; };
+		8A7A60291FFF451D0042F923 /* SettingSwitchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingSwitchTableViewCell.swift; sourceTree = "<group>"; };
+		8A7A602B1FFF508E0042F923 /* UISwitchCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISwitchCustom.swift; sourceTree = "<group>"; };
+		8A7A602D1FFF68840042F923 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
 		8A91C11D1FF8B66900524200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A91C1211FF8C69900524200 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A91C1231FF8CA2200524200 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
@@ -200,6 +212,7 @@
 				8A6678351FF91BE50001D13F /* Community */,
 				8A66786E1FF9CFCA0001D13F /* Shop */,
 				8A7A60111FFD3E900042F923 /* MyPage */,
+				8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -318,9 +331,11 @@
 				8A91C1231FF8CA2200524200 /* NSObject.swift */,
 				8A6678781FFA43FB0001D13F /* UIViewExtension.swift */,
 				8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */,
+				8A7A602B1FFF508E0042F923 /* UISwitchCustom.swift */,
 				8A6678501FF9C4D40001D13F /* Resources */,
 				8A66783A1FF91D8F0001D13F /* Models */,
 				8A6678321FF91AD50001D13F /* ViewControllers */,
+				8A7A60281FFF3FB20042F923 /* Xibs */,
 				8A6678341FF91B0B0001D13F /* StoryBoards */,
 			);
 			path = dawntime;
@@ -355,8 +370,19 @@
 				8A7A601C1FFD5BCC0042F923 /* MsgViewController.swift */,
 				8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */,
 				8A7A60201FFD5C270042F923 /* SettingViewController.swift */,
+				8A7A60291FFF451D0042F923 /* SettingSwitchTableViewCell.swift */,
+				8A7A602D1FFF68840042F923 /* LockSettingViewController.swift */,
 			);
 			path = MyPage;
+			sourceTree = "<group>";
+		};
+		8A7A60281FFF3FB20042F923 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				8A7A60241FFF39480042F923 /* CommunityArticleTableViewCell.xib */,
+				8A7A60261FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib */,
+			);
+			path = Xibs;
 			sourceTree = "<group>";
 		};
 		8AC05C0E1FFCC8A300D99A23 /* Column */ = {
@@ -505,7 +531,9 @@
 				8A6678611FF9C6BC0001D13F /* NotoSansCJKkr-Thin.otf in Resources */,
 				8A6678621FF9C6BC0001D13F /* NotoSansMonoCJKkr-Bold.otf in Resources */,
 				8A6678631FF9C6BC0001D13F /* NotoSansMonoCJKkr-Regular.otf in Resources */,
+				8A7A60271FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib in Resources */,
 				8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */,
+				8A7A60251FFF39480042F923 /* CommunityArticleTableViewCell.xib in Resources */,
 				8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */,
 				8A6AD0F51FF89DCE00D57DF8 /* Main.storyboard in Resources */,
 			);
@@ -626,6 +654,8 @@
 				"${BUILT_PRODUCTS_DIR}/Imaginary/Imaginary.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/Lightbox/Lightbox.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftKeychainWrapper/SwiftKeychainWrapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyGif/SwiftyGif.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -637,6 +667,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Imaginary.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lightbox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftKeychainWrapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyGif.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,9 +740,11 @@
 				8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */,
 				8A66787B1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift in Sources */,
 				8A6678371FF91C190001D13F /* CommunityViewController.swift in Sources */,
+				8A7A602E1FFF68840042F923 /* LockSettingViewController.swift in Sources */,
 				8AC05C101FFCCE4F00D99A23 /* ColumnViewController.swift in Sources */,
 				8A7A60231FFE6F8E0042F923 /* MyPageReplyTableViewCell.swift in Sources */,
 				8A6678701FF9D3920001D13F /* PeakTimeViewController.swift in Sources */,
+				8A7A602A1FFF451D0042F923 /* SettingSwitchTableViewCell.swift in Sources */,
 				8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */,
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
 				8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */,
@@ -721,11 +755,13 @@
 				8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */,
 				8AC05C141FFCD59300D99A23 /* ReadColumnViewController.swift in Sources */,
 				8A66787F1FFB92020001D13F /* CreateArticlePhotoCollectionViewCell.swift in Sources */,
+				8A7A602C1FFF508E0042F923 /* UISwitchCustom.swift in Sources */,
 				8A7A601D1FFD5BCC0042F923 /* MsgViewController.swift in Sources */,
 				8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
 				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,
+				8A3F8E851FFF9F1300E7990B /* SplashViewController.swift in Sources */,
 				8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */,
 				8A66787D1FFB6D530001D13F /* CreateArticleViewController.swift in Sources */,
 				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,

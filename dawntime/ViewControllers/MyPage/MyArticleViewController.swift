@@ -44,6 +44,9 @@ class MyArticleViewController: UIViewController {
         super.viewDidLoad()
         myArticleCountView.addBottomBorderWithColor(color: tableView.separatorColor!, width: 0.5)
         viewArticleList(UIView())
+        
+        self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
+        self.tableView.register(UINib(nibName: MyPageReplyTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MyPageReplyTableViewCell.reuseIdentifier)
         // 사용자 글과 댓글 가져오기
     }
 }

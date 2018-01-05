@@ -42,6 +42,17 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+        let path = documentDirectory.appending("/Setting.plist")
+        var dic = NSDictionary(contentsOfFile: path) as? [String: Bool]
+        
+        if dic!["잠금"] == true {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: LockSettingViewController.reuseIdentifier) as? LockSettingViewController else { return }
+            self.present(vc, animated: true, completion: nil)
+        }
+        
         tableView.separatorStyle = .none
         // 서버 통신 샵, 칼럼, 피크타임 -> struct 배열 저장 -> 콜렉션 뷰(피크 타임) 개수 만큼 cellHeight(1개 220) 수정 -> 테이블 뷰 셀에 넘기기? 또는 그냥 이동후 다시 서버 통신
     }

@@ -11,6 +11,8 @@ target 'dawntime' do
   pod 'Kingfisher'
   pod 'ImagePicker'
   pod 'Lightbox'
+  pod 'SwiftKeychainWrapper'
+  pod 'SwiftyGif', :git => 'https://github.com/kirualex/SwiftyGif.git', :branch => 'swift4'
 
   target 'dawntimeTests' do
     inherit! :search_paths

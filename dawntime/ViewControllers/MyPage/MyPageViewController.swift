@@ -16,24 +16,35 @@ class MyPageViewController: UIViewController {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
     
-    var logInStatus = true
+    let defaults = UserDefaults.standard
+    var logInStatus = false
     var menus: [String] = ["내가 쓴 글", "스크랩", "쪽지", "찜 목록", "설정", ""]
     
     @IBAction func logInAction(_ sender: Any) {
         // 로그인 창으로 present, delegate
+        defaults.set(true, forKey: "logInStatus")
+        logInStatus = defaults.bool(forKey: "logInStatus")
+        viewWillAppear(false)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        logInStatus = defaults.bool(forKey: "logInStatus")
+        
         if logInStatus {
             logInBtn.isHidden = true
             logInRequireLabel.isHidden = true
+            emailLabel.isHidden = false
             emailLabel.text = "logIn@logIn.com"
             userImage.image = #imageLiteral(resourceName: "view_activeprofile_navy")
         }
         else {
+            logInBtn.isHidden = false
+            logInRequireLabel.isHidden = false
             emailLabel.isHidden = true
+            emailLabel.text = ""
             userImage.image = #imageLiteral(resourceName: "view_unactiveprofile_gray")
         }
+        tableView.reloadData()
     }
 
     override func viewDidLoad() {
@@ -55,25 +66,27 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        switch(indexPath.row) {
-        case 0:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 1:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 2:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 3:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-        case 4:
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
-            self.navigationController?.pushViewController(vc, animated: true)
-        default:
-            print("Default")
+        if logInStatus {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            switch(indexPath.row) {
+            case 0:
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: MyArticleViewController.reuseIdentifier) as? MyArticleViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 1:
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: MyScrapViewController.reuseIdentifier) as? MyScrapViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 2:
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: MsgViewController.reuseIdentifier) as? MsgViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 3:
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: MyWishlistViewController.reuseIdentifier) as? MyWishlistViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            case 4:
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: SettingViewController.reuseIdentifier) as? SettingViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
+            default:
+                print("Default")
+            }
         }
     }
     
