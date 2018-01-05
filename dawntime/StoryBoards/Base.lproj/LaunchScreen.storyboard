@@ -18,22 +18,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="zdU-GZ-Vpm">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="XPx-Lc-XvV">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="zdU-GZ-Vpm" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="65E-XU-H7g"/>
-                            <constraint firstItem="zdU-GZ-Vpm" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ble-PT-akr"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zdU-GZ-Vpm" secondAttribute="trailing" id="fK2-su-IUX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zdU-GZ-Vpm" secondAttribute="bottom" id="xFt-K9-2v1"/>
+                            <constraint firstItem="XPx-Lc-XvV" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="BJA-9n-1a1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="XPx-Lc-XvV" secondAttribute="bottom" id="I8b-Ww-xQ8"/>
+                            <constraint firstItem="XPx-Lc-XvV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Kvh-8P-tMg"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="XPx-Lc-XvV" secondAttribute="trailing" id="w2s-1K-LCn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <connections>
-                        <outlet property="splashImage" destination="zdU-GZ-Vpm" id="qDw-TY-FiX"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

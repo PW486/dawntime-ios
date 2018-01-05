@@ -595,7 +595,7 @@
         <!--새벽타임-->
         <scene sceneID="4Y8-Gu-26H">
             <objects>
-                <tabBarController title="새벽타임" id="o2e-hJ-GnU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="RootViewController" title="새벽타임" id="o2e-hJ-GnU" sceneMemberID="viewController">
                     <tabBar key="tabBar" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" itemPositioning="fill" id="w3V-kZ-HwH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1948,7 +1948,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash" translatesAutoresizingMaskIntoConstraints="NO" id="QDC-F8-F4G">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QDC-F8-F4G">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
                         </subviews>
@@ -1967,14 +1967,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bAD-2X-dR4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1586" y="-72"/>
+            <point key="canvasLocation" x="-1518" y="-72"/>
         </scene>
     </scenes>
     <resources>
         <image name="navi_downarrow_navy" width="20" height="20"/>
         <image name="navi_search_gray" width="18" height="17"/>
         <image name="navi_write_navy" width="48" height="48"/>
-        <image name="splash" width="375" height="667"/>
         <image name="tabbar_active_comu_navy" width="30" height="30"/>
         <image name="tabbar_active_home_navy" width="30" height="30"/>
         <image name="tabbar_active_my_navy" width="30" height="30"/>

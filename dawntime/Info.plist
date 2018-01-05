@@ -22,8 +22,12 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>UILaunchStoryboardName</key>
-	<string>LaunchScreen</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera Usage</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Photo Library Additions Usage</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Photo Library Usage</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansCJKkr-Black.otf</string>
@@ -36,14 +40,10 @@
 		<string>NotoSansMonoCJKkr-Bold.otf</string>
 		<string>NotoSansMonoCJKkr-Regular.otf</string>
 	</array>
+	<key>UILaunchStoryboardName</key>
+	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library Usage</string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Photo Library Additions Usage</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Camera Usage</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

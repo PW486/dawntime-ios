@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeViewController: UIViewController {
+    let fileManager = FileManager.default
+    let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
     let cellHeights: [CGFloat] = [125,125,1120]
     
     @IBOutlet weak var tableView: UITableView!
@@ -42,15 +44,22 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
         let path = documentDirectory.appending("/Setting.plist")
+        if(!fileManager.fileExists(atPath: path)){
+            let data : [String: Bool] = [
+                "알림": false,
+                "잠금": false,
+                "블라인드": false
+            ]
+            NSDictionary(dictionary: data).write(toFile: path, atomically: true)
+        }
+        
         var dic = NSDictionary(contentsOfFile: path) as? [String: Bool]
         
         if dic!["잠금"] == true {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
             guard let vc = storyBoard.instantiateViewController(withIdentifier: LockSettingViewController.reuseIdentifier) as? LockSettingViewController else { return }
-            self.present(vc, animated: true, completion: nil)
+            self.present(vc, animated: false, completion: nil)
         }
         
         tableView.separatorStyle = .none

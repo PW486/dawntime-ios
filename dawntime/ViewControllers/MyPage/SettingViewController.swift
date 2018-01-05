@@ -14,7 +14,6 @@ protocol LockSettingProtocol {
 
 class SettingViewController: UIViewController {
     let defaults = UserDefaults.standard
-    let fileManager = FileManager.default
     let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
     // SettingLabelText, Switch, InfoLabelTrue, InfoLabelText
     let settinglist: [(String, Bool, Bool, String)] = [("알림", true, false, ""),("잠금", true, false, ""),("블라인드", true, true, "홈 화면의 베스트 상품 사진을 필터링 합니다."),("로그아웃", false, false, ""),("회원탈퇴", false, false, "")]
@@ -29,16 +28,6 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        
-        let path = documentDirectory.appending("/Setting.plist")
-        if(!fileManager.fileExists(atPath: path)){
-            let data : [String: Bool] = [
-                "알림": false,
-                "잠금": false,
-                "블라인드": false
-            ]
-            NSDictionary(dictionary: data).write(toFile: path, atomically: true)
-        }
     }
 }
 

@@ -66,6 +66,7 @@
 		8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C111FFCCF2800D99A23 /* ColumnTableViewCell.swift */; };
 		8AC05C141FFCD59300D99A23 /* ReadColumnViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C131FFCD59300D99A23 /* ReadColumnViewController.swift */; };
 		8AC05C161FFCD5D300D99A23 /* ReadColumnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C151FFCD5D300D99A23 /* ReadColumnTableViewCell.swift */; };
+		8AE4E1F61FFFC5BE00FAD30A /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8AE4E1F51FFFC5BC00FAD30A /* splash.gif */; };
 		CBD9DBCAC4B78362662CA705 /* Pods_dawntimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */; };
 		E28FDCEE58AB206F9704208E /* Pods_dawntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FBAEEC06602B8634A04847 /* Pods_dawntime.framework */; };
 /* End PBXBuildFile section */
@@ -157,6 +158,7 @@
 		8AC05C111FFCCF2800D99A23 /* ColumnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumnTableViewCell.swift; sourceTree = "<group>"; };
 		8AC05C131FFCD59300D99A23 /* ReadColumnViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadColumnViewController.swift; sourceTree = "<group>"; };
 		8AC05C151FFCD5D300D99A23 /* ReadColumnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadColumnTableViewCell.swift; sourceTree = "<group>"; };
+		8AE4E1F51FFFC5BC00FAD30A /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		A3F90D5F4940CBC6B4229F00 /* Pods-dawntime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF06CCC928FF578FD97CC5C /* Pods-dawntime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.release.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.release.xcconfig"; sourceTree = "<group>"; };
 		D7524E1432674D22CDF851E0 /* Pods-dawntimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntimeTests/Pods-dawntimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -207,12 +209,12 @@
 		8A6678321FF91AD50001D13F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */,
 				8A6678331FF91AF40001D13F /* Home */,
 				8AC05C0E1FFCC8A300D99A23 /* Column */,
 				8A6678351FF91BE50001D13F /* Community */,
 				8A66786E1FF9CFCA0001D13F /* Shop */,
 				8A7A60111FFD3E900042F923 /* MyPage */,
-				8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -327,6 +329,7 @@
 			isa = PBXGroup;
 			children = (
 				8A6AD0FB1FF89DCE00D57DF8 /* Info.plist */,
+				8AE4E1F51FFFC5BC00FAD30A /* splash.gif */,
 				8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */,
 				8A91C1231FF8CA2200524200 /* NSObject.swift */,
 				8A6678781FFA43FB0001D13F /* UIViewExtension.swift */,
@@ -531,6 +534,7 @@
 				8A6678611FF9C6BC0001D13F /* NotoSansCJKkr-Thin.otf in Resources */,
 				8A6678621FF9C6BC0001D13F /* NotoSansMonoCJKkr-Bold.otf in Resources */,
 				8A6678631FF9C6BC0001D13F /* NotoSansMonoCJKkr-Regular.otf in Resources */,
+				8AE4E1F61FFFC5BE00FAD30A /* splash.gif in Resources */,
 				8A7A60271FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib in Resources */,
 				8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */,
 				8A7A60251FFF39480042F923 /* CommunityArticleTableViewCell.xib in Resources */,
