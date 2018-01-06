@@ -77,9 +77,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, Articl
     func articleDidSelect(_ article: Article) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         
-        guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadArticleViewController.reuseIdentifier) as? ReadArticleViewController else { return }
-        // vc.article = article
-        self.navigationController?.pushViewController(vc, animated: true)
+        let defaults = UserDefaults.standard
+        if defaults.bool(forKey: "logInStatus") {
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadArticleViewController.reuseIdentifier) as? ReadArticleViewController else { return }
+            // vc.article = article
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: LogInPopUpViewController.reuseIdentifier) as? LogInPopUpViewController else { return }
+            vc.modalPresentationStyle = .overFullScreen
+            self.present(vc, animated: false, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

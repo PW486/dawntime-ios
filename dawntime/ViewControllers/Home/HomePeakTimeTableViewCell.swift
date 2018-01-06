@@ -23,10 +23,10 @@ class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
         peakTimeCollectionView.dataSource = self
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
         // let article = articles[indexPath.row]
-//        let article = Article()
-//        self.delegate.articleDidSelect(article)
+        let article = Article(board_id: 1, board_title: "1", board_content: "", board_tag: "1", board_like: 1, board_image: "1", board_date: "1", user_id: 1)
+        self.delegate.articleDidSelect(article)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

@@ -46,6 +46,7 @@ class LogInViewController: UIViewController, NaverThirdPartyLoginConnectionDeleg
         let tokenType = loginConn?.tokenType
         let accessToken = loginConn?.accessToken
         let authorization = "\(tokenType!) \(accessToken!)"
+        print(authorization)
         
         Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization]).responseJSON() {
             (res) in
