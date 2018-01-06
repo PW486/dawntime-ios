@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import NaverThirdPartyLogin
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // NaverLogin Delegate
+        NaverThirdPartyLoginConnection.getSharedInstance().isInAppOauthEnable = true
+        NaverThirdPartyLoginConnection.getSharedInstance().isOnlyPortraitSupportedInIphone()
+        NaverThirdPartyLoginConnection.getSharedInstance().isNaverAppOauthEnable = true
+        
+        let naverLoginKit = NaverThirdPartyLoginConnection.getSharedInstance()
+        naverLoginKit?.serviceUrlScheme = kServiceAppUrlScheme
+        naverLoginKit?.consumerKey = kConsumerKey
+        naverLoginKit?.consumerSecret = kConsumerSecret
+        naverLoginKit?.appName = kServiceAppName
+        
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        var naverSignInResult = false
+        
+        if url.scheme == kServiceAppUrlScheme {
+            if url.host == kCheckResultPage {
+                let loginConn = NaverThirdPartyLoginConnection.getSharedInstance()
+                let resultType = loginConn?.receiveAccessToken(url)
+                
+                if resultType == SUCCESS {
+                    naverSignInResult = true
+                }
+            }
+        }
+        return naverSignInResult
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

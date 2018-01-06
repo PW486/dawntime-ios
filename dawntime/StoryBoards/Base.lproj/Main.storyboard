@@ -833,14 +833,14 @@
                                                 <rect key="frame" x="187.5" y="0.0" width="187.5" height="50"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="111" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2D-4b-TK5">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="28"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.5" height="22.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="내 댓글" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WMK-UW-H3Q">
-                                                        <rect key="frame" x="0.0" y="28" width="187.5" height="22"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                        <rect key="frame" x="0.0" y="22.5" width="187.5" height="27.5"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -1550,6 +1550,63 @@
             </objects>
             <point key="canvasLocation" x="2540" y="-1266.1169415292354"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="8t3-as-mcq">
+            <objects>
+                <viewController id="E93-uo-T3i" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7zQ-ma-an0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="로그인이 필요합니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-sU-19N">
+                                <rect key="frame" x="106" y="323" width="163" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="m8l-3p-ifz"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L3o-5B-f6k" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="928.79999999999995" y="-2027.136431784108"/>
+        </scene>
+        <!--Log In View Controller-->
+        <scene sceneID="POD-Oq-nzT">
+            <objects>
+                <viewController storyboardIdentifier="LogInViewController" id="4UG-FA-vjn" customClass="LogInViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="RJO-Gp-OGs">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tSm-H2-FHP">
+                                <rect key="frame" x="134" y="285" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="네이버 로그인"/>
+                                <connections>
+                                    <action selector="naverLogin:" destination="4UG-FA-vjn" eventType="touchUpInside" id="fgn-wa-sfP"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pXq-Yy-BKw">
+                                <rect key="frame" x="134" y="351" width="107" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="구글 로그인"/>
+                                <connections>
+                                    <action selector="googleLogin:" destination="4UG-FA-vjn" eventType="touchUpInside" id="7UX-E1-kXP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="rce-VJ-Ps5"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Utn-c9-oaF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1685.5999999999999" y="-2027.136431784108"/>
+        </scene>
         <!--홈-->
         <scene sceneID="CQ0-Aa-v8q">
             <objects>
@@ -1938,7 +1995,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ce2-AV-7hX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3932" y="1002.5487256371815"/>
+            <point key="canvasLocation" x="174" y="-2027"/>
         </scene>
         <!--Splash View Controller-->
         <scene sceneID="T6j-G8-eFx">

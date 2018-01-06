@@ -21,10 +21,9 @@ class MyPageViewController: UIViewController {
     var menus: [String] = ["내가 쓴 글", "스크랩", "쪽지", "찜 목록", "설정", ""]
     
     @IBAction func logInAction(_ sender: Any) {
-        // 로그인 창으로 present, delegate
-        defaults.set(true, forKey: "logInStatus")
-        logInStatus = defaults.bool(forKey: "logInStatus")
-        viewWillAppear(false)
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: LogInViewController.reuseIdentifier) as? LogInViewController else { return }
+        self.present(vc, animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,7 +33,7 @@ class MyPageViewController: UIViewController {
             logInBtn.isHidden = true
             logInRequireLabel.isHidden = true
             emailLabel.isHidden = false
-            emailLabel.text = "logIn@logIn.com"
+            emailLabel.text = self.defaults.string(forKey: "userEmail")
             userImage.image = #imageLiteral(resourceName: "view_activeprofile_navy")
         }
         else {

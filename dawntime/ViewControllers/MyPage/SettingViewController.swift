@@ -20,6 +20,22 @@ class SettingViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
+    func logOut() {
+        defaults.set(false, forKey: "logInStatus")
+        defaults.removeObject(forKey: "userID")
+        defaults.removeObject(forKey: "userEmail")
+        
+        let path = documentDirectory.appending("/Setting.plist")
+        let data : [String: Bool] = [
+            "알림": false,
+            "잠금": false,
+            "블라인드": false
+        ]
+        NSDictionary(dictionary: data).write(toFile: path, atomically: true)
+        
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
     }
@@ -47,12 +63,10 @@ extension SettingViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 3:
-            defaults.set(false, forKey: "logInStatus")
-            self.navigationController?.popViewController(animated: true)
+            logOut()
         case 4:
-            // 회원 탈퇴 요청
-            defaults.set(false, forKey: "logInStatus")
-            self.navigationController?.popViewController(animated: true)
+            // Delete Account
+            logOut()
         default:
             print("Default")
         }

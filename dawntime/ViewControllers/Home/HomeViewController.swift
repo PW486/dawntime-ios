@@ -42,8 +42,7 @@ class HomeViewController: UIViewController {
         self.navigationItem.titleView = imageView
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @objc func initSettingAndCheckLock() {
         let path = documentDirectory.appending("/Setting.plist")
         if(!fileManager.fileExists(atPath: path)){
             let data : [String: Bool] = [
@@ -61,7 +60,14 @@ class HomeViewController: UIViewController {
             guard let vc = storyBoard.instantiateViewController(withIdentifier: LockSettingViewController.reuseIdentifier) as? LockSettingViewController else { return }
             self.present(vc, animated: false, completion: nil)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(initSettingAndCheckLock), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         
+        initSettingAndCheckLock()
         tableView.separatorStyle = .none
         // 서버 통신 샵, 칼럼, 피크타임 -> struct 배열 저장 -> 콜렉션 뷰(피크 타임) 개수 만큼 cellHeight(1개 220) 수정 -> 테이블 뷰 셀에 넘기기? 또는 그냥 이동후 다시 서버 통신
     }
