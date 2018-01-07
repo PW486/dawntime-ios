@@ -10,9 +10,7 @@ import UIKit
 import SwiftKeychainWrapper
 import AudioToolbox
 
-class LockSettingViewController: UIViewController {
-    let keychainWrapper = KeychainWrapper.standard
-    let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+class LockSettingViewController: BaseViewController {
     var password: String = ""
     var inputPass: String = ""
     var checkPass: String = ""

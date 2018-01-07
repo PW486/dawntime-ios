@@ -16,7 +16,7 @@ struct Article: Codable {
     var board_like: Int?
     var com_count: Int?
     var scrap_count: Int?
-    var board_image: String?
+    var board_image: [String]?
     var board_date: String?
     var user_id: Int?
     var user_like: Bool?

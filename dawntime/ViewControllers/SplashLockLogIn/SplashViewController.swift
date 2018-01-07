@@ -9,8 +9,7 @@
 import UIKit
 import SwiftyGif
 
-class SplashViewController: UIViewController {
-    var anicount: Int = 0
+class SplashViewController: BaseViewController {
     @IBOutlet weak var splashImage: UIImageView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -32,6 +31,7 @@ extension SplashViewController: SwiftyGifDelegate {
     }
     
     func gifDidLoop(sender: UIImageView) {
+        print("gifDidLoop")
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyBoard.instantiateViewController(withIdentifier: "RootViewController") as? UITabBarController else { return }
         self.present(vc, animated: false, completion: nil)

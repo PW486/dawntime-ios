@@ -8,8 +8,14 @@
 
 import UIKit
 
-class LogInPopUpViewController: UIViewController {
-    let defaults = UserDefaults.standard
+protocol AfterLogInProtocol {
+    func afterLogin(_ model: Any)
+}
+
+class LogInPopUpViewController: BaseViewController {
+    var delegate: AfterLogInProtocol?
+    var model: Any?
+    
     @IBOutlet weak var popUpView: UIView!
     
     @IBAction func logInAction(_ sender: Any) {
@@ -24,7 +30,9 @@ class LogInPopUpViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         if defaults.bool(forKey: "logInStatus") {
-            self.dismiss(animated: false, completion: nil)
+            self.dismiss(animated: false, completion: {
+                self.delegate?.afterLogin(self.model!)
+            })
         }
     }
     

@@ -7,11 +7,47 @@
 //
 
 import UIKit
+import Kingfisher
 
-class HomeColumnTableViewCell: UITableViewCell {
-    @IBOutlet weak var columnImage: UIImageView!
+protocol ColumnClickProtocol {
+    func columnDidSelect(_ column: Column)
+}
+
+class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+    var delegate: ColumnClickProtocol?
+    var columns = [Column]()
+    
+    @IBOutlet weak var columnCollectionView: UICollectionView!
+    
+    @objc func scrollToNext() {
+        let indexPath = columnCollectionView.indexPathsForVisibleItems[0]
+        if columnCollectionView.isDragging == false, indexPath.row < columns.count-1  {
+            let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+            columnCollectionView.scrollToItem(at: nextIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.columnDidSelect(columns[indexPath.row])
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return columns.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeColumnCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeColumnCollectionViewCell
+        cell.columnImage.kf.setImage(with: URL(string: columns[indexPath.row % columns.count].column_head![0]))
+        return cell
+    }
+    
+    override func layoutSubviews() {
+        columnCollectionView.delegate = self
+        columnCollectionView.dataSource = self
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        Timer.scheduledTimer(timeInterval: 5, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
     }
 }

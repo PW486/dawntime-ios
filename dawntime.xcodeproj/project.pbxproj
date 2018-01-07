@@ -53,7 +53,7 @@
 		8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A91C11D1FF8B66900524200 /* Assets.xcassets */; };
 		8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1211FF8C69900524200 /* HomeViewController.swift */; };
 		8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1231FF8CA2200524200 /* NSObjectExtension.swift */; };
-		8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1251FF8CAF200524200 /* HomeTableViewCell.swift */; };
+		8A91C1261FF8CAF200524200 /* HomeShopTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1251FF8CAF200524200 /* HomeShopTableViewCell.swift */; };
 		8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1271FF8CBE100524200 /* HomeShopCollectionViewCell.swift */; };
 		8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */; };
 		8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */; };
@@ -68,6 +68,10 @@
 		8AC05C161FFCD5D300D99A23 /* ReadColumnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C151FFCD5D300D99A23 /* ReadColumnTableViewCell.swift */; };
 		8AD74FFB2000AC5C00689285 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD74FFA2000AC5C00689285 /* NaverThirdPartyLogin.framework */; };
 		8AD74FFC2000AC5C00689285 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD74FFA2000AC5C00689285 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AD750012001E98E00689285 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750002001E98E00689285 /* BaseViewController.swift */; };
+		8AD750032001ED8B00689285 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750022001ED8B00689285 /* ShopViewController.swift */; };
+		8AD750052002103900689285 /* ReadItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750042002103900689285 /* ReadItemViewController.swift */; };
+		8AD7500720021DD000689285 /* HomeColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */; };
 		8AE4E1F61FFFC5BE00FAD30A /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8AE4E1F51FFFC5BC00FAD30A /* splash.gif */; };
 		8AE4E2032000780D00FAD30A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4E2022000780D00FAD30A /* LogInViewController.swift */; };
 		8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4E2042000782200FAD30A /* LogInPopUpViewController.swift */; };
@@ -163,7 +167,7 @@
 		8A91C11D1FF8B66900524200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A91C1211FF8C69900524200 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A91C1231FF8CA2200524200 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
-		8A91C1251FF8CAF200524200 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		8A91C1251FF8CAF200524200 /* HomeShopTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeShopTableViewCell.swift; sourceTree = "<group>"; };
 		8A91C1271FF8CBE100524200 /* HomeShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnTableViewCell.swift; sourceTree = "<group>"; };
 		8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePeakTimeTableViewCell.swift; sourceTree = "<group>"; };
@@ -179,6 +183,10 @@
 		8AD74FEE20007CD200689285 /* libNaverLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libNaverLogin.a; path = "../../../Downloads/3rdparty_login_library_ios_4.0-1.7/thirdPartyModule/libNaverLogin.a"; sourceTree = "<group>"; };
 		8AD74FF22000A9C700689285 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = "../../../Downloads/naveridlogin-sdk-ios-4.0-1.9/NaverThirdPartyLogin.framework"; sourceTree = "<group>"; };
 		8AD74FFA2000AC5C00689285 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
+		8AD750002001E98E00689285 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		8AD750022001ED8B00689285 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		8AD750042002103900689285 /* ReadItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemViewController.swift; sourceTree = "<group>"; };
+		8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnCollectionViewCell.swift; sourceTree = "<group>"; };
 		8AE4E1F51FFFC5BC00FAD30A /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		8AE4E2022000780D00FAD30A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		8AE4E2042000782200FAD30A /* LogInPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPopUpViewController.swift; sourceTree = "<group>"; };
@@ -233,11 +241,12 @@
 		8A6678321FF91AD50001D13F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				8AD750002001E98E00689285 /* BaseViewController.swift */,
 				8AE4E201200077B600FAD30A /* SplashLockLogIn */,
 				8A6678331FF91AF40001D13F /* Home */,
+				8A66786E1FF9CFCA0001D13F /* Shop */,
 				8AC05C0E1FFCC8A300D99A23 /* Column */,
 				8A6678351FF91BE50001D13F /* Community */,
-				8A66786E1FF9CFCA0001D13F /* Shop */,
 				8A7A60111FFD3E900042F923 /* MyPage */,
 			);
 			path = ViewControllers;
@@ -247,9 +256,10 @@
 			isa = PBXGroup;
 			children = (
 				8A91C1211FF8C69900524200 /* HomeViewController.swift */,
-				8A91C1251FF8CAF200524200 /* HomeTableViewCell.swift */,
+				8A91C1251FF8CAF200524200 /* HomeShopTableViewCell.swift */,
 				8A91C1271FF8CBE100524200 /* HomeShopCollectionViewCell.swift */,
 				8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */,
+				8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */,
 				8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */,
 				8A91C12D1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift */,
 			);
@@ -323,6 +333,8 @@
 		8A66786E1FF9CFCA0001D13F /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				8AD750022001ED8B00689285 /* ShopViewController.swift */,
+				8AD750042002103900689285 /* ReadItemViewController.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -792,6 +804,8 @@
 				8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */,
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
+				8AD750012001E98E00689285 /* BaseViewController.swift in Sources */,
+				8AD750052002103900689285 /* ReadItemViewController.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
@@ -822,14 +836,16 @@
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
 				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,
 				8A3F8E851FFF9F1300E7990B /* SplashViewController.swift in Sources */,
-				8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */,
+				8A91C1261FF8CAF200524200 /* HomeShopTableViewCell.swift in Sources */,
 				8A66787D1FFB6D530001D13F /* CreateArticleViewController.swift in Sources */,
+				8AD7500720021DD000689285 /* HomeColumnCollectionViewCell.swift in Sources */,
 				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,
 				8A66786D1FF9CBAE0001D13F /* Message.swift in Sources */,
 				8AC05C161FFCD5D300D99A23 /* ReadColumnTableViewCell.swift in Sources */,
 				8A7A60211FFD5C270042F923 /* SettingViewController.swift in Sources */,
 				8AE4E2032000780D00FAD30A /* LogInViewController.swift in Sources */,
 				8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */,
+				8AD750032001ED8B00689285 /* ShopViewController.swift in Sources */,
 				8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -11,8 +11,7 @@ import NaverThirdPartyLogin
 import Alamofire
 import SwiftyJSON
 
-class LogInViewController: UIViewController, NaverThirdPartyLoginConnectionDelegate {
-    let defaults = UserDefaults.standard
+class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDelegate {
     
     func signIn(_ email: String) {
         let params = ["user_email": email] as [String : Any]
@@ -100,6 +99,10 @@ class LogInViewController: UIViewController, NaverThirdPartyLoginConnectionDeleg
     }
     
     @IBAction func googleLogin(_ sender: Any) {
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func viewDidLoad() {

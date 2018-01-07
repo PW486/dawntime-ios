@@ -10,8 +10,8 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class CommunityViewController: UIViewController {
-    let defaults = UserDefaults.standard
+class CommunityViewController: BaseViewController {
+//    let defaults = UserDefaults.standard
     var articles = [Article]()
     var dropdownSelected: Bool = false
     var searchSelected: Bool = false

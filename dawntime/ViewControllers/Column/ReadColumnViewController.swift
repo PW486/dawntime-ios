@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ReadColumnViewController: UIViewController {
+    var column: Column?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,7 +19,7 @@ class ReadColumnViewController: UIViewController {
 
 extension ReadColumnViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 8
+        return (column?.column_image?.count)!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -27,7 +29,7 @@ extension ReadColumnViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: ReadColumnTableViewCell.reuseIdentifier) as! ReadColumnTableViewCell
         cell.selectionStyle = .none
-        cell.cardImage.image = #imageLiteral(resourceName: "1_colum_banner")
+        cell.cardImage.kf.setImage(with: URL(string: (column?.column_image![indexPath.row])!))
         return cell
     }
 }

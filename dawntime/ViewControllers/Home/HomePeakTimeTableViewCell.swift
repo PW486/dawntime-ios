@@ -12,32 +12,31 @@ protocol ArticleClickProtocol {
     func articleDidSelect(_ article: Article)
 }
 
-class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource{
-    @IBOutlet weak var peakTimeCollectionView: UICollectionView!
-    
-    var delegate: ArticleClickProtocol!
+class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+    var delegate: ArticleClickProtocol?
+    var articles = [Article]()
     let backImages: [UIImage] = [#imageLiteral(resourceName: "view_peakillu1_purple"),#imageLiteral(resourceName: "view_peakillu2_green"),#imageLiteral(resourceName: "view_peakillu3_violet"),#imageLiteral(resourceName: "view_peakillu4_blue")]
     
-    override func layoutSubviews() {
-        peakTimeCollectionView.delegate = self
-        peakTimeCollectionView.dataSource = self
-    }
+    @IBOutlet weak var peakTimeCollectionView: UICollectionView!
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
-        // let article = articles[indexPath.row]
-        let article = Article()
-        self.delegate.articleDidSelect(article)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.delegate?.articleDidSelect(articles[indexPath.row])
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return articles.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeakTimeCollectionViewCell.reuseIdentifier, for: indexPath) as! PeakTimeCollectionViewCell
         cell.backgroundImage.image = backImages[Int(arc4random_uniform(4))]
-    
+        cell.article = articles[indexPath.row]
         return cell
+    }
+    
+    override func layoutSubviews() {
+        peakTimeCollectionView.delegate = self
+        peakTimeCollectionView.dataSource = self
     }
     
     override func awakeFromNib() {

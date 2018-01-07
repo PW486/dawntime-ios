@@ -7,13 +7,28 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeShopCollectionViewCell: UICollectionViewCell {
+    let defaults = UserDefaults.standard
+    let blindImages: [UIImage] = [#imageLiteral(resourceName: "view_blind_pink"),#imageLiteral(resourceName: "view_blind_green"),#imageLiteral(resourceName: "view_blind_purple"),#imageLiteral(resourceName: "view_blind_orange")]
+    
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
     
+    var goodsItem: GoodsItem? {
+        didSet {
+            self.itemLabel.text = goodsItem?.goods_name
+            if let img = goodsItem?.goods_image, defaults.bool(forKey: "logInStatus") {
+                self.itemImage.kf.setImage(with: URL(string: img[0]))
+            } else {
+                self.itemImage.image = blindImages[Int(arc4random_uniform(4))]
+            }
+        }
+    }
+    
     override func awakeFromNib() {
-        // Circle Image View
+        // Circle ImageView
         itemImage.layer.borderWidth = 1
         itemImage.layer.masksToBounds = false
         itemImage.layer.borderColor = UIColor.hexStringToUIColor(hex: "#ED508E").cgColor
