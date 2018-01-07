@@ -85,7 +85,8 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource, Articl
         } else {
             guard let vc = storyBoard.instantiateViewController(withIdentifier: LogInPopUpViewController.reuseIdentifier) as? LogInPopUpViewController else { return }
             vc.modalPresentationStyle = .overFullScreen
-            self.present(vc, animated: false, completion: nil)
+            vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+            self.present(vc, animated: true, completion: nil)
         }
     }
     

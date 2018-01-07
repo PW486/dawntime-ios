@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Foundation
 
 extension UIView {
     func addBottomBorderWithColor(color: UIColor, width: CGFloat) {

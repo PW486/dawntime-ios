@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 class CommunityViewController: UIViewController {
+    let defaults = UserDefaults.standard
     var articles = [Article]()
     var dropdownSelected: Bool = false
     var searchSelected: Bool = false
@@ -113,13 +114,15 @@ class CommunityViewController: UIViewController {
     func reloadArticles() {
         var newArticles = [Article]()
         let decoder = JSONDecoder()
-        Alamofire.request("http://13.125.78.152:6789/board/bestList", encoding: JSONEncoding.default, headers: nil).responseJSON() {
+        let userID = "\(defaults.integer(forKey: "userID"))"
+        let params = ["user_id": userID] as [String : Any]
+        Alamofire.request("http://13.125.78.152:6789/board/bestList", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON() {
             (res) in
             switch res.result {
             case .success:
                 if let value = res.result.value {
                     let json = JSON(value)
-                    for (_, subJson):(String, JSON) in json["data"] {
+                    for (_, subJson):(String, JSON) in json["result"] {
                         do {
                             let article = try decoder.decode(Article.self, from: subJson.rawData())
                             newArticles.append(article)

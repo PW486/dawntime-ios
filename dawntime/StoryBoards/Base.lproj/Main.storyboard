@@ -1561,7 +1561,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zKj-ta-2cv">
                                 <rect key="frame" x="76" y="285.5" width="223" height="117"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인이 필요합니다" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-sU-19N">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인이 필요한 기능입니다." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SVP-sU-19N">
                                         <rect key="frame" x="0.0" y="23" width="223" height="18"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="15"/>
                                         <color key="textColor" red="0.054901960784313725" green="0.098039215686274508" blue="0.28627450980392155" alpha="0.90000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1864,14 +1864,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-QM-7s1">
-                                <rect key="frame" x="10" y="108" width="355" height="33.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="암호 입력하기" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRb-QM-7s1">
+                                <rect key="frame" x="10" y="108" width="355" height="41.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="28"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="fyh-jb-yhu">
-                                <rect key="frame" x="37" y="207.5" width="301" height="373"/>
+                                <rect key="frame" x="37" y="215.5" width="301" height="373"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hIh-Pa-6mC">
                                         <rect key="frame" x="0.0" y="0.0" width="301" height="82"/>
@@ -1879,6 +1879,8 @@
                                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NgK-ai-tft">
                                                 <rect key="frame" x="0.0" y="0.0" width="100.5" height="82"/>
                                                 <state key="normal" title="" image="view_button1_white"/>
+                                                <state key="selected" image="view_pushedbutton1_navy"/>
+                                                <state key="highlighted" image="view_pushedbutton1_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="YtF-mb-c3P"/>
                                                 </connections>
@@ -1886,6 +1888,7 @@
                                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="blE-Yv-RvA">
                                                 <rect key="frame" x="100.5" y="0.0" width="100" height="82"/>
                                                 <state key="normal" image="view_button2_white"/>
+                                                <state key="highlighted" image="view_pushedbutton2_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="Wrk-9q-Dce"/>
                                                 </connections>
@@ -1893,6 +1896,7 @@
                                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mJJ-fK-e2F">
                                                 <rect key="frame" x="200.5" y="0.0" width="100.5" height="82"/>
                                                 <state key="normal" image="view_button3_white"/>
+                                                <state key="highlighted" image="view_pushedbutton3_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="of1-JU-SCK"/>
                                                 </connections>
@@ -1905,6 +1909,7 @@
                                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ax2-Vh-g1w">
                                                 <rect key="frame" x="0.0" y="0.0" width="100.5" height="82"/>
                                                 <state key="normal" image="view_button4_white"/>
+                                                <state key="highlighted" image="view_pushedbutton4_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="Ujv-qq-Tkb"/>
                                                 </connections>
@@ -1912,6 +1917,7 @@
                                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ui8-4k-gQ2">
                                                 <rect key="frame" x="100.5" y="0.0" width="100" height="82"/>
                                                 <state key="normal" image="view_button5_white"/>
+                                                <state key="highlighted" image="view_pushedbutton5_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="W6d-JQ-fnw"/>
                                                 </connections>
@@ -1919,6 +1925,7 @@
                                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8EL-Rm-5y2">
                                                 <rect key="frame" x="200.5" y="0.0" width="100.5" height="82"/>
                                                 <state key="normal" image="view_button6_white"/>
+                                                <state key="highlighted" image="view_pushedbutton6_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="CZn-dm-htg"/>
                                                 </connections>
@@ -1931,6 +1938,7 @@
                                             <button opaque="NO" tag="7" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="46v-nZ-dqD">
                                                 <rect key="frame" x="0.0" y="0.0" width="100.5" height="82"/>
                                                 <state key="normal" image="view_button7_white"/>
+                                                <state key="highlighted" image="view_pushedbutton7_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="V8I-TI-6WS"/>
                                                 </connections>
@@ -1938,6 +1946,7 @@
                                             <button opaque="NO" tag="8" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ajO-uI-kc4">
                                                 <rect key="frame" x="100.5" y="0.0" width="100" height="82"/>
                                                 <state key="normal" image="view_button8_white"/>
+                                                <state key="highlighted" image="view_pushedbutton8_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="WC6-Ug-VIe"/>
                                                 </connections>
@@ -1945,6 +1954,7 @@
                                             <button opaque="NO" tag="9" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M9A-hf-B35">
                                                 <rect key="frame" x="200.5" y="0.0" width="100.5" height="82"/>
                                                 <state key="normal" image="view_button9_white"/>
+                                                <state key="highlighted" image="view_pushedbutton9_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="w1s-GU-s3T"/>
                                                 </connections>
@@ -1956,6 +1966,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="15t-cT-KCu">
                                                 <rect key="frame" x="0.0" y="0.0" width="100.5" height="82"/>
+                                                <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="18"/>
                                                 <state key="normal" title="취소"/>
                                                 <connections>
                                                     <action selector="cancelAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="F32-4j-8lk"/>
@@ -1964,6 +1975,7 @@
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cfN-jj-MbA">
                                                 <rect key="frame" x="100.5" y="0.0" width="100" height="82"/>
                                                 <state key="normal" image="view_button0_white"/>
+                                                <state key="highlighted" image="view_pushedbutton0_navy"/>
                                                 <connections>
                                                     <action selector="numKeyAction:" destination="YR0-i7-UoN" eventType="touchUpInside" id="JsY-hc-Xop"/>
                                                 </connections>
@@ -1990,7 +2002,7 @@
                                 </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Cg2-c1-CN2">
-                                <rect key="frame" x="137.5" y="165.5" width="100" height="10"/>
+                                <rect key="frame" x="137.5" y="173.5" width="100" height="10"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZzH-HQ-ucE">
                                         <rect key="frame" x="0.0" y="0.0" width="10" height="10"/>
@@ -2111,6 +2123,16 @@
         <image name="view_login_gray" width="57" height="25"/>
         <image name="view_login_pink" width="81" height="27"/>
         <image name="view_next_navy" width="6" height="13"/>
+        <image name="view_pushedbutton0_navy" width="82" height="82"/>
+        <image name="view_pushedbutton1_navy" width="81" height="81"/>
+        <image name="view_pushedbutton2_navy" width="82" height="82"/>
+        <image name="view_pushedbutton3_navy" width="82" height="82"/>
+        <image name="view_pushedbutton4_navy" width="82" height="82"/>
+        <image name="view_pushedbutton5_navy" width="82" height="82"/>
+        <image name="view_pushedbutton6_navy" width="82" height="82"/>
+        <image name="view_pushedbutton7_navy" width="82" height="82"/>
+        <image name="view_pushedbutton8_navy" width="82" height="82"/>
+        <image name="view_pushedbutton9_navy" width="82" height="82"/>
         <image name="view_reply_navy" width="17" height="15"/>
         <image name="view_scrap_white" width="20" height="20"/>
         <image name="view_unfire_navy" width="12" height="17"/>

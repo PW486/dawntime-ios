@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftKeychainWrapper
+import AudioToolbox
 
 class LockSettingViewController: UIViewController {
     let keychainWrapper = KeychainWrapper.standard
@@ -39,9 +40,7 @@ class LockSettingViewController: UIViewController {
                 if password == inputPass {
                     dismiss(animated: true, completion: nil)
                 } else {
-                    InfoLabel.text = "암호가 일치하지 않습니다"
-                    inputPass = ""
-                    resetLockKeys()
+                    passwordFailed()
                 }
             } else {
                 if checkPass == "" {
@@ -59,9 +58,7 @@ class LockSettingViewController: UIViewController {
                     
                     dismiss(animated: true, completion: nil)
                 } else {
-                    InfoLabel.text = "암호가 일치하지 않습니다"
-                    inputPass = ""
-                    resetLockKeys()
+                    passwordFailed()
                 }
             }
         default:
@@ -91,6 +88,13 @@ class LockSettingViewController: UIViewController {
         }
     }
     
+    func passwordFailed() {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        InfoLabel.text = "암호가 일치하지 않습니다"
+        inputPass = ""
+        resetLockKeys()
+    }
+    
     func resetLockKeys() {
         roundCircle(lockKey1)
         roundCircle(lockKey2)
@@ -116,20 +120,18 @@ class LockSettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        InfoLabel.text = "암호 입력하기"
         
         let path = documentDirectory.appending("/Setting.plist")
         var dic = NSDictionary(contentsOfFile: path) as? [String: Bool]
-        
         if dic!["잠금"] == true {
-            // 잠금 풀기
-            InfoLabel.text = "암호 입력하기"
+            // UnLock
             trueUnLockfalseSetLock = true
             cancelButton.setTitle("", for: .normal)
             cancelButton.isEnabled = false
             password = keychainWrapper.string(forKey: "LockPass")!
         } else {
-            // 잠금 설정
-            InfoLabel.text = "암호 입력하기"
+            // SetLock
             trueUnLockfalseSetLock = false
         }
         resetLockKeys()

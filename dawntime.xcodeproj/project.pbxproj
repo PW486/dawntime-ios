@@ -52,7 +52,7 @@
 		8A7A602E1FFF68840042F923 /* LockSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7A602D1FFF68840042F923 /* LockSettingViewController.swift */; };
 		8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A91C11D1FF8B66900524200 /* Assets.xcassets */; };
 		8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1211FF8C69900524200 /* HomeViewController.swift */; };
-		8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1231FF8CA2200524200 /* NSObject.swift */; };
+		8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1231FF8CA2200524200 /* NSObjectExtension.swift */; };
 		8A91C1261FF8CAF200524200 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1251FF8CAF200524200 /* HomeTableViewCell.swift */; };
 		8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1271FF8CBE100524200 /* HomeShopCollectionViewCell.swift */; };
 		8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */; };
@@ -162,7 +162,7 @@
 		8A7A602D1FFF68840042F923 /* LockSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSettingViewController.swift; sourceTree = "<group>"; };
 		8A91C11D1FF8B66900524200 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A91C1211FF8C69900524200 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		8A91C1231FF8CA2200524200 /* NSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObject.swift; sourceTree = "<group>"; };
+		8A91C1231FF8CA2200524200 /* NSObjectExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSObjectExtension.swift; sourceTree = "<group>"; };
 		8A91C1251FF8CAF200524200 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
 		8A91C1271FF8CBE100524200 /* HomeShopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeShopCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnTableViewCell.swift; sourceTree = "<group>"; };
@@ -356,10 +356,8 @@
 				8A6AD0FB1FF89DCE00D57DF8 /* Info.plist */,
 				8AE4E1F51FFFC5BC00FAD30A /* splash.gif */,
 				8A6AD0EF1FF89DCE00D57DF8 /* AppDelegate.swift */,
-				8A91C1231FF8CA2200524200 /* NSObject.swift */,
-				8A6678781FFA43FB0001D13F /* UIViewExtension.swift */,
-				8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */,
-				8A7A602B1FFF508E0042F923 /* UISwitchCustom.swift */,
+				8AD74FFE2001BD4100689285 /* Extensions */,
+				8AD74FFF2001BD8800689285 /* CustomUIs */,
 				8A6678501FF9C4D40001D13F /* Resources */,
 				8A66783A1FF91D8F0001D13F /* Models */,
 				8A6678321FF91AD50001D13F /* ViewControllers */,
@@ -421,6 +419,24 @@
 				8AC05C151FFCD5D300D99A23 /* ReadColumnTableViewCell.swift */,
 			);
 			path = Column;
+			sourceTree = "<group>";
+		};
+		8AD74FFE2001BD4100689285 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A91C1231FF8CA2200524200 /* NSObjectExtension.swift */,
+				8A6678781FFA43FB0001D13F /* UIViewExtension.swift */,
+				8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8AD74FFF2001BD8800689285 /* CustomUIs */ = {
+			isa = PBXGroup;
+			children = (
+				8A7A602B1FFF508E0042F923 /* UISwitchCustom.swift */,
+			);
+			path = CustomUIs;
 			sourceTree = "<group>";
 		};
 		8AE4E201200077B600FAD30A /* SplashLockLogIn */ = {
@@ -776,7 +792,7 @@
 				8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */,
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
-				8A91C1241FF8CA2200524200 /* NSObject.swift in Sources */,
+				8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
 				8A7A601F1FFD5C130042F923 /* MyWishlistViewController.swift in Sources */,

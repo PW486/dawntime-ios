@@ -11,7 +11,6 @@ import SwiftyGif
 
 class SplashViewController: UIViewController {
     var anicount: Int = 0
-    
     @IBOutlet weak var splashImage: UIImageView!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -26,7 +25,8 @@ class SplashViewController: UIViewController {
         self.splashImage.delegate = self
     }
 }
-extension SplashViewController : SwiftyGifDelegate {
+
+extension SplashViewController: SwiftyGifDelegate {
     func gifDidStart(sender: UIImageView) {
         print("gifDidStart")
     }

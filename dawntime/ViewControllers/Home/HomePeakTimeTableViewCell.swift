@@ -16,7 +16,7 @@ class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     @IBOutlet weak var peakTimeCollectionView: UICollectionView!
     
     var delegate: ArticleClickProtocol!
-    let backImages: [UIImage] = [#imageLiteral(resourceName: "view_peakillu_blue"),#imageLiteral(resourceName: "view_peakillu_violet"),#imageLiteral(resourceName: "view_peakillu2_green"),#imageLiteral(resourceName: "view_peakillu1_purple")]
+    let backImages: [UIImage] = [#imageLiteral(resourceName: "view_peakillu1_purple"),#imageLiteral(resourceName: "view_peakillu2_green"),#imageLiteral(resourceName: "view_peakillu3_violet"),#imageLiteral(resourceName: "view_peakillu4_blue")]
     
     override func layoutSubviews() {
         peakTimeCollectionView.delegate = self
@@ -25,7 +25,7 @@ class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {        
         // let article = articles[indexPath.row]
-        let article = Article(board_id: 1, board_title: "1", board_content: "", board_tag: "1", board_like: 1, board_image: "1", board_date: "1", user_id: 1)
+        let article = Article()
         self.delegate.articleDidSelect(article)
     }
     

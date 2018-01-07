@@ -54,12 +54,13 @@ class LogInViewController: UIViewController, NaverThirdPartyLoginConnectionDeleg
             case .success:
                 if let value = res.result.value {
                     let data = JSON(value)
-                    if let gender = data["response"]["gender"].string, gender == "M" { // -> gender == "F"
+                    if let gender = data["response"]["gender"].string { // -> ,gender == "F"
+                        print(gender)
                         if let email = data["response"]["email"].string {
                             self.signIn(email)
                         }
                     } else {
-                        print("남자가 아닙니다.")
+                        print("여자가 아닙니다.")
                     }
                 }
                 loginConn?.resetToken()

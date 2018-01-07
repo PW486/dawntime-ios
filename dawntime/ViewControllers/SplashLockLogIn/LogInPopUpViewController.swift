@@ -10,8 +10,6 @@ import UIKit
 
 class LogInPopUpViewController: UIViewController {
     let defaults = UserDefaults.standard
-    var logInStatus = false
-    
     @IBOutlet weak var popUpView: UIView!
     
     @IBAction func logInAction(_ sender: Any) {
@@ -21,13 +19,11 @@ class LogInPopUpViewController: UIViewController {
     }
     
     @IBAction func cancelAction(_ sender: Any) {
-        self.dismiss(animated: false, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        logInStatus = defaults.bool(forKey: "logInStatus")
-        
-        if logInStatus {
+        if defaults.bool(forKey: "logInStatus") {
             self.dismiss(animated: false, completion: nil)
         }
     }
