@@ -11,25 +11,13 @@ import Alamofire
 import SwiftyJSON
 
 class CommunityViewController: BaseViewController {
-//    let defaults = UserDefaults.standard
     var articles = [Article]()
+    var dimEnabled: Bool = false
     var dropdownSelected: Bool = false
     var searchSelected: Bool = false
     var tableViewRefreshControl = UIRefreshControl()
-    lazy var searchBar = UISearchBar()
+    lazy var searchBar = UISearchBarCustom()
     
-    @objc func searchExit() {
-        searchSelected = false
-        self.navigationItem.titleView = nil
-        self.navigationController?.navigationBar.topItem?.title = "커뮤니티"
-        self.navigationItem.rightBarButtonItems = nil
-        let writeBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_write_navy"), style: .done, target: self, action: #selector(createArticleAction))
-        let searchBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_search_gray"), style: .done, target: self, action: #selector(searchAction))
-        self.navigationItem.rightBarButtonItems = [searchBarButtonItem, writeBarButtonItem]
-        eraseDimBackground(menuDropdown)
-    }
-    
-    @IBOutlet weak var menuDropdown: UIView!
     @IBOutlet weak var menuDropdownBtn: UIButton!
     @IBOutlet weak var menuDropdownHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
@@ -37,38 +25,36 @@ class CommunityViewController: BaseViewController {
     
     @IBAction func createArticleAction(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        
         guard let vc = storyBoard.instantiateViewController(withIdentifier: CreateArticleViewController.reuseIdentifier) as? CreateArticleViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func searchAction(_ sender: Any) {
-        searchSelected = true
-        searchBar.sizeToFit()
-        searchBar.placeholder = "검색"
-        searchBar.delegate = self
-        
         self.navigationItem.titleView = searchBar
+        self.navigationItem.leftBarButtonItems = nil
         self.navigationItem.rightBarButtonItems = nil
-        let rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_cancel_navy"), style: .done, target: self, action: #selector(searchExit))
+        
+        let rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_cancel_navy"), style: .done, target: self, action: #selector(initNaviItems))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
         
         if dropdownSelected == true {
             menuDropdownAction(UIButton())
         }
-        dimBackground(menuDropdown)
+        if !dimEnabled {
+            dimEnabled = true
+            dimBackground(menuDropdownBtn)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = false
+            tableView.isUserInteractionEnabled = false
+        }
     }
     
     func dimBackground(_ view: UIView) {
-        view.addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
-        
         let border = CALayer()
-        border.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        border.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
         border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: UIScreen.main.bounds.size.height)
         view.layer.addSublayer(border)
-        
         let border2 = CALayer()
-        border2.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        border2.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
         border2.frame = CGRect(x: 0, y: 0, width: (self.tabBarController?.tabBar.frame.size.width)!, height: (self.tabBarController?.tabBar.frame.size.height)!)
         self.tabBarController?.tabBar.layer.addSublayer(border2)
     }
@@ -81,10 +67,16 @@ class CommunityViewController: BaseViewController {
     @IBAction func menuDropdownAction(_ sender: UIButton) {
         if dropdownSelected == true {
             dropdownSelected = false
-            menuDropdownBtn.setImage(#imageLiteral(resourceName: "navi_downarrow_navy"), for: .normal)
-            eraseDimBackground(menuDropdown)
+            menuDropdownBtn.setImage(#imageLiteral(resourceName: "navi_downarrow_gray"), for: .normal)
             
-            menuDropdownHeight.constant = 15
+            if dimEnabled {
+                dimEnabled = false
+                eraseDimBackground(menuDropdownBtn)
+                self.tabBarController?.tabBar.isUserInteractionEnabled = true
+                tableView.isUserInteractionEnabled = true
+            }
+            
+            menuDropdownHeight.constant = 25
             UIView.animate(withDuration: 0.3, animations: {
                 self.view.layoutIfNeeded()
             })
@@ -94,11 +86,16 @@ class CommunityViewController: BaseViewController {
             collectionView.isHidden = true
         } else {
             if searchSelected == true {
-                searchExit()
+                initNaviItems()
             }
             dropdownSelected = true
-            menuDropdownBtn.setImage(#imageLiteral(resourceName: "navi_uparrow_navy"), for: .normal)
-            dimBackground(menuDropdown)
+            menuDropdownBtn.setImage(#imageLiteral(resourceName: "navi_uparrow_gray"), for: .normal)
+            if !dimEnabled {
+                dimEnabled = true
+                dimBackground(menuDropdownBtn)
+                self.tabBarController?.tabBar.isUserInteractionEnabled = false
+                tableView.isUserInteractionEnabled = false
+            }
             
             self.menuDropdownHeight.constant = 100
             UIView.animate(withDuration: 0.3, animations: {
@@ -142,6 +139,41 @@ class CommunityViewController: BaseViewController {
         }
     }
     
+    @objc func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    @objc func initNaviItems() {
+        searchBar.text = ""
+        
+        let label = UILabel()
+        label.text = "커뮤니티"
+        label.font = UIFont(name: "NotoSansCJKkr-Regular", size: 18)
+        label.textColor = UIColor.hexStringToUIColor(hex: "#001960")
+        self.navigationItem.titleView = label
+        
+        let writeButtonItem = UIButton(type: UIButtonType.custom)
+        writeButtonItem.setImage(#imageLiteral(resourceName: "navi_write_navy"), for: [])
+        writeButtonItem.addTarget(self, action: #selector(createArticleAction), for: UIControlEvents.touchUpInside)
+        writeButtonItem.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let writeBarButtonItem = UIBarButtonItem(customView: writeButtonItem)
+
+        let searchButtonItem: UIButton = UIButton(type: UIButtonType.custom)
+        searchButtonItem.setImage(#imageLiteral(resourceName: "navi_search_navy"), for: [])
+        searchButtonItem.addTarget(self, action: #selector(searchAction), for: UIControlEvents.touchUpInside)
+        searchButtonItem.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        let searchBarButtonItem = UIBarButtonItem(customView: searchButtonItem)
+
+        self.navigationItem.rightBarButtonItems = [searchBarButtonItem, writeBarButtonItem]
+        
+        if dimEnabled {
+            dimEnabled = false
+            eraseDimBackground(menuDropdownBtn)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
+        }
+    }
+    
     @objc func startReloadTableView(_ sender: UIRefreshControl) {
         reloadArticles()
         sender.endRefreshing()
@@ -153,6 +185,8 @@ class CommunityViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        searchBar.delegate = self
+        initNaviItems()
         reloadArticles()
         
         tableView.refreshControl = UIRefreshControl()
@@ -163,7 +197,7 @@ class CommunityViewController: BaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         if dropdownSelected == true {
-            menuDropdown.layer.sublayers?.last?.removeFromSuperlayer()
+            menuDropdownBtn.layer.sublayers?.last?.removeFromSuperlayer()
             self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
         }
         self.navigationController?.navigationBar.shadowImage = nil
@@ -175,8 +209,8 @@ class CommunityViewController: BaseViewController {
         self.navigationController?.navigationBar.shadowImage = img
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
         
-        menuDropdownHeight.constant = 15
-        menuDropdown.addBottomBorderWithColor(color: UIColor.lightGray, width: 1)
+        menuDropdownHeight.constant = 25
+        menuDropdownBtn.addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
         collectionView.isHidden = true
     }
 }
@@ -195,14 +229,14 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 //        delegate?.categoryDidSelect("\(indexPath.row)")
-        self.dismiss(animated: false, completion: nil)
+//        self.dismiss(animated: false, completion: nil)
+        menuDropdownAction(UIButton())
     }
 }
 
 extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     func articleDidSelect(_ article: Article) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        
         guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadArticleViewController.reuseIdentifier) as? ReadArticleViewController else { return }
 //         vc.article = article
         self.navigationController?.pushViewController(vc, animated: true)
@@ -231,7 +265,12 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension CommunityViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchExit()
+        if dimEnabled {
+            dimEnabled = false
+            eraseDimBackground(menuDropdownBtn)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
+        }
         print("검색")
         self.tableView.reloadData()
     }

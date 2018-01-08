@@ -33,7 +33,7 @@ extension SplashViewController: SwiftyGifDelegate {
     func gifDidLoop(sender: UIImageView) {
         print("gifDidLoop")
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyBoard.instantiateViewController(withIdentifier: "RootViewController") as? UITabBarController else { return }
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: "TabRootViewController") as? UITabBarController else { return }
         self.present(vc, animated: false, completion: nil)
     }
     

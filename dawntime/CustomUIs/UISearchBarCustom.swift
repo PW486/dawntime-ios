@@ -17,12 +17,20 @@ class UISearchBarCustom: UISearchBar {
         self.placeholder = "검색"
         self.setShowsCancelButton(false, animated: false)
         self.setImage(UIImage(), for: .clear, state: .normal)
-        self.setImage(#imageLiteral(resourceName: "navi_search_gray"), for: .search, state: .normal)
-        self.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "view_reply_navy"), for: .normal)
+//        self.setImage(#imageLiteral(resourceName: "navi_search_gray"), for: .search, state: .normal)
+        self.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "navi_searchround_navy"), for: .normal)
         
         for view : UIView in (self.subviews[0]).subviews {
             if let textField = view as? UITextField {
                 textField.font = UIFont(name: "NotoSansCJKkr-Regular", size: 12)
+                
+                let imageView = UIImageView();
+                imageView.image = #imageLiteral(resourceName: "navi_search_gray");
+                imageView.frame = CGRect(x: 10, y: 3, width: 20, height: 20)
+                textField.addSubview(imageView)
+                let leftView = UIView.init(frame: CGRect(x: 10, y: 0, width: 30, height: 30))
+                textField.leftView = leftView;
+                textField.leftViewMode = UITextFieldViewMode.always
             }
         }
     }

@@ -31,7 +31,9 @@ class LogInPopUpViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         if defaults.bool(forKey: "logInStatus") {
             self.dismiss(animated: false, completion: {
-                self.delegate?.afterLogin(self.model!)
+                if self.model != nil {
+                    self.delegate?.afterLogin(self.model!)
+                }
             })
         }
     }

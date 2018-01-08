@@ -12,6 +12,8 @@ class ReadArticleViewController: UIViewController {
     var article: Article?
     let cellHeights: [CGFloat] = [130,130,85]
     
+    @IBOutlet weak var tableView: UITableView!
+    
     @objc func moreMenu() {
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
@@ -43,6 +45,9 @@ class ReadArticleViewController: UIViewController {
         super.viewDidLoad()
         let rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_more_navy"), style: .done, target: self, action: #selector(moreMenu))
         self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44.0
     }
 }
 
@@ -51,22 +56,22 @@ extension ReadArticleViewController: UITableViewDelegate, UITableViewDataSource 
         return 10
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        switch(indexPath.row) {
-            case 0:
-                return cellHeights[0]
-            case 1:
-                return cellHeights[1]
-            default:
-                return cellHeights[2]
-        }
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        switch(indexPath.row) {
+//            case 0:
+//                return cellHeights[0]
+//            case 1:
+//                return cellHeights[1]
+//            default:
+//                return cellHeights[2]
+//        }
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch(indexPath.row) {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleTableViewCell.reuseIdentifier) as! ReadArticleTableViewCell
-//            cell.article = self.article
+            cell.article = self.article
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleImageTableViewCell.reuseIdentifier) as! ReadArticleImageTableViewCell
