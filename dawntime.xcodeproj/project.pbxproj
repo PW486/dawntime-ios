@@ -72,6 +72,7 @@
 		8AD750032001ED8B00689285 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750022001ED8B00689285 /* ShopViewController.swift */; };
 		8AD750052002103900689285 /* ReadItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750042002103900689285 /* ReadItemViewController.swift */; };
 		8AD7500720021DD000689285 /* HomeColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */; };
+		8AE3E0AD200317B5007C5592 /* UISearchBarCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3E0AC200317B5007C5592 /* UISearchBarCustom.swift */; };
 		8AE4E1F61FFFC5BE00FAD30A /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8AE4E1F51FFFC5BC00FAD30A /* splash.gif */; };
 		8AE4E2032000780D00FAD30A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4E2022000780D00FAD30A /* LogInViewController.swift */; };
 		8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4E2042000782200FAD30A /* LogInPopUpViewController.swift */; };
@@ -187,6 +188,7 @@
 		8AD750022001ED8B00689285 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		8AD750042002103900689285 /* ReadItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemViewController.swift; sourceTree = "<group>"; };
 		8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnCollectionViewCell.swift; sourceTree = "<group>"; };
+		8AE3E0AC200317B5007C5592 /* UISearchBarCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarCustom.swift; sourceTree = "<group>"; };
 		8AE4E1F51FFFC5BC00FAD30A /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		8AE4E2022000780D00FAD30A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		8AE4E2042000782200FAD30A /* LogInPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPopUpViewController.swift; sourceTree = "<group>"; };
@@ -447,6 +449,7 @@
 			isa = PBXGroup;
 			children = (
 				8A7A602B1FFF508E0042F923 /* UISwitchCustom.swift */,
+				8AE3E0AC200317B5007C5592 /* UISearchBarCustom.swift */,
 			);
 			path = CustomUIs;
 			sourceTree = "<group>";
@@ -805,6 +808,7 @@
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
 				8AD750012001E98E00689285 /* BaseViewController.swift in Sources */,
+				8AE3E0AD200317B5007C5592 /* UISearchBarCustom.swift in Sources */,
 				8AD750052002103900689285 /* ReadItemViewController.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,

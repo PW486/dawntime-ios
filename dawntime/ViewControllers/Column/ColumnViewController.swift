@@ -10,64 +10,18 @@ import UIKit
 
 class ColumnViewController: UIViewController {
     var columns = [Column]()
-    var searchSelected: Bool = false
     var dimEnabled: Bool = false
-    lazy var searchBar = UISearchBar()
+    lazy var searchBar = UISearchBarCustom()
     
     @IBOutlet weak var tableView: UITableView!
     
-    @objc func searchExit() {
-        searchSelected = false
-        self.navigationItem.titleView = nil
-        self.navigationController?.navigationBar.topItem?.title = "칼럼리스트"
-        self.navigationItem.rightBarButtonItems = nil
-        let searchBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_search_navy"), style: .done, target: self, action: #selector(searchAction))
-        self.navigationItem.rightBarButtonItem = searchBarButtonItem
-        
-        let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navi_back_navy"), style: .plain, target: self, action: #selector(backAction))
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        self.navigationItem.setLeftBarButton(backButton, animated: true)
-        
-        self.tabBarController?.tabBar.isUserInteractionEnabled = true
-        tableView.isUserInteractionEnabled = true
-        
-        if dimEnabled {
-            eraseDimBackground((self.navigationController?.navigationBar)!)
-            dimEnabled = false
-        }
-    }
-    
-    @IBAction func searchAction(_ sender: Any) {
-        searchSelected = true
-        searchBar.sizeToFit()
-        searchBar.placeholder = "검색"
-        searchBar.delegate = self
-        
-        self.navigationItem.titleView = searchBar
-        self.navigationItem.leftBarButtonItems = nil
-        self.navigationItem.rightBarButtonItems = nil
-        let rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_cancel_navy"), style: .done, target: self, action: #selector(searchExit))
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-        self.tabBarController?.tabBar.isUserInteractionEnabled = false
-        tableView.isUserInteractionEnabled = false
-        
-        if !dimEnabled {
-            dimBackground((self.navigationController?.navigationBar)!)
-            dimEnabled = true
-        }
-    }
-    
     func dimBackground(_ view: UIView) {
-        view.addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
-        
         let border = CALayer()
-        border.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        border.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
         border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: UIScreen.main.bounds.size.height)
         view.layer.addSublayer(border)
-        
         let border2 = CALayer()
-        border2.backgroundColor = UIColor(white: 0.5, alpha: 0.5).cgColor
+        border2.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
         border2.frame = CGRect(x: 0, y: 0, width: (self.tabBarController?.tabBar.frame.size.width)!, height: (self.tabBarController?.tabBar.frame.size.height)!)
         self.tabBarController?.tabBar.layer.addSublayer(border2)
     }
@@ -77,18 +31,58 @@ class ColumnViewController: UIViewController {
         self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
     }
     
+    @objc func searchAction() {
+        self.navigationItem.titleView = searchBar
+        self.navigationItem.leftBarButtonItems = nil
+        self.navigationItem.rightBarButtonItems = nil
+        
+        let rightBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_cancel_navy"), style: .done, target: self, action: #selector(initNaviItems))
+        self.navigationItem.rightBarButtonItem = rightBarButtonItem
+        
+        if !dimEnabled {
+            dimEnabled = true
+            dimBackground((self.navigationController?.navigationBar)!)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = false
+            tableView.isUserInteractionEnabled = false
+        }
+    }
+    
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    @objc func initNaviItems() {
+        searchBar.text = ""
+        
+        let label = UILabel()
+        label.text = "칼럼리스트"
+        label.font = UIFont(name: "NotoSansCJKkr-Regular", size: 18)
+        label.textColor = UIColor.hexStringToUIColor(hex: "#001960")
+        self.navigationItem.titleView = label
+        
         let searchBarButtonItem = UIBarButtonItem.init(image: #imageLiteral(resourceName: "navi_search_navy"), style: .done, target: self, action: #selector(searchAction))
+        self.navigationItem.rightBarButtonItems = nil
         self.navigationItem.rightBarButtonItem = searchBarButtonItem
         
         let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navi_back_navy"), style: .plain, target: self, action: #selector(backAction))
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        self.navigationItem.setLeftBarButton(backButton, animated: true)
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        if dimEnabled {
+            dimEnabled = false
+            eraseDimBackground((self.navigationController?.navigationBar)!)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
+        }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchBar.delegate = self
+        initNaviItems()
         
         // 현재는 더미 데이터 -> 나중에 서버 통신 하기
         columns.append(Column(column_title: "1번째 칼럼 제목", column_subtitle: "1번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=a","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=b","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=c","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=d"], column_writer: "1번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=a"]))
@@ -97,16 +91,20 @@ class ColumnViewController: UIViewController {
     }
 }
 
+extension ColumnViewController: UIGestureRecognizerDelegate {}
+
 extension ColumnViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return columns.count
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150
+        return 170
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        initNaviItems()
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadColumnViewController.reuseIdentifier) as? ReadColumnViewController else { return }
         vc.column = self.columns[indexPath.row]
@@ -124,8 +122,10 @@ extension ColumnViewController: UITableViewDelegate, UITableViewDataSource {
 extension ColumnViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         if dimEnabled {
-            eraseDimBackground((self.navigationController?.navigationBar)!)
             dimEnabled = false
+            eraseDimBackground((self.navigationController?.navigationBar)!)
+            self.tabBarController?.tabBar.isUserInteractionEnabled = true
+            tableView.isUserInteractionEnabled = true
         }
         self.tableView.reloadData()
     }

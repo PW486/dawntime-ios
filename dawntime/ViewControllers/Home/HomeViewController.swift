@@ -45,6 +45,10 @@ class HomeViewController: BaseViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navi_dawntime_navy"))
         self.shopCell?.shopCollectionView.reloadData()
