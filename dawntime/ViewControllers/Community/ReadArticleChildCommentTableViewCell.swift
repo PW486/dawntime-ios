@@ -1,14 +1,15 @@
 //
-//  ReadArticleCommentTableViewCell.swift
+//  ReadArticleChildCommentTableViewCell.swift
 //  dawntime
 //
-//  Created by PW486 on 03/01/2018.
+//  Created by PW486 on 09/01/2018.
 //  Copyright © 2018 peaktime. All rights reserved.
 //
 
 import UIKit
 
-class ReadArticleCommentTableViewCell: UITableViewCell {
+class ReadArticleChildCommentTableViewCell: UITableViewCell {
+    @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var commentWriterLabel: UILabel!
     @IBOutlet weak var commentDateView: UILabel!
     @IBOutlet weak var commentContentView: UILabel!
@@ -26,8 +27,9 @@ class ReadArticleCommentTableViewCell: UITableViewCell {
             }
         }
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
+        commentView.layer.cornerRadius = 3
     }
 }

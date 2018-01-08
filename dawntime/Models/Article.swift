@@ -21,4 +21,5 @@ struct Article: Codable {
     var user_id: Int?
     var user_like: Bool?
     var user_scrap: Bool?
+    var writer_check: Bool?
 }
