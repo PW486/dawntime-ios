@@ -13,7 +13,8 @@ struct Article: Codable {
     var board_title: String?
     var board_tag: String?
     var board_content: String?
-    var board_image: [String]?
+    var board_images: [String]?
+    var board_image: String?
     var board_like: Int?
     var com_count: Int?
     var scrap_count: Int?

@@ -20,7 +20,7 @@ class HomeShopCollectionViewCell: UICollectionViewCell {
         didSet {
             self.itemLabel.text = goodsItem?.goods_name
             if let img = goodsItem?.goods_image, defaults.bool(forKey: "logInStatus") {
-                self.itemImage.kf.setImage(with: URL(string: img[0]))
+                self.itemImage.kf.setImage(with: URL(string: img))
             } else {
                 self.itemImage.image = blindImages[Int(arc4random_uniform(4))]
             }

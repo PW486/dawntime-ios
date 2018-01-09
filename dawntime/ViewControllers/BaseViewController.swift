@@ -14,6 +14,7 @@ class BaseViewController: UIViewController {
     let fileManager = FileManager.default
     let keychainWrapper = KeychainWrapper.standard
     let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
+    var categories = ["걱정", "리뷰", "추천", "애인", "팁", "썰", "질문", "기타", "자랑", "건의"]
     
     func dimBackground(_ view: UIView) {
         let border = CALayer()
@@ -29,6 +30,14 @@ class BaseViewController: UIViewController {
     func eraseDimBackground(_ view: UIView) {
         view.layer.sublayers?.last?.removeFromSuperlayer()
         self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
+    }
+    
+    func roundView(_ view: UIView, hex: String, radius: CGFloat, width: CGFloat) {
+        view.layer.borderWidth = width
+        view.layer.masksToBounds = false
+        view.layer.borderColor = UIColor.hexStringToUIColor(hex: hex).cgColor
+        view.layer.cornerRadius = radius
+        view.clipsToBounds = true
     }
     
     @objc func backAction() {

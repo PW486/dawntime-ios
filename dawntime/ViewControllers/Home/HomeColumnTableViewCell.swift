@@ -20,10 +20,12 @@ class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     @IBOutlet weak var columnCollectionView: UICollectionView!
     
     @objc func scrollToNext() {
-        let indexPath = columnCollectionView.indexPathsForVisibleItems[0]
-        if columnCollectionView.isDragging == false, indexPath.row < columns.count-1  {
-            let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
-            columnCollectionView.scrollToItem(at: nextIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
+        if columns.count > 0 {
+            let indexPath = columnCollectionView.indexPathsForVisibleItems[0]
+            if columnCollectionView.isDragging == false, indexPath.row < columns.count-1  {
+                let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+                columnCollectionView.scrollToItem(at: nextIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
+            }
         }
     }
     
@@ -37,7 +39,7 @@ class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeColumnCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeColumnCollectionViewCell
-        cell.columnImage.kf.setImage(with: URL(string: columns[indexPath.row % columns.count].column_head![0]))
+        cell.columnImage.kf.setImage(with: URL(string: columns[indexPath.row].column_head!))
         return cell
     }
     

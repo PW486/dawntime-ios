@@ -7,10 +7,47 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class PeakTimeViewController: BaseViewController {
     var articles = [Article]()
     let backImages: [UIImage] = [#imageLiteral(resourceName: "view_peakillu1_purple"),#imageLiteral(resourceName: "view_peakillu2_green"),#imageLiteral(resourceName: "view_peakillu3_violet"),#imageLiteral(resourceName: "view_peakillu4_blue")]
+    
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    func reloadDatas() {
+        var newArticles = [Article]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/board/bestList", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["result"] {
+                            do {
+                                print(subJson)
+                                let article = try decoder.decode(Article.self, from: subJson.rawData())
+                                print(article)
+                                newArticles.append(article)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.articles = newArticles
+                    self.collectionView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +60,7 @@ class PeakTimeViewController: BaseViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        articles.append(Article(board_id: 1, board_title: "1번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=a"], board_like: 5, com_count: 8, scrap_count: 10, user_like: true, user_scrap: true, writer_check: true, user_id: 12, board_date: "2018-1-1"))
-        articles.append(Article(board_id: 2, board_title: "2번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=b"], board_like: 55, com_count: 88, scrap_count: 100, user_like: true, user_scrap: false, writer_check: true, user_id: 12, board_date: "2018-1-1"))
-        articles.append(Article(board_id: 3, board_title: "3번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=c"], board_like: 51, com_count: 83, scrap_count: 140, user_like: false, user_scrap: true, writer_check: false, user_id: 12, board_date: "2018-1-1"))
-        articles.append(Article(board_id: 4, board_title: "4번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=d"], board_like: 51, com_count: 83, scrap_count: 140, user_like: false, user_scrap: false, writer_check: true, user_id: 12, board_date: "2018-1-1"))
+        reloadDatas()
     }
 }
 

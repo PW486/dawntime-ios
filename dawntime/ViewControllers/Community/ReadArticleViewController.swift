@@ -8,22 +8,156 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
+import SwiftyJSON
+import Lightbox
 
-class ReadArticleViewController: UIViewController {
+class ReadArticleViewController: BaseViewController {
     var article: Article?
     var comments = [Comment]()
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBAction func fireTapAction(_ sender: Any) {
+        if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
+            Alamofire.request("http://13.125.78.152:6789/board/like/\(boardID)", method: .put, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        if let msg = json["message"].string {
+                            if msg == "successful like" {
+                                self.article?.user_like = true
+                                if let count = self.article?.board_like {
+                                    self.article?.board_like = count + 1
+                                }
+                            } else if msg == "successful unlike" {
+                                self.article?.user_like = false
+                                if let count = self.article?.board_like {
+                                    self.article?.board_like = count - 1
+                                }
+                            }
+                        }
+                    }
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    @IBAction func scrapTapAction(_ sender: Any) {
+        if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
+            Alamofire.request("http://13.125.78.152:6789/board/scrap", method: .put, parameters: ["board_id": boardID], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        if let msg = json["message"].string {
+                            if msg == "successfully registered scrap" {
+                                self.article?.user_scrap = true
+                                if let count = self.article?.scrap_count {
+                                    self.article?.scrap_count = count + 1
+                                }
+                            } else if msg == "successfully deleted scrap" {
+                                self.article?.user_scrap = false
+                                if let count = self.article?.scrap_count {
+                                    self.article?.scrap_count = count - 1
+                                }
+                            }
+                        }
+                    }
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    func reloadDatas() {
+        var newArticle = Article()
+        var newComments = [Comment]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
+            Alamofire.request("http://13.125.78.152:6789/board/list/\(boardID)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        do {
+                            newArticle = try decoder.decode(Article.self, from: json["boardResult"][0].rawData())
+                        }
+                        catch {
+                            print(error)
+                        }
+                        for (_, subJson):(String, JSON) in json["comResult"] {
+                            do {
+                                let comment = try decoder.decode(Comment.self, from: subJson.rawData())
+                                newComments.append(comment)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.article = newArticle
+                    self.comments = newComments
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    func deleteArticle() {
+        if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
+            Alamofire.request("http://13.125.78.152:6789/board/delete", method: .get, parameters: ["board_id": boardID], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    self.backAction()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    @objc func startReloadTableView(_ sender: UIRefreshControl) {
+        reloadDatas()
+        sender.endRefreshing()
+    }
     
     @objc func moreMenu() {
         let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         if let writer_check = article?.writer_check, writer_check {
             let editAction: UIAlertAction = UIAlertAction(title: "글 수정", style: .default) { action -> Void in
-                print("글 수정")
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: CreateUpdateArticleViewController.reuseIdentifier) as? CreateUpdateArticleViewController else { return }
+                vc.article = self.article
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             let delAction: UIAlertAction = UIAlertAction(title: "글 삭제", style: .default) { action -> Void in
-                print("글 삭제")
+                let alert = UIAlertController(title: "글 삭제", message: "정말로 글을 삭제하시겠습니까?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "확인", style: .default, handler: { (action) in self.deleteArticle() }))
+                alert.addAction(UIAlertAction(title: "취소", style: .cancel, handler: nil))
+                alert.view.tintColor = UIColor.hexStringToUIColor(hex: "#0E1949")
+                self.present(alert, animated: true, completion: nil)
             }
             actionSheetController.addAction(editAction)
             actionSheetController.addAction(delAction)
@@ -39,12 +173,13 @@ class ReadArticleViewController: UIViewController {
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: "취소", style: .cancel) { action -> Void in }
         actionSheetController.addAction(cancelAction)
+        actionSheetController.view.tintColor = UIColor.hexStringToUIColor(hex: "#0E1949")
         
         present(actionSheetController, animated: true, completion: nil)
     }
     
-    @objc func backAction() {
-        self.navigationController?.popViewController(animated: true)
+    override func viewWillAppear(_ animated: Bool) {
+        reloadDatas()
     }
     
     override func viewDidLoad() {
@@ -63,20 +198,32 @@ class ReadArticleViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         self.tableView.estimatedRowHeight = 100
         
-        // 글 상세보기 서버 통신
-        comments.append(Comment(com_id: 1, com_parent: 0, com_seq: 1, com_date: "2018-1-1", com_content: "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", com_writer: 1, recom_check: false, writer_check: true))
-        comments.append(Comment(com_id: 2, com_parent: 1, com_seq: 2, com_date: "2018-1-1", com_content: "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", com_writer: 0, recom_check: true, writer_check: false))
-        comments.append(Comment(com_id: 3, com_parent: 0, com_seq: 1, com_date: "2018-1-1", com_content: "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", com_writer: 1, recom_check: false, writer_check: true))
-        comments.append(Comment(com_id: 4, com_parent: 3, com_seq: 2, com_date: "2018-1-1", com_content: "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", com_writer: 0, recom_check: true, writer_check: false))
-        comments.append(Comment(com_id: 5, com_parent: 0, com_seq: 1, com_date: "2018-1-1", com_content: "댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글댓글", com_writer: 0, recom_check: false, writer_check: false))
+        self.tableView.refreshControl = UIRefreshControl()
+        self.tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView), for: .valueChanged)
     }
 }
 
 extension ReadArticleViewController: UITableViewDelegate, UITableViewDataSource, UIGestureRecognizerDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let imageCount = article?.board_image?.count ?? 0
-        let comCount = article?.com_count ?? 0
+        let imageCount = article?.board_images?.count ?? 0
+        let comCount = comments.count
         return 1 + imageCount + comCount
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView.cellForRow(at: indexPath) is ReadArticleImageTableViewCell {
+            var imageList = [LightboxImage]()
+            if let boardImages = article?.board_images {
+                for img in boardImages {
+                    imageList.append(LightboxImage(imageURL: URL(string: img)!))
+                }
+            }
+            let controller = LightboxController(images: imageList)
+            controller.dynamicBackground = true
+            controller.goTo(indexPath.row-1, animated: false)
+            
+            present(controller, animated: true, completion: nil)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,27 +233,29 @@ extension ReadArticleViewController: UITableViewDelegate, UITableViewDataSource,
             cell.separatorInset = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
             cell.selectionStyle = .none
             return cell
-        } else if let imageCount = article?.board_image?.count, imageCount >= indexPath.row {
+        } else if let imageCount = article?.board_images?.count, imageCount >= indexPath.row {
             let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleImageTableViewCell.reuseIdentifier) as! ReadArticleImageTableViewCell
-            cell.articleImageView.kf.setImage(with: URL(string: (article?.board_image![indexPath.row-1])!), completionHandler: {
+            cell.articleImageView.kf.setImage(with: URL(string: (article?.board_images![indexPath.row-1])!), completionHandler: {
                 (image, error, cacheType, imageUrl) in
-                tableView.beginUpdates()
-                tableView.endUpdates()
+                UIView.performWithoutAnimation({
+                    tableView.beginUpdates()
+                    tableView.endUpdates()
+                })
             })
             cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
             cell.selectionStyle = .none
             return cell
         } else {
-            let imageCount = article?.board_image?.count ?? 0
-            let comment = comments[(indexPath.row-1-imageCount) % 5] // comments[indexPath.row-1-imageCount]
+            let imageCount = article?.board_images?.count ?? 0
+            let comment = comments[indexPath.row-1-imageCount]
             if let recom_check = comment.recom_check, recom_check {
-                let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleChildCommentTableViewCell.reuseIdentifier) as! ReadArticleChildCommentTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleCommentTableViewCell.reuseIdentifier) as! ReadArticleCommentTableViewCell
                 cell.comment = comment
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
                 cell.selectionStyle = .none
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleCommentTableViewCell.reuseIdentifier) as! ReadArticleCommentTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleChildCommentTableViewCell.reuseIdentifier) as! ReadArticleChildCommentTableViewCell
                 cell.comment = comment
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
                 cell.selectionStyle = .none

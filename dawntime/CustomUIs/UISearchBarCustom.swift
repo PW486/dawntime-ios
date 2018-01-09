@@ -17,7 +17,6 @@ class UISearchBarCustom: UISearchBar {
         self.placeholder = "검색"
         self.setShowsCancelButton(false, animated: false)
         self.setImage(UIImage(), for: .clear, state: .normal)
-//        self.setImage(#imageLiteral(resourceName: "navi_search_gray"), for: .search, state: .normal)
         self.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "navi_searchround_navy"), for: .normal)
         
         for view : UIView in (self.subviews[0]).subviews {

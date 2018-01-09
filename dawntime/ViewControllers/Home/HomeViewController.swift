@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class HomeViewController: BaseViewController {
     var shopCell: HomeShopTableViewCell?
@@ -45,6 +47,60 @@ class HomeViewController: BaseViewController {
         self.present(vc, animated: true, completion: nil)
     }
     
+    func reloadDatas() {
+        var newGoodsItems = [GoodsItem]()
+        var newColumns = [Column]()
+        var newArticles = [Article]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/home", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["main_shop"] {
+                            do {
+                                let goodsItem = try decoder.decode(GoodsItem.self, from: subJson.rawData())
+                                newGoodsItems.append(goodsItem)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                        for (_, subJson):(String, JSON) in json["main_column"] {
+                            do {
+                                let column = try decoder.decode(Column.self, from: subJson.rawData())
+                                newColumns.append(column)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                        for (_, subJson):(String, JSON) in json["main_peaktime"] {
+                            do {
+                                let article = try decoder.decode(Article.self, from: subJson.rawData())
+                                newArticles.append(article)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.goodsItems = newGoodsItems
+                    self.columns = newColumns
+                    self.articles = newArticles
+                    self.cellHeights[2] = CGFloat((self.articles.count+1)/2 * 215 + 35)
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
@@ -59,27 +115,9 @@ class HomeViewController: BaseViewController {
         let notificationCenter = NotificationCenter.default
         notificationCenter.addObserver(self, selector: #selector(initSettingAndCheckLock), name: Notification.Name.UIApplicationWillEnterForeground, object: nil)
         initSettingAndCheckLock()
-        tableView.separatorStyle = .none
         
-        // 현재는 더미 데이터 -> 나중에 서버 통신 하기
-        goodsItems.append(GoodsItem(goods_id: 1, goods_name: "1번째", goods_price: 10001, goods_brand: "펀팩토리1", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=a"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 2, goods_name: "2번째", goods_price: 10002, goods_brand: "펀팩토리2", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=b"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 3, goods_name: "3번째", goods_price: 10003, goods_brand: "펀팩토리3", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=c"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 4, goods_name: "4번째", goods_price: 10004, goods_brand: "펀팩토리4", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=d"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 5, goods_name: "5번째", goods_price: 10005, goods_brand: "펀팩토리5", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=e"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 6, goods_name: "6번째", goods_price: 10006, goods_brand: "펀팩토리6", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=f"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 7, goods_name: "7번째", goods_price: 10007, goods_brand: "펀팩토리7", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=g"], goods_like: 1))
-        goodsItems.append(GoodsItem(goods_id: 8, goods_name: "8번째", goods_price: 10008, goods_brand: "펀팩토리8", goods_image: ["https://dummyimage.com/100x100/ab11ab/32db2c.jpg&text=h"], goods_like: 1))
-        
-        columns.append(Column(column_title: "1번째 칼럼 제목", column_subtitle: "1번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=a","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=b","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=c","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=d"], column_writer: "1번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=a"]))
-        columns.append(Column(column_title: "2번째 칼럼 제목", column_subtitle: "2번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=aa","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=bb","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=cc","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=dd"], column_writer: "2번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=b"]))
-        columns.append(Column(column_title: "3번째 칼럼 제목", column_subtitle: "3번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=aaa","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=bbb","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=ccc","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=ddd"], column_writer: "3번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=c"]))
-        
-        articles.append(Article(board_id: 1, board_title: "1번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=a","https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=aa","https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=aaa","https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=aaaa"], board_like: 5, com_count: 8, scrap_count: 10, user_like: true, user_scrap: true, writer_check: true, user_id: 12, board_date: "2018-1-1"))
-        articles.append(Article(board_id: 2, board_title: "2번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=b"], board_like: 55, com_count: 88, scrap_count: 100, user_like: true, user_scrap: false, writer_check: true, user_id: 12, board_date: "2018-1-1"))
-        articles.append(Article(board_id: 3, board_title: "3번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=c"], board_like: 51, com_count: 83, scrap_count: 140, user_like: false, user_scrap: true, writer_check: false, user_id: 12, board_date: "2018-1-1"))
-        articles.append(Article(board_id: 4, board_title: "4번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=d"], board_like: 51, com_count: 83, scrap_count: 140, user_like: false, user_scrap: false, writer_check: true, user_id: 12, board_date: "2018-1-1"))
-        cellHeights[2] = CGFloat((articles.count+1)/2 * 215 + 35)
+        self.tableView.separatorStyle = .none
+        reloadDatas()
     }
 }
 

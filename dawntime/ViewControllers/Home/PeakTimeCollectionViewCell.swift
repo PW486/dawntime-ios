@@ -22,12 +22,18 @@ class PeakTimeCollectionViewCell: UICollectionViewCell {
             self.contentLabel.text = article?.board_content
             if let board_like = article?.board_like {
                 self.fireLabel.text = "\(board_like)"
+            } else {
+                self.fireLabel.text = "0"
             }
             if let com_count = article?.com_count {
                 self.commentLabel.text = "\(com_count)"
+            } else {
+                self.commentLabel.text = "0"
             }
             if let scrap_count = article?.scrap_count {
                 self.scrapLabel.text = "\(scrap_count)"
+            } else {
+                self.scrapLabel.text = "0"
             }
         }
     }

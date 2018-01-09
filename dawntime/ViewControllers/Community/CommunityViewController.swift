@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class CommunityViewController: BaseViewController {
     var articles = [Article]()
-    var categories = [String]()
     var searchTags = [String]()
     var searchKeywords = [String]()
     var dimEnabled: Bool = false
@@ -26,40 +25,71 @@ class CommunityViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    func reloadArticles() {
+    func reloadDatas() {
         var newArticles = [Article]()
         let decoder = JSONDecoder()
-        let userID = "\(defaults.integer(forKey: "userID"))"
-        let params = ["user_id": userID] as [String : Any]
-        Alamofire.request("http://13.125.78.152:6789/board/dateList", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON() {
-            (res) in
-            switch res.result {
-            case .success:
-                if let value = res.result.value {
-                    let json = JSON(value)
-                    for (_, subJson):(String, JSON) in json["result"] {
-                        do {
-                            let article = try decoder.decode(Article.self, from: subJson.rawData())
-                            newArticles.append(article)
-                        }
-                        catch {
-                            print(error)
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/board/dateList", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["result"] {
+                            do {
+                                let article = try decoder.decode(Article.self, from: subJson.rawData())
+                                newArticles.append(article)
+                            }
+                            catch {
+                                print(error)
+                            }
                         }
                     }
+                    self.articles = newArticles
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
                 }
-                self.articles = newArticles
-                self.tableView.reloadData()
-                break
-            case .failure(let err):
-                print(err.localizedDescription)
-                break
+            }
+        }
+    }
+    
+    func reloadBySearchTags() {
+        var newArticles = [Article]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/board/tagList", method: .post, parameters: ["tag": searchTags], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["result"] {
+                            do {
+                                let article = try decoder.decode(Article.self, from: subJson.rawData())
+                                newArticles.append(article)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.articles = newArticles
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
             }
         }
     }
     
     @objc func createArticleAction() {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyBoard.instantiateViewController(withIdentifier: CreateArticleViewController.reuseIdentifier) as? CreateArticleViewController else { return }
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: CreateUpdateArticleViewController.reuseIdentifier) as? CreateUpdateArticleViewController else { return }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -97,6 +127,11 @@ class CommunityViewController: BaseViewController {
                 self.view.layoutIfNeeded()
             })
             collectionView.isHidden = true
+            if searchTags.count > 0 {
+                reloadBySearchTags()
+            } else {
+                reloadDatas()
+            }
         } else {
             dropdownSelected = true
             if searchSelected { initNaviItems() }
@@ -149,12 +184,16 @@ class CommunityViewController: BaseViewController {
     }
     
     @objc func startReloadTableView(_ sender: UIRefreshControl) {
-        reloadArticles()
+        if searchTags.count > 0 {
+            reloadBySearchTags()
+        } else {
+            reloadDatas()
+        }
         sender.endRefreshing()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        reloadArticles()
+        reloadDatas()
         let img = UIImage()
         self.navigationController?.navigationBar.shadowImage = img
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
@@ -174,14 +213,13 @@ class CommunityViewController: BaseViewController {
         super.viewDidLoad()
         initNaviItems()
         searchBar.delegate = self
-        categories = ["카1","카2","카3","카4","카5","카6","카7","카8","카9","카10"]
         
         menuDropdownHeight.constant = 25
         menuDropdownBtn.addBottomBorderWithColor(color: UIColor.lightGray, width: 0.5)
         collectionView.isHidden = true
         
         tableView.refreshControl = UIRefreshControl()
-        tableView.refreshControl?.addTarget(self, action: #selector(self.startReloadTableView(_:)), for: .valueChanged)
+        tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView), for: .valueChanged)
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
     }
@@ -189,27 +227,24 @@ class CommunityViewController: BaseViewController {
 
 extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return categories.count
+        return self.categories.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommunityCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as! CommunityCategoryCollectionViewCell
-        cell.categoryLabel.text = categories[indexPath.item]
-        if searchTags.index(of: categories[indexPath.item]) != nil {
-            cell.roundFill()
-        } else {
-            cell.roundNotFill()
-        }
+        cell.categoryLabel.text = self.categories[indexPath.item]
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let i = searchTags.index(of: categories[indexPath.item]) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CommunityCategoryCollectionViewCell
+        if let i = searchTags.index(of: self.categories[indexPath.item]) {
             searchTags.remove(at: i)
+            cell.roundNotFill()
         } else {
-            searchTags.append(categories[indexPath.item])
+            searchTags.append(self.categories[indexPath.item])
+            cell.roundFill()
         }
-        collectionView.reloadData()
     }
 }
 
@@ -236,7 +271,8 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier, for: indexPath) as! CommunityArticleTableViewCell
-//        cell.article = articles[indexPath.row]
+        cell.article = articles[indexPath.row]
+        cell.selectionStyle = .none
         return cell
     }
 }

@@ -22,10 +22,12 @@ class CommunityCategoryCollectionViewCell: UICollectionViewCell {
     }
     
     override func awakeFromNib() {
-        self.layer.borderWidth = 1
-        self.layer.masksToBounds = false
-        self.layer.borderColor = UIColor.hexStringToUIColor(hex: "#0E1949").cgColor
-        self.layer.cornerRadius = 12
-        self.clipsToBounds = true
+        UIView.performWithoutAnimation({
+            self.layer.borderWidth = 1
+            self.layer.masksToBounds = false
+            self.layer.borderColor = UIColor.hexStringToUIColor(hex: "#0E1949").cgColor
+            self.layer.cornerRadius = 12
+            self.clipsToBounds = true
+        })
     }
 }

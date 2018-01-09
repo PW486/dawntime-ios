@@ -19,7 +19,7 @@ class ColumnTableViewCell: UITableViewCell {
             self.column_title.text = column?.column_title
             self.column_writer.text = column?.column_writer
             if let img = column?.column_head {
-                self.column_head.kf.setImage(with: URL(string: img[0]))
+                self.column_head.kf.setImage(with: URL(string: img))
             }
         }
     }

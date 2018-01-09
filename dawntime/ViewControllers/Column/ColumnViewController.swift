@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
 class ColumnViewController: BaseViewController {
     var columns = [Column]()
@@ -59,15 +61,73 @@ class ColumnViewController: BaseViewController {
         }
     }
     
+    func reloadDatas() {
+        var newColumns = [Column]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/column/list", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["result"] {
+                            do {
+                                let column = try decoder.decode(Column.self, from: subJson.rawData())
+                                newColumns.append(column)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.columns = newColumns
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    func columnSearch(_ keyword: String) {
+        var newColumns = [Column]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/column/list", method: .get, parameters: ["column_title": keyword], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["result"] {
+                            do {
+                                let column = try decoder.decode(Column.self, from: subJson.rawData())
+                                newColumns.append(column)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.columns = newColumns
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
         initNaviItems()
-        
-        // 현재는 더미 데이터 -> 나중에 서버 통신 하기
-        columns.append(Column(column_title: "1번째 칼럼 제목", column_subtitle: "1번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=a","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=b","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=c","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=d"], column_writer: "1번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=a"]))
-        columns.append(Column(column_title: "2번째 칼럼 제목", column_subtitle: "2번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=aa","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=bb","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=cc","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=dd"], column_writer: "2번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=b"]))
-        columns.append(Column(column_title: "3번째 칼럼 제목", column_subtitle: "3번째 칼럼 부제목", column_image: ["https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=aaa","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=bbb","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=ccc","https://dummyimage.com/500x500/1199ab/bd9737.jpg&text=ddd"], column_writer: "3번째 작성자", column_head: ["https://dummyimage.com/300x100/11ab6d/3560bd.jpg&text=c"]))
+        reloadDatas()
     }
 }
 
@@ -107,7 +167,11 @@ extension ColumnViewController: UISearchBarDelegate {
             self.tabBarController?.tabBar.isUserInteractionEnabled = true
             tableView.isUserInteractionEnabled = true
         }
-        self.tableView.reloadData()
+        if searchBar.text == "" {
+            reloadDatas()
+        } else {
+            columnSearch(searchBar.text!)
+        }
     }
 }
 

@@ -12,9 +12,8 @@ import Alamofire
 import SwiftyJSON
 
 class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDelegate {
-    
-    func signIn(_ email: String) {
-        let params = ["user_email": email] as [String : Any]
+    func signIn(email: String, uid: String) {
+        let params = ["user_email": email, "user_uid": uid] as [String : Any]
         Alamofire.request("http://13.125.78.152:6789/home/signin", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON() {
             (res) in
             switch res.result {
@@ -27,6 +26,9 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
                     }
                     if let userEmail = data["result"]["user_email"].string {
                         self.defaults.set(userEmail, forKey: "userEmail")
+                    }
+                    if let userToken = data["result"]["user_token"].string {
+                        self.defaults.set(userToken, forKey: "userToken")
                     }
                     
                     self.defaults.set(true, forKey: "logInStatus")
@@ -54,9 +56,8 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
                 if let value = res.result.value {
                     let data = JSON(value)
                     if let gender = data["response"]["gender"].string { // -> ,gender == "F"
-                        print(gender)
-                        if let email = data["response"]["email"].string {
-                            self.signIn(email)
+                        if let email = data["response"]["email"].string, let uid = data["response"]["id"].string {
+                            self.signIn(email: email, uid: uid)
                         }
                     } else {
                         print("여자가 아닙니다.")
