@@ -9,12 +9,8 @@
 import UIKit
 import Kingfisher
 
-class ReadColumnViewController: UIViewController {
+class ReadColumnViewController: BaseViewController {
     var column: Column?
-    
-    @objc func backAction() {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

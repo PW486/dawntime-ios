@@ -14,7 +14,27 @@ class BaseViewController: UIViewController {
     let fileManager = FileManager.default
     let keychainWrapper = KeychainWrapper.standard
     let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-
+    
+    func dimBackground(_ view: UIView) {
+        let border = CALayer()
+        border.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
+        border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: UIScreen.main.bounds.size.height)
+        view.layer.addSublayer(border)
+        let border2 = CALayer()
+        border2.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
+        border2.frame = CGRect(x: 0, y: 0, width: (self.tabBarController?.tabBar.frame.size.width)!, height: (self.tabBarController?.tabBar.frame.size.height)!)
+        self.tabBarController?.tabBar.layer.addSublayer(border2)
+    }
+    
+    func eraseDimBackground(_ view: UIView) {
+        view.layer.sublayers?.last?.removeFromSuperlayer()
+        self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
+    }
+    
+    @objc func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
     @objc func initSettingAndCheckLock() {
         let path = documentDirectory.appending("/Setting.plist")
         if(!fileManager.fileExists(atPath: path)){

@@ -8,28 +8,12 @@
 
 import UIKit
 
-class ColumnViewController: UIViewController {
+class ColumnViewController: BaseViewController {
     var columns = [Column]()
     var dimEnabled: Bool = false
     lazy var searchBar = UISearchBarCustom()
     
     @IBOutlet weak var tableView: UITableView!
-    
-    func dimBackground(_ view: UIView) {
-        let border = CALayer()
-        border.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
-        border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: UIScreen.main.bounds.size.height)
-        view.layer.addSublayer(border)
-        let border2 = CALayer()
-        border2.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.4).cgColor
-        border2.frame = CGRect(x: 0, y: 0, width: (self.tabBarController?.tabBar.frame.size.width)!, height: (self.tabBarController?.tabBar.frame.size.height)!)
-        self.tabBarController?.tabBar.layer.addSublayer(border2)
-    }
-    
-    func eraseDimBackground(_ view: UIView) {
-        view.layer.sublayers?.last?.removeFromSuperlayer()
-        self.tabBarController?.tabBar.layer.sublayers?.last?.removeFromSuperlayer()
-    }
     
     @objc func searchAction() {
         self.navigationItem.titleView = searchBar
@@ -45,10 +29,6 @@ class ColumnViewController: UIViewController {
             self.tabBarController?.tabBar.isUserInteractionEnabled = false
             tableView.isUserInteractionEnabled = false
         }
-    }
-    
-    @objc func backAction() {
-        self.navigationController?.popViewController(animated: true)
     }
     
     @objc func initNaviItems() {

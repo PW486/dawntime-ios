@@ -8,13 +8,9 @@
 
 import UIKit
 
-class PeakTimeViewController: UIViewController {
+class PeakTimeViewController: BaseViewController {
     var articles = [Article]()
     let backImages: [UIImage] = [#imageLiteral(resourceName: "view_peakillu1_purple"),#imageLiteral(resourceName: "view_peakillu2_green"),#imageLiteral(resourceName: "view_peakillu3_violet"),#imageLiteral(resourceName: "view_peakillu4_blue")]
-
-    @objc func backAction() {
-        self.navigationController?.popViewController(animated: true)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,10 +23,10 @@ class PeakTimeViewController: UIViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        articles.append(Article(board_id: 1, board_title: "1번째 글", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_tag: "일상", board_like: 5, com_count: 8, scrap_count: 10, board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=a"], board_date: "2018-1-1", user_id: 12, user_like: true, user_scrap: true, writer_check: true))
-        articles.append(Article(board_id: 2, board_title: "2번째 글", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_tag: "일상", board_like: 55, com_count: 88, scrap_count: 100, board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=b"], board_date: "2018-1-1", user_id: 12, user_like: true, user_scrap: false, writer_check: true))
-        articles.append(Article(board_id: 3, board_title: "3번째 글", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_tag: "일상", board_like: 51, com_count: 83, scrap_count: 140, board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=c"], board_date: "2018-1-1", user_id: 12, user_like: false, user_scrap: true, writer_check: false))
-        articles.append(Article(board_id: 4, board_title: "4번째 글", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_tag: "일상", board_like: 51, com_count: 83, scrap_count: 140, board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=d"], board_date: "2018-1-1", user_id: 12, user_like: false, user_scrap: false, writer_check: true))
+        articles.append(Article(board_id: 1, board_title: "1번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=a"], board_like: 5, com_count: 8, scrap_count: 10, user_like: true, user_scrap: true, writer_check: true, user_id: 12, board_date: "2018-1-1"))
+        articles.append(Article(board_id: 2, board_title: "2번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=b"], board_like: 55, com_count: 88, scrap_count: 100, user_like: true, user_scrap: false, writer_check: true, user_id: 12, board_date: "2018-1-1"))
+        articles.append(Article(board_id: 3, board_title: "3번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=c"], board_like: 51, com_count: 83, scrap_count: 140, user_like: false, user_scrap: true, writer_check: false, user_id: 12, board_date: "2018-1-1"))
+        articles.append(Article(board_id: 4, board_title: "4번째 글", board_tag: "일상", board_content: "내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용내용", board_image: ["https://dummyimage.com/500x500/72ab11/bd3843.jpg&text=d"], board_like: 51, com_count: 83, scrap_count: 140, user_like: false, user_scrap: false, writer_check: true, user_id: 12, board_date: "2018-1-1"))
     }
 }
 
