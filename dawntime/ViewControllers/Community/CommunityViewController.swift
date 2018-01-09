@@ -197,6 +197,8 @@ extension CommunityViewController: UICollectionViewDelegate, UICollectionViewDat
         cell.categoryLabel.text = categories[indexPath.item]
         if searchTags.index(of: categories[indexPath.item]) != nil {
             cell.roundFill()
+        } else {
+            cell.roundNotFill()
         }
         return cell
     }
@@ -234,7 +236,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier, for: indexPath) as! CommunityArticleTableViewCell
-        cell.article = articles[indexPath.row]
+//        cell.article = articles[indexPath.row]
         return cell
     }
 }

@@ -18,11 +18,15 @@ class ReadArticleCommentTableViewCell: UITableViewCell {
         didSet {
             if let com_writer = comment?.com_writer, com_writer == 1 {
                 self.commentWriterLabel.text = "익명(글쓴이)"
+            } else {
+                self.commentWriterLabel.text = "익명"
             }
             self.commentDateView.text = comment?.com_date
             self.commentContentView.text = comment?.com_content
             if let writer_check = comment?.writer_check, !writer_check {
                 self.commentEraseButton.isHidden = true
+            } else {
+                self.commentEraseButton.isHidden = false
             }
         }
     }

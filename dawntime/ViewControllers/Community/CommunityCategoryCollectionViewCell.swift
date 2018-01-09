@@ -16,6 +16,11 @@ class CommunityCategoryCollectionViewCell: UICollectionViewCell {
         self.categoryLabel.textColor = UIColor.white
     }
     
+    func roundNotFill() {
+        self.layer.backgroundColor = UIColor.white.cgColor
+        self.categoryLabel.textColor = UIColor.black
+    }
+    
     override func awakeFromNib() {
         self.layer.borderWidth = 1
         self.layer.masksToBounds = false
