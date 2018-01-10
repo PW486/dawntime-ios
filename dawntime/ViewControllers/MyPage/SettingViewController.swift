@@ -12,10 +12,8 @@ protocol LockSettingProtocol {
     func GoToLockSetting()
 }
 
-class SettingViewController: UIViewController {
-    let defaults = UserDefaults.standard
-    let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-    // SettingLabelText, Switch, InfoLabelTrue, InfoLabelText
+class SettingViewController: BaseViewController {
+    /* SettingLabelText, Switch, InfoLabelTrue, InfoLabelText */
     let settinglist: [(String, Bool, Bool, String)] = [("알림", true, false, ""),("잠금", true, false, ""),("블라인드", true, true, "홈 화면의 베스트 상품 사진을 필터링 합니다."),("로그아웃", false, false, ""),("회원탈퇴", false, false, "")]
     
     @IBOutlet weak var tableView: UITableView!
@@ -44,8 +42,23 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        
+        let label = UILabel()
+        label.text = "설정"
+        label.font = UIFont(name: "NotoSansCJKkr-Regular", size: 18)
+        label.textColor = UIColor.hexStringToUIColor(hex: "#001960")
+        self.navigationItem.titleView = label
+        
+        let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navi_back_navy"), style: .plain, target: self, action: #selector(backAction))
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
 }
+
+extension SettingViewController: UIGestureRecognizerDelegate {}
 
 extension SettingViewController: LockSettingProtocol {
     func GoToLockSetting() {

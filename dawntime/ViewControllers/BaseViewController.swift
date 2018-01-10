@@ -40,6 +40,10 @@ class BaseViewController: UIViewController {
         view.clipsToBounds = true
     }
     
+    @objc func dismissKeyBoard() {
+        self.view.endEditing(true)
+    }
+    
     @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }

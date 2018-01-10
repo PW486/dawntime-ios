@@ -15,8 +15,13 @@ import Lightbox
 class ReadArticleViewController: BaseViewController {
     var article: Article?
     var comments = [Comment]()
+    var parentComment: Comment?
+    var isRecomment = false
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var commentFieldView: UIView!
+    @IBOutlet weak var commentField: UITextField!
+    @IBOutlet weak var bottomTableView: NSLayoutConstraint!
     
     @IBAction func fireTapAction(_ sender: Any) {
         if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
@@ -123,11 +128,46 @@ class ReadArticleViewController: BaseViewController {
     
     func deleteArticle() {
         if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
-            Alamofire.request("http://13.125.78.152:6789/board/delete", method: .get, parameters: ["board_id": boardID], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+            Alamofire.request("http://13.125.78.152:6789/board/delete", method: .delete, parameters: ["board_id": boardID], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
                 case .success:
                     self.backAction()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    func sendComment(com_parent: Int) {
+        if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id, let content = commentField.text {
+            let params = ["board_id": boardID, "com_parent": "\(com_parent)", "com_content": content] as [String : Any]
+            Alamofire.request("http://13.125.78.152:6789/comment/write", method: .post, parameters: params, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    self.commentField.text = ""
+                    self.dismissKeyBoard()
+                    self.reloadDatas()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    func deleteCommnet() {
+        if let userToken = defaults.string(forKey: "userToken"), let comID = parentComment?.com_id {
+            Alamofire.request("http://13.125.78.152:6789/comment/delete", method: .delete, parameters: ["com_id": comID], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    self.reloadDatas()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -178,8 +218,52 @@ class ReadArticleViewController: BaseViewController {
         present(actionSheetController, animated: true, completion: nil)
     }
     
+    
+    func commentMoreMenu(_ cell: UITableViewCell) {
+        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        let recommentAction: UIAlertAction = UIAlertAction(title: "대댓글 달기", style: .default) { action -> Void in
+            self.isRecomment = true
+            self.commentField.becomeFirstResponder()
+        }
+        actionSheetController.addAction(recommentAction)
+        
+        if let writer_check = parentComment?.writer_check, writer_check {
+            let delAction: UIAlertAction = UIAlertAction(title: "댓글 삭제", style: .default) { action -> Void in
+                self.deleteCommnet()
+            }
+            actionSheetController.addAction(delAction)
+        } else {
+            let msgAction: UIAlertAction = UIAlertAction(title: "쪽지 보내기", style: .default) { action -> Void in
+                print("쪽지 보내기")
+                cell.contentView.backgroundColor = UIColor.white
+            }
+            let feedbackAction: UIAlertAction = UIAlertAction(title: "신고", style: .destructive) { action -> Void in
+                print("신고")
+                cell.contentView.backgroundColor = UIColor.white
+            }
+            actionSheetController.addAction(msgAction)
+            actionSheetController.addAction(feedbackAction)
+        }
+        let cancelAction: UIAlertAction = UIAlertAction(title: "취소", style: .cancel) { action -> Void in
+            cell.contentView.backgroundColor = UIColor.white
+        }
+        actionSheetController.addAction(cancelAction)
+        actionSheetController.view.tintColor = UIColor.hexStringToUIColor(hex: "#0E1949")
+        
+        present(actionSheetController, animated: true, completion: nil)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         reloadDatas()
+        let img = UIImage()
+        self.tabBarController?.tabBar.shadowImage = img
+        self.tabBarController?.tabBar.backgroundImage = img
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.tabBarController?.tabBar.shadowImage = nil
+        self.tabBarController?.tabBar.backgroundImage = nil
     }
     
     override func viewDidLoad() {
@@ -200,6 +284,19 @@ class ReadArticleViewController: BaseViewController {
         
         self.tableView.refreshControl = UIRefreshControl()
         self.tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView), for: .valueChanged)
+        
+        commentFieldView.addTopBorderWithColor(color: UIColor.lightGray, width: 0.5)
+        roundView(commentField, hex: "#0E1949", radius: 15, width: 0.0)
+        
+        commentField.leftView = UIView.init(frame: CGRect(x: 0, y: 0, width: 10, height: 10))
+        commentField.leftViewMode = UITextFieldViewMode.always
+        commentField.delegate = self
+        
+        setKeyBoardSetting()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+        tapGesture.cancelsTouchesInView = false
+        self.tableView.addGestureRecognizer(tapGesture)
     }
 }
 
@@ -223,6 +320,22 @@ extension ReadArticleViewController: UITableViewDelegate, UITableViewDataSource,
             controller.goTo(indexPath.row-1, animated: false)
             
             present(controller, animated: true, completion: nil)
+        } else if let cell = tableView.cellForRow(at: indexPath), cell is ReadArticleCommentTableViewCell || cell is ReadArticleChildCommentTableViewCell {
+            isRecomment = false
+            if cell.contentView.backgroundColor != UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.2) {
+                cell.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.2)
+                let imageCount = article?.board_images?.count ?? 0
+                parentComment = comments[indexPath.row-1-imageCount]
+                commentMoreMenu(cell)
+            } else {
+                cell.contentView.backgroundColor = UIColor.white
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        if let cell = tableView.cellForRow(at: indexPath), cell is ReadArticleCommentTableViewCell || cell is ReadArticleChildCommentTableViewCell {
+            cell.contentView.backgroundColor = UIColor.white
         }
     }
     
@@ -253,14 +366,71 @@ extension ReadArticleViewController: UITableViewDelegate, UITableViewDataSource,
                 cell.comment = comment
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
                 cell.selectionStyle = .none
+                if isRecomment && parentComment?.com_id == comment.com_id {
+                    cell.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.2)
+                } else {
+                    cell.contentView.backgroundColor = UIColor.white
+                }
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: ReadArticleChildCommentTableViewCell.reuseIdentifier) as! ReadArticleChildCommentTableViewCell
                 cell.comment = comment
                 cell.separatorInset = UIEdgeInsets(top: 0, left: 1000, bottom: 0, right: 0)
                 cell.selectionStyle = .none
+                if isRecomment && parentComment?.com_id == comment.com_id {
+                    cell.contentView.backgroundColor = UIColor.hexStringToUIColor(hex: "#0E1949").withAlphaComponent(0.2)
+                } else {
+                    cell.contentView.backgroundColor = UIColor.white
+                }
                 return cell
             }
+        }
+    }
+}
+
+extension ReadArticleViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == commentField {
+            textField.resignFirstResponder()
+            if isRecomment == true {
+                if parentComment?.com_parent == 0 {
+                    sendComment(com_parent: (parentComment?.com_id)!)
+                } else {
+                    sendComment(com_parent: (parentComment?.com_parent)!)
+                }
+                isRecomment = false
+            } else {
+                sendComment(com_parent: 0)
+            }
+            return false
+        }
+        return true
+    }
+    
+    func setKeyBoardSetting() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            self.bottomTableView.constant += keyboardSize.height - self.tabBarController!.tabBar.frame.height
+            
+            if let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval {
+                UIView.animate(withDuration: animationDuration, animations: {
+                    self.view.layoutIfNeeded()
+                })
+            }
+        }
+    }
+    
+    @objc func keyboardWillHide(_ notification: Notification) {
+        self.bottomTableView.constant = 57
+        
+        if let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval {
+            UIView.animate(withDuration: animationDuration, animations: {
+                self.view.layoutIfNeeded()
+            })
         }
     }
 }

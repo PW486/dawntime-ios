@@ -151,6 +151,10 @@ class CreateUpdateArticleViewController: BaseViewController {
         roundView(categorySelectButton, hex: "#9C9D9D", radius: 10, width: 1)
         roundView(photoSelectButton, hex: "#0E1949", radius: 10, width: 0)
         roundView(sendButton, hex: "#0E1949", radius: 10, width: 0)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
     }
 }
 

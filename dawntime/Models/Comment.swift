@@ -17,4 +17,7 @@ struct Comment: Codable {
     var com_writer: Int?
     var recom_check: Bool?
     var writer_check: Bool?
+    var board_id: Int?
+    var board_tag: String?
+    var board_image: String?
 }

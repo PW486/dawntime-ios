@@ -66,9 +66,4 @@ class CommunityArticleTableViewCell: UITableViewCell {
         categoryLabel.layer.cornerRadius = 10
         categoryLabel.clipsToBounds = true
     }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-
 }

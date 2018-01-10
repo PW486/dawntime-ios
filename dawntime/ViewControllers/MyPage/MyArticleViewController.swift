@@ -7,11 +7,13 @@
 //
 
 import UIKit
+import Alamofire
+import SwiftyJSON
 
-class MyArticleViewController: UIViewController {
-//    var articles: [Article]?
-//    var replies: [Reply]?
-    var trueArticleFalseReply = true
+class MyArticleViewController: BaseViewController {
+    var articles = [Article]()
+    var comments = [Comment]()
+    var trueArticleFalseComment = true
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var myArticleCountView: UIView!
@@ -21,8 +23,7 @@ class MyArticleViewController: UIViewController {
     @IBOutlet weak var replyLabel: UILabel!
     
     @IBAction func viewArticleList(_ sender: Any) {
-        print("글")
-        trueArticleFalseReply = true
+        trueArticleFalseComment = true
         articleCountLabel.textColor = UIColor.hexStringToUIColor(hex: "#0E1949")
         articleLabel.textColor = UIColor.hexStringToUIColor(hex: "#0E1949")
         replyCountLabel.textColor = UIColor.hexStringToUIColor(hex: "#B9BCCB")
@@ -31,8 +32,7 @@ class MyArticleViewController: UIViewController {
     }
     
     @IBAction func viewReplyList(_ sender: Any) {
-        print("댓글")
-        trueArticleFalseReply = false
+        trueArticleFalseComment = false
         articleCountLabel.textColor = UIColor.hexStringToUIColor(hex: "#B9BCCB")
         articleLabel.textColor = UIColor.hexStringToUIColor(hex: "#B9BCCB")
         replyCountLabel.textColor = UIColor.hexStringToUIColor(hex: "#0E1949")
@@ -40,37 +40,126 @@ class MyArticleViewController: UIViewController {
         tableView.reloadData()
     }
     
+    func reloadDatas() {
+        let decoder = JSONDecoder()
+        if trueArticleFalseComment {
+            var newArticles = [Article]()
+            if let userToken = defaults.string(forKey: "userToken") {
+                Alamofire.request("http://13.125.78.152:6789/mypage/mypost", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                    (res) in
+                    switch res.result {
+                    case .success:
+                        if let value = res.result.value {
+                            let json = JSON(value)
+                            for (_, subJson):(String, JSON) in json["result"] {
+                                do {
+                                    let article = try decoder.decode(Article.self, from: subJson.rawData())
+                                    newArticles.append(article)
+                                }
+                                catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                        self.articles = newArticles
+                        self.tableView.reloadData()
+                        break
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                        break
+                    }
+                }
+            }
+        } else {
+            var newComments = [Comment]()
+            if let userToken = defaults.string(forKey: "userToken") {
+                Alamofire.request("http://13.125.78.152:6789/mypage/mycomment", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                    (res) in
+                    switch res.result {
+                    case .success:
+                        if let value = res.result.value {
+                            let json = JSON(value)
+                            for (_, subJson):(String, JSON) in json["result"] {
+                                do {
+                                    let comment = try decoder.decode(Comment.self, from: subJson.rawData())
+                                    newComments.append(comment)
+                                }
+                                catch {
+                                    print(error)
+                                }
+                            }
+                        }
+                        self.comments = newComments
+                        self.tableView.reloadData()
+                        break
+                    case .failure(let err):
+                        print(err.localizedDescription)
+                        break
+                    }
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         myArticleCountView.addBottomBorderWithColor(color: tableView.separatorColor!, width: 0.5)
-        viewArticleList(UIView())
+        viewArticleList(self)
+        
+        let label = UILabel()
+        label.text = "내가 쓴 글"
+        label.font = UIFont(name: "NotoSansCJKkr-Regular", size: 18)
+        label.textColor = UIColor.hexStringToUIColor(hex: "#001960")
+        self.navigationItem.titleView = label
+        
+        let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navi_back_navy"), style: .plain, target: self, action: #selector(backAction))
+        self.navigationItem.setHidesBackButton(true, animated: false)
+        self.navigationItem.setLeftBarButton(backButton, animated: false)
+        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
         self.tableView.register(UINib(nibName: MyPageReplyTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MyPageReplyTableViewCell.reuseIdentifier)
-        // 사용자 글과 댓글 가져오기
+        
+        reloadDatas()
     }
 }
 
+extension MyArticleViewController: UIGestureRecognizerDelegate {}
+
 extension MyArticleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if trueArticleFalseReply {
-//            return articles.count
-//        } else {
-//            return replies.count
-//        }
-        return 6
+        if trueArticleFalseComment {
+            return articles.count
+        } else {
+            return comments.count
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        if trueArticleFalseComment {
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadArticleViewController.reuseIdentifier) as? ReadArticleViewController else { return }
+            vc.article = articles[indexPath.row]
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadArticleViewController.reuseIdentifier) as? ReadArticleViewController else { return }
+            vc.article = Article()
+            vc.article?.board_id = comments[indexPath.row].board_id
+            self.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if trueArticleFalseReply {
+        if trueArticleFalseComment {
             let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier) as! CommunityArticleTableViewCell
+            cell.article = articles[indexPath.row]
             cell.selectionStyle = .none
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyPageReplyTableViewCell.reuseIdentifier) as! MyPageReplyTableViewCell
+            cell.comment = comments[indexPath.row]
             cell.selectionStyle = .none
             return cell
         }

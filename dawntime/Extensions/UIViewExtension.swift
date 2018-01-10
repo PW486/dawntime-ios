@@ -9,6 +9,13 @@
 import UIKit
 
 extension UIView {
+    func addTopBorderWithColor(color: UIColor, width: CGFloat) {
+        let border = CALayer()
+        border.backgroundColor = color.cgColor
+        border.frame = CGRect(x: 0, y: width, width: frame.size.width, height: width)
+        self.layer.addSublayer(border)
+    }
+    
     func addBottomBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()
         border.backgroundColor = color.cgColor

@@ -8,17 +8,16 @@
 
 import UIKit
 
-class MyPageViewController: UIViewController {
+class MyPageViewController: BaseViewController {
+    var logInStatus = false
+    var menus: [String] = ["내가 쓴 글", "스크랩", "쪽지", "찜 목록", "설정", ""]
+    
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var profileView: UIView!
     @IBOutlet weak var logInBtn: UIButton!
     @IBOutlet weak var logInRequireLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var userImage: UIImageView!
-    
-    let defaults = UserDefaults.standard
-    var logInStatus = false
-    var menus: [String] = ["내가 쓴 글", "스크랩", "쪽지", "찜 목록", "설정", ""]
     
     @IBAction func logInAction(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
@@ -45,17 +44,20 @@ class MyPageViewController: UIViewController {
         }
         tableView.reloadData()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileView.addBottomBorderWithColor(color: self.tableView.separatorColor!, width: 1.0)
+        profileView.addBottomBorderWithColor(color: self.tableView.separatorColor!, width: 0.5)
         
-        // tableView Footer line
-//        let px = 1 / UIScreen.main.scale
-//        let frame = CGRect(x: 12, y: 0, width: self.tableView.frame.size.width - 36, height: px)
-//        let line = UIView(frame: frame)
-//        self.tableView.tableFooterView = line
-//        line.backgroundColor = self.tableView.separatorColor
+        let label = UILabel()
+        label.text = "마이페이지"
+        label.font = UIFont(name: "NotoSansCJKkr-Regular", size: 18)
+        label.textColor = UIColor.hexStringToUIColor(hex: "#001960")
+        self.navigationItem.titleView = label
     }
 }
 
