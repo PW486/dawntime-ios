@@ -54,12 +54,43 @@ class CommunityViewController: BaseViewController {
             }
         }
     }
-    
+
     func reloadBySearchTags() {
         var newArticles = [Article]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
             Alamofire.request("http://13.125.78.152:6789/board/tagList", method: .post, parameters: ["tag": searchTags], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        for (_, subJson):(String, JSON) in json["result"] {
+                            do {
+                                let article = try decoder.decode(Article.self, from: subJson.rawData())
+                                newArticles.append(article)
+                            }
+                            catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    self.articles = newArticles
+                    self.tableView.reloadData()
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
+    }
+    
+    func reloadBySearchKeywords() {
+        var newArticles = [Article]()
+        let decoder = JSONDecoder()
+        if let userToken = defaults.string(forKey: "userToken") {
+            Alamofire.request("http://13.125.78.152:6789/board/search", method: .post, parameters: ["search_word": searchKeywords], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
                 case .success:
@@ -289,7 +320,6 @@ extension CommunityViewController: UISearchBarDelegate {
         if let text = searchBar.text {
             searchKeywords = text.components(separatedBy: " ")
         }
-        print(searchKeywords)
-        self.tableView.reloadData()
+        reloadBySearchKeywords()
     }
 }
