@@ -72,11 +72,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>Camera Usage</string>
+	<string>사진 선택 카메라 사용</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Photo Library Additions Usage</string>
+	<string>사진 선택 갤러리 사용</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Photo Library Usage</string>
+	<string>사진 선택 갤러리 사용</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansCJKkr-Black.otf</string>

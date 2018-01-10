@@ -17,7 +17,6 @@ class CommunityViewController: BaseViewController {
     var dimEnabled: Bool = false
     var dropdownSelected: Bool = false
     var searchSelected: Bool = false
-    var tableViewRefreshControl = UIRefreshControl()
     lazy var searchBar = UISearchBarCustom()
     
     @IBOutlet weak var menuDropdownBtn: UIButton!
@@ -222,6 +221,8 @@ class CommunityViewController: BaseViewController {
         tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView), for: .valueChanged)
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
+        
+        reloadDatas()
     }
 }
 

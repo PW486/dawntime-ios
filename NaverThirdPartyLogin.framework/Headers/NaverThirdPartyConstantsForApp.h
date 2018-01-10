@@ -34,6 +34,6 @@ typedef enum {
 
 #define kServiceAppUrlScheme    @"dawntime"
 
-#define kConsumerKey            @"r8rIZfbWKAg61VomsGIO"
-#define kConsumerSecret         @"xPqda_KTK4"
+#define kConsumerKey            @"SMSrJ5GLSLRWZ0lXc6QE"
+#define kConsumerSecret         @"h74JENKxq6"
 #define kServiceAppName         @"네이버 아이디로 로그인"

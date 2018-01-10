@@ -29,6 +29,7 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
                     }
                     if let userToken = data["result"]["user_token"].string {
                         self.defaults.set(userToken, forKey: "userToken")
+                        print(userToken)
                     }
                     
                     self.defaults.set(true, forKey: "logInStatus")

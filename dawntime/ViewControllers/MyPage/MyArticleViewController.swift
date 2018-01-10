@@ -28,7 +28,7 @@ class MyArticleViewController: BaseViewController {
         articleLabel.textColor = UIColor.hexStringToUIColor(hex: "#0E1949")
         replyCountLabel.textColor = UIColor.hexStringToUIColor(hex: "#B9BCCB")
         replyLabel.textColor = UIColor.hexStringToUIColor(hex: "#B9BCCB")
-        tableView.reloadData()
+        reloadDatas()
     }
     
     @IBAction func viewReplyList(_ sender: Any) {
@@ -37,7 +37,7 @@ class MyArticleViewController: BaseViewController {
         articleLabel.textColor = UIColor.hexStringToUIColor(hex: "#B9BCCB")
         replyCountLabel.textColor = UIColor.hexStringToUIColor(hex: "#0E1949")
         replyLabel.textColor = UIColor.hexStringToUIColor(hex: "#0E1949")
-        tableView.reloadData()
+        reloadDatas()
     }
     
     func reloadDatas() {
@@ -99,6 +99,10 @@ class MyArticleViewController: BaseViewController {
                 }
             }
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        reloadDatas()
     }
     
     override func viewDidLoad() {

@@ -27,7 +27,7 @@ class UISearchBarCustom: UISearchBar {
                 imageView.image = #imageLiteral(resourceName: "navi_search_gray");
                 imageView.frame = CGRect(x: 10, y: 3, width: 20, height: 20)
                 textField.addSubview(imageView)
-                let leftView = UIView.init(frame: CGRect(x: 10, y: 0, width: 30, height: 30))
+                let leftView = UIView.init(frame: CGRect(x: 10, y: 0, width: 30, height: 20))
                 textField.leftView = leftView;
                 textField.leftViewMode = UITextFieldViewMode.always
             }

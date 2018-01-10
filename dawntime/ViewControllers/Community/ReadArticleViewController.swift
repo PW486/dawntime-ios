@@ -297,6 +297,8 @@ class ReadArticleViewController: BaseViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyBoard))
         tapGesture.cancelsTouchesInView = false
         self.tableView.addGestureRecognizer(tapGesture)
+        
+        reloadDatas()
     }
 }
 
