@@ -77,6 +77,11 @@
 		8AE4E1F61FFFC5BE00FAD30A /* splash.gif in Resources */ = {isa = PBXBuildFile; fileRef = 8AE4E1F51FFFC5BC00FAD30A /* splash.gif */; };
 		8AE4E2032000780D00FAD30A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4E2022000780D00FAD30A /* LogInViewController.swift */; };
 		8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE4E2042000782200FAD30A /* LogInPopUpViewController.swift */; };
+		8AF11AF82006477D000CFCBC /* SendMsgViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AF72006477D000CFCBC /* SendMsgViewController.swift */; };
+		8AF11AFA2006520D000CFCBC /* MsgTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AF92006520D000CFCBC /* MsgTableViewCell.swift */; };
+		8AF11AFC200658F3000CFCBC /* MsgDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */; };
+		8AF11B0020066D51000CFCBC /* MsgDetailYouTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */; };
+		8AF11B0220066D5E000CFCBC /* MsgDetailMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */; };
 		CBD9DBCAC4B78362662CA705 /* Pods_dawntimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */; };
 		E28FDCEE58AB206F9704208E /* Pods_dawntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FBAEEC06602B8634A04847 /* Pods_dawntime.framework */; };
 /* End PBXBuildFile section */
@@ -194,6 +199,11 @@
 		8AE4E1F51FFFC5BC00FAD30A /* splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = splash.gif; sourceTree = "<group>"; };
 		8AE4E2022000780D00FAD30A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		8AE4E2042000782200FAD30A /* LogInPopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPopUpViewController.swift; sourceTree = "<group>"; };
+		8AF11AF72006477D000CFCBC /* SendMsgViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMsgViewController.swift; sourceTree = "<group>"; };
+		8AF11AF92006520D000CFCBC /* MsgTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgTableViewCell.swift; sourceTree = "<group>"; };
+		8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailViewController.swift; sourceTree = "<group>"; };
+		8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailYouTableViewCell.swift; sourceTree = "<group>"; };
+		8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailMeTableViewCell.swift; sourceTree = "<group>"; };
 		A3F90D5F4940CBC6B4229F00 /* Pods-dawntime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF06CCC928FF578FD97CC5C /* Pods-dawntime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.release.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.release.xcconfig"; sourceTree = "<group>"; };
 		D7524E1432674D22CDF851E0 /* Pods-dawntimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntimeTests/Pods-dawntimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -265,6 +275,7 @@
 				8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */,
 				8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */,
 				8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */,
+				8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */,
 				8A91C12D1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift */,
 			);
 			path = Home;
@@ -282,7 +293,6 @@
 		8A6678351FF91BE50001D13F /* Community */ = {
 			isa = PBXGroup;
 			children = (
-				8A66786F1FF9D3920001D13F /* PeakTimeViewController.swift */,
 				8A6678361FF91C190001D13F /* CommunityViewController.swift */,
 				8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */,
 				8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */,
@@ -294,6 +304,7 @@
 				8A66787C1FFB6D530001D13F /* CreateUpdateArticleViewController.swift */,
 				8A66787E1FFB92020001D13F /* CreateUpdateArticlePhotoCollectionViewCell.swift */,
 				8AC05C041FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift */,
+				8AF11AF72006477D000CFCBC /* SendMsgViewController.swift */,
 			);
 			path = Community;
 			sourceTree = "<group>";
@@ -411,6 +422,10 @@
 				8A7A60221FFE6F8E0042F923 /* MyPageReplyTableViewCell.swift */,
 				8A7A601A1FFD5B7E0042F923 /* MyScrapViewController.swift */,
 				8A7A601C1FFD5BCC0042F923 /* MsgViewController.swift */,
+				8AF11AF92006520D000CFCBC /* MsgTableViewCell.swift */,
+				8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */,
+				8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */,
+				8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */,
 				8A7A601E1FFD5C130042F923 /* MyWishlistViewController.swift */,
 				8A7A60201FFD5C270042F923 /* SettingViewController.swift */,
 				8A7A60291FFF451D0042F923 /* SettingSwitchTableViewCell.swift */,
@@ -806,13 +821,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A66783C1FF91F350001D13F /* Article.swift in Sources */,
+				8AF11AF82006477D000CFCBC /* SendMsgViewController.swift in Sources */,
 				8A7A60191FFD5B4E0042F923 /* MyArticleViewController.swift in Sources */,
 				8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */,
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
+				8AF11AFC200658F3000CFCBC /* MsgDetailViewController.swift in Sources */,
 				8AD750012001E98E00689285 /* BaseViewController.swift in Sources */,
 				8AE3E0AD200317B5007C5592 /* UISearchBarCustom.swift in Sources */,
 				8AD750052002103900689285 /* ReadItemViewController.swift in Sources */,
+				8AF11B0220066D5E000CFCBC /* MsgDetailMeTableViewCell.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
@@ -831,6 +849,8 @@
 				8AC05C051FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift in Sources */,
 				8A7A60171FFD58150042F923 /* MyPageMenuTableViewCell.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
+				8AF11B0020066D51000CFCBC /* MsgDetailYouTableViewCell.swift in Sources */,
+				8AF11AFA2006520D000CFCBC /* MsgTableViewCell.swift in Sources */,
 				8A7A60131FFD57940042F923 /* MyPageViewController.swift in Sources */,
 				8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */,
 				8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */,

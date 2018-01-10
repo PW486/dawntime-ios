@@ -7,3 +7,11 @@
 //
 
 import Foundation
+
+struct Message: Codable {
+    var room_id: Int?
+    var board_title: String?
+    var msg_date: String?
+    var msg_content: String?
+    var user_send: Bool?
+}

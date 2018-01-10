@@ -51,6 +51,12 @@ class MyArticleViewController: BaseViewController {
                     case .success:
                         if let value = res.result.value {
                             let json = JSON(value)
+                            if let articleCount = json["myPost_count"].int {
+                                self.articleCountLabel.text = "\(articleCount)"
+                            }
+                            if let commentCount = json["myCom_count"].int {
+                                self.replyCountLabel.text = "\(commentCount)"
+                            }
                             for (_, subJson):(String, JSON) in json["result"] {
                                 do {
                                     let article = try decoder.decode(Article.self, from: subJson.rawData())
@@ -79,6 +85,12 @@ class MyArticleViewController: BaseViewController {
                     case .success:
                         if let value = res.result.value {
                             let json = JSON(value)
+                            if let articleCount = json["myPost_count"].int {
+                                self.articleCountLabel.text = "\(articleCount)"
+                            }
+                            if let commentCount = json["myCom_count"].int {
+                                self.replyCountLabel.text = "\(commentCount)"
+                            }
                             for (_, subJson):(String, JSON) in json["result"] {
                                 do {
                                     let comment = try decoder.decode(Comment.self, from: subJson.rawData())

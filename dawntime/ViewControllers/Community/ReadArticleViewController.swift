@@ -87,6 +87,19 @@ class ReadArticleViewController: BaseViewController {
         }
     }
     
+    @IBAction func sendAction(_ sender: Any) {
+        if isRecomment == true {
+            if parentComment?.com_parent == 0 {
+                sendComment(com_parent: (parentComment?.com_id)!)
+            } else {
+                sendComment(com_parent: (parentComment?.com_parent)!)
+            }
+            isRecomment = false
+        } else {
+            sendComment(com_parent: 0)
+        }
+    }
+    
     func reloadDatas() {
         var newArticle = Article()
         var newComments = [Comment]()
@@ -203,10 +216,13 @@ class ReadArticleViewController: BaseViewController {
             actionSheetController.addAction(delAction)
         } else {
             let msgAction: UIAlertAction = UIAlertAction(title: "쪽지 보내기", style: .default) { action -> Void in
-                print("쪽지 보내기")
+                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: SendMsgViewController.reuseIdentifier) as? SendMsgViewController else { return }
+                vc.article = self.article
+                self.navigationController?.pushViewController(vc, animated: true)
             }
             let feedbackAction: UIAlertAction = UIAlertAction(title: "글 신고", style: .destructive) { action -> Void in
-                print("글 신고")
+                self.showToast("신고 접수되었습니다.")
             }
             actionSheetController.addAction(msgAction)
             actionSheetController.addAction(feedbackAction)
@@ -234,15 +250,15 @@ class ReadArticleViewController: BaseViewController {
             }
             actionSheetController.addAction(delAction)
         } else {
-            let msgAction: UIAlertAction = UIAlertAction(title: "쪽지 보내기", style: .default) { action -> Void in
+            /* let msgAction: UIAlertAction = UIAlertAction(title: "쪽지 보내기", style: .default) { action -> Void in
                 print("쪽지 보내기")
                 cell.contentView.backgroundColor = UIColor.white
             }
+            actionSheetController.addAction(msgAction) */
             let feedbackAction: UIAlertAction = UIAlertAction(title: "신고", style: .destructive) { action -> Void in
-                print("신고")
+                self.showToast("신고 접수되었습니다.")
                 cell.contentView.backgroundColor = UIColor.white
             }
-            actionSheetController.addAction(msgAction)
             actionSheetController.addAction(feedbackAction)
         }
         let cancelAction: UIAlertAction = UIAlertAction(title: "취소", style: .cancel) { action -> Void in
@@ -416,7 +432,7 @@ extension ReadArticleViewController: UITextFieldDelegate {
     
     @objc func keyboardWillShow(_ notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            self.bottomTableView.constant += keyboardSize.height - self.tabBarController!.tabBar.frame.height
+            self.bottomTableView.constant = 57 + keyboardSize.height - self.tabBarController!.tabBar.frame.height
             
             if let animationDuration = notification.userInfo?[UIKeyboardAnimationDurationUserInfoKey] as? TimeInterval {
                 UIView.animate(withDuration: animationDuration, animations: {

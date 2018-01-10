@@ -183,6 +183,7 @@ class CommunityViewController: BaseViewController {
     
     @objc func initNaviItems() {
         searchBar.text = ""
+        searchKeywords = [String]()
         searchSelected = false
         
         let label = UILabel()
@@ -214,7 +215,9 @@ class CommunityViewController: BaseViewController {
     }
     
     @objc func startReloadTableView(_ sender: UIRefreshControl) {
-        if searchTags.count > 0 {
+        if searchKeywords.count > 0 {
+            reloadBySearchKeywords()
+        } else if searchTags.count > 0 {
             reloadBySearchTags()
         } else {
             reloadDatas()
@@ -223,7 +226,13 @@ class CommunityViewController: BaseViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        reloadDatas()
+        if searchKeywords.count > 0 {
+            reloadBySearchKeywords()
+        } else if searchTags.count > 0 {
+            reloadBySearchTags()
+        } else {
+            reloadDatas()
+        }
         let img = UIImage()
         self.navigationController?.navigationBar.shadowImage = img
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
@@ -234,9 +243,11 @@ class CommunityViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        if dropdownSelected == true { menuDropdownAction(menuDropdownBtn) }
-        self.navigationController?.navigationBar.shadowImage = nil
-        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        UIView.performWithoutAnimation({
+            if dropdownSelected == true { menuDropdownAction(menuDropdownBtn) }
+            self.navigationController?.navigationBar.shadowImage = nil
+            self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
+        })
     }
     
     override func viewDidLoad() {
@@ -320,6 +331,8 @@ extension CommunityViewController: UISearchBarDelegate {
         if let text = searchBar.text {
             searchKeywords = text.components(separatedBy: " ")
         }
-        reloadBySearchKeywords()
+        if searchKeywords.count > 0 {
+            reloadBySearchKeywords()
+        }
     }
 }
