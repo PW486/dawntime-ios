@@ -21,15 +21,15 @@ class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     @objc func scrollToNext() {
         if columns.count > 0 && columnCollectionView.indexPathsForVisibleItems.count != 0 {
-            let indexPath = columnCollectionView.indexPathsForVisibleItems[0]
-            if columnCollectionView.isDragging == false, indexPath.row == columns.count-1  {
-                let firstIndexPath = IndexPath(row: 0, section: indexPath.section)
-                columnCollectionView.scrollToItem(at: firstIndexPath, at: UICollectionViewScrollPosition.right, animated: false)
-            }
-            
-            if columnCollectionView.isDragging == false, indexPath.row < columns.count-1  {
+            var indexPath = columnCollectionView.indexPathsForVisibleItems[0]
+            if columnCollectionView.isDragging == false, indexPath.row < columns.count  {
                 let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
                 columnCollectionView.scrollToItem(at: nextIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
+            }
+            indexPath = columnCollectionView.indexPathsForVisibleItems[0]
+            if columnCollectionView.isDragging == false, indexPath.row == columns.count  {
+                let firstIndexPath = IndexPath(row: 0, section: indexPath.section)
+                columnCollectionView.scrollToItem(at: firstIndexPath, at: UICollectionViewScrollPosition.right, animated: false)
             }
         }
     }
@@ -39,16 +39,24 @@ class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.columnDidSelect(columns[indexPath.row])
+        if columns.count > 0 {
+            delegate?.columnDidSelect(columns[indexPath.row % columns.count])
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return columns.count
+        if columns.count > 0 {
+            return (columns.count + 1)
+        } else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeColumnCollectionViewCell.reuseIdentifier, for: indexPath) as! HomeColumnCollectionViewCell
-        cell.columnImage.kf.setImage(with: URL(string: columns[indexPath.row].column_head!))
+        if columns.count > 0 {
+            cell.columnImage.kf.setImage(with: URL(string: columns[indexPath.row % columns.count].column_head!))
+        }
         return cell
     }
     

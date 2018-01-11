@@ -16,7 +16,7 @@ class UISearchBarCustom: UISearchBar {
         self.sizeToFit()
         self.placeholder = "검색"
         self.setShowsCancelButton(false, animated: false)
-        self.setImage(UIImage(), for: .clear, state: .normal)
+//        self.setImage(UIImage(), for: .clear, state: .normal)
         self.setSearchFieldBackgroundImage(#imageLiteral(resourceName: "navi_searchround_navy"), for: .normal)
         
         for view : UIView in (self.subviews[0]).subviews {
@@ -29,6 +29,7 @@ class UISearchBarCustom: UISearchBar {
                 textField.addSubview(imageView)
                 let leftView = UIView.init(frame: CGRect(x: 10, y: 0, width: 30, height: 20))
                 textField.leftView = leftView;
+                textField.clearButtonMode = .never
                 textField.leftViewMode = UITextFieldViewMode.always
             }
         }

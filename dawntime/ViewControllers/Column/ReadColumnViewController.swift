@@ -55,9 +55,6 @@ class ReadColumnViewController: BaseViewController {
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        self.tableView.estimatedRowHeight = 44
-        
         reloadDatas()
     }
 }
@@ -74,10 +71,13 @@ extension ReadColumnViewController: UITableViewDelegate, UITableViewDataSource {
         cell.selectionStyle = .none
         cell.cardImage.kf.setImage(with: URL(string: columnImage), completionHandler: {
             (image, error, cacheType, imageUrl) in
-            UIView.performWithoutAnimation({
-                tableView.beginUpdates()
-                tableView.endUpdates()
-            })
+            if image != nil {
+                UIView.performWithoutAnimation({
+                    tableView.rowHeight = UIScreen.main.bounds.size.width * (cell.cardImage.image?.size.height)! / (cell.cardImage.image?.size.width)! - 250
+                    tableView.beginUpdates()
+                    tableView.endUpdates()
+                })
+            }
         })
         return cell
     }

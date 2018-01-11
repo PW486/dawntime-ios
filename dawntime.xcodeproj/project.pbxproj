@@ -69,7 +69,6 @@
 		8AD74FFB2000AC5C00689285 /* NaverThirdPartyLogin.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD74FFA2000AC5C00689285 /* NaverThirdPartyLogin.framework */; };
 		8AD74FFC2000AC5C00689285 /* NaverThirdPartyLogin.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD74FFA2000AC5C00689285 /* NaverThirdPartyLogin.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AD750012001E98E00689285 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750002001E98E00689285 /* BaseViewController.swift */; };
-		8AD750032001ED8B00689285 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750022001ED8B00689285 /* ShopViewController.swift */; };
 		8AD750052002103900689285 /* ReadItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD750042002103900689285 /* ReadItemViewController.swift */; };
 		8AD7500720021DD000689285 /* HomeColumnCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */; };
 		8AE3E0AD200317B5007C5592 /* UISearchBarCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE3E0AC200317B5007C5592 /* UISearchBarCustom.swift */; };
@@ -82,6 +81,21 @@
 		8AF11AFC200658F3000CFCBC /* MsgDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */; };
 		8AF11B0020066D51000CFCBC /* MsgDetailYouTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */; };
 		8AF11B0220066D5E000CFCBC /* MsgDetailMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */; };
+		8AF11B042007936A000CFCBC /* ShopTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11B032007936A000CFCBC /* ShopTabBarViewController.swift */; };
+		8AF9A33B2007B71E0089BAF7 /* ShopSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */; };
+		8AF9A33C2007B71E0089BAF7 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32A2007B7190089BAF7 /* ShopDetailViewController.swift */; };
+		8AF9A33D2007B71E0089BAF7 /* GoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32B2007B71A0089BAF7 /* GoodsCell.swift */; };
+		8AF9A33E2007B71E0089BAF7 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32C2007B71A0089BAF7 /* CategoryCell.swift */; };
+		8AF9A33F2007B71E0089BAF7 /* ShopSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32D2007B71A0089BAF7 /* ShopSearchBar.swift */; };
+		8AF9A3402007B71E0089BAF7 /* ShopSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32E2007B71A0089BAF7 /* ShopSearchViewController.swift */; };
+		8AF9A3412007B71E0089BAF7 /* DetailCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9A32F2007B71B0089BAF7 /* DetailCategoryCell.xib */; };
+		8AF9A3422007B71E0089BAF7 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9A3302007B71B0089BAF7 /* GoodsCell.xib */; };
+		8AF9A3442007B71E0089BAF7 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */; };
+		8AF9A3452007B71E0089BAF7 /* DetailCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3332007B71C0089BAF7 /* DetailCategoryCell.swift */; };
+		8AF9A3492007B71E0089BAF7 /* ShopDelegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3372007B71C0089BAF7 /* ShopDelegation.swift */; };
+		8AF9A34A2007B71E0089BAF7 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3382007B71D0089BAF7 /* CategoryModel.swift */; };
+		8AF9A34B2007B71E0089BAF7 /* ConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3392007B71D0089BAF7 /* ConstraintsExtension.swift */; };
+		8AF9A34C2007B71E0089BAF7 /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A33A2007B71D0089BAF7 /* CollectionViewExtension.swift */; };
 		CBD9DBCAC4B78362662CA705 /* Pods_dawntimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */; };
 		E28FDCEE58AB206F9704208E /* Pods_dawntime.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30FBAEEC06602B8634A04847 /* Pods_dawntime.framework */; };
 /* End PBXBuildFile section */
@@ -191,7 +205,6 @@
 		8AD74FF22000A9C700689285 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NaverThirdPartyLogin.framework; path = "../../../Downloads/naveridlogin-sdk-ios-4.0-1.9/NaverThirdPartyLogin.framework"; sourceTree = "<group>"; };
 		8AD74FFA2000AC5C00689285 /* NaverThirdPartyLogin.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = NaverThirdPartyLogin.framework; sourceTree = "<group>"; };
 		8AD750002001E98E00689285 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		8AD750022001ED8B00689285 /* ShopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		8AD750042002103900689285 /* ReadItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadItemViewController.swift; sourceTree = "<group>"; };
 		8AD7500620021DD000689285 /* HomeColumnCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnCollectionViewCell.swift; sourceTree = "<group>"; };
 		8AE3E0AC200317B5007C5592 /* UISearchBarCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISearchBarCustom.swift; sourceTree = "<group>"; };
@@ -204,6 +217,21 @@
 		8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailViewController.swift; sourceTree = "<group>"; };
 		8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailYouTableViewCell.swift; sourceTree = "<group>"; };
 		8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailMeTableViewCell.swift; sourceTree = "<group>"; };
+		8AF11B032007936A000CFCBC /* ShopTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTabBarViewController.swift; sourceTree = "<group>"; };
+		8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopSearchController.swift; sourceTree = "<group>"; };
+		8AF9A32A2007B7190089BAF7 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
+		8AF9A32B2007B71A0089BAF7 /* GoodsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsCell.swift; sourceTree = "<group>"; };
+		8AF9A32C2007B71A0089BAF7 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		8AF9A32D2007B71A0089BAF7 /* ShopSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopSearchBar.swift; sourceTree = "<group>"; };
+		8AF9A32E2007B71A0089BAF7 /* ShopSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopSearchViewController.swift; sourceTree = "<group>"; };
+		8AF9A32F2007B71B0089BAF7 /* DetailCategoryCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailCategoryCell.xib; sourceTree = "<group>"; };
+		8AF9A3302007B71B0089BAF7 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
+		8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
+		8AF9A3332007B71C0089BAF7 /* DetailCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCategoryCell.swift; sourceTree = "<group>"; };
+		8AF9A3372007B71C0089BAF7 /* ShopDelegation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDelegation.swift; sourceTree = "<group>"; };
+		8AF9A3382007B71D0089BAF7 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		8AF9A3392007B71D0089BAF7 /* ConstraintsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsExtension.swift; sourceTree = "<group>"; };
+		8AF9A33A2007B71D0089BAF7 /* CollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
 		A3F90D5F4940CBC6B4229F00 /* Pods-dawntime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.debug.xcconfig"; sourceTree = "<group>"; };
 		AAF06CCC928FF578FD97CC5C /* Pods-dawntime.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.release.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.release.xcconfig"; sourceTree = "<group>"; };
 		D7524E1432674D22CDF851E0 /* Pods-dawntimeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntimeTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntimeTests/Pods-dawntimeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -349,7 +377,21 @@
 		8A66786E1FF9CFCA0001D13F /* Shop */ = {
 			isa = PBXGroup;
 			children = (
-				8AD750022001ED8B00689285 /* ShopViewController.swift */,
+				8AF9A32C2007B71A0089BAF7 /* CategoryCell.swift */,
+				8AF9A3382007B71D0089BAF7 /* CategoryModel.swift */,
+				8AF9A33A2007B71D0089BAF7 /* CollectionViewExtension.swift */,
+				8AF9A3392007B71D0089BAF7 /* ConstraintsExtension.swift */,
+				8AF9A3332007B71C0089BAF7 /* DetailCategoryCell.swift */,
+				8AF9A32F2007B71B0089BAF7 /* DetailCategoryCell.xib */,
+				8AF9A32B2007B71A0089BAF7 /* GoodsCell.swift */,
+				8AF9A3302007B71B0089BAF7 /* GoodsCell.xib */,
+				8AF9A3372007B71C0089BAF7 /* ShopDelegation.swift */,
+				8AF9A32A2007B7190089BAF7 /* ShopDetailViewController.swift */,
+				8AF9A32D2007B71A0089BAF7 /* ShopSearchBar.swift */,
+				8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */,
+				8AF9A32E2007B71A0089BAF7 /* ShopSearchViewController.swift */,
+				8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */,
+				8AF11B032007936A000CFCBC /* ShopTabBarViewController.swift */,
 				8AD750042002103900689285 /* ReadItemViewController.swift */,
 			);
 			path = Shop;
@@ -621,9 +663,11 @@
 				8A6678601FF9C6BC0001D13F /* NotoSansCJKkr-Regular.otf in Resources */,
 				8A6678611FF9C6BC0001D13F /* NotoSansCJKkr-Thin.otf in Resources */,
 				8A6678621FF9C6BC0001D13F /* NotoSansMonoCJKkr-Bold.otf in Resources */,
+				8AF9A3412007B71E0089BAF7 /* DetailCategoryCell.xib in Resources */,
 				8A6678631FF9C6BC0001D13F /* NotoSansMonoCJKkr-Regular.otf in Resources */,
 				8AE4E1F61FFFC5BE00FAD30A /* splash.gif in Resources */,
 				8A7A60271FFF3EDE0042F923 /* MyPageReplyTableViewCell.xib in Resources */,
+				8AF9A3422007B71E0089BAF7 /* GoodsCell.xib in Resources */,
 				8A6AD0FA1FF89DCE00D57DF8 /* LaunchScreen.storyboard in Resources */,
 				8A7A60251FFF39480042F923 /* CommunityArticleTableViewCell.xib in Resources */,
 				8A91C11E1FF8B66900524200 /* Assets.xcassets in Resources */,
@@ -832,6 +876,7 @@
 				8AD750052002103900689285 /* ReadItemViewController.swift in Sources */,
 				8AF11B0220066D5E000CFCBC /* MsgDetailMeTableViewCell.swift in Sources */,
 				8A91C1241FF8CA2200524200 /* NSObjectExtension.swift in Sources */,
+				8AF9A3442007B71E0089BAF7 /* ShopViewController.swift in Sources */,
 				8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */,
 				8A66786B1FF9CBA30001D13F /* Column.swift in Sources */,
 				8A7A601F1FFD5C130042F923 /* MyWishlistViewController.swift in Sources */,
@@ -845,12 +890,15 @@
 				8A7A602A1FFF451D0042F923 /* SettingSwitchTableViewCell.swift in Sources */,
 				8A6AD0F01FF89DCE00D57DF8 /* AppDelegate.swift in Sources */,
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
+				8AF9A34C2007B71E0089BAF7 /* CollectionViewExtension.swift in Sources */,
 				8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */,
+				8AF9A3492007B71E0089BAF7 /* ShopDelegation.swift in Sources */,
 				8AC05C051FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift in Sources */,
 				8A7A60171FFD58150042F923 /* MyPageMenuTableViewCell.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
 				8AF11B0020066D51000CFCBC /* MsgDetailYouTableViewCell.swift in Sources */,
 				8AF11AFA2006520D000CFCBC /* MsgTableViewCell.swift in Sources */,
+				8AF9A3452007B71E0089BAF7 /* DetailCategoryCell.swift in Sources */,
 				8A7A60131FFD57940042F923 /* MyPageViewController.swift in Sources */,
 				8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */,
 				8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */,
@@ -858,10 +906,18 @@
 				8A66787F1FFB92020001D13F /* CreateUpdateArticlePhotoCollectionViewCell.swift in Sources */,
 				8A7A602C1FFF508E0042F923 /* UISwitchCustom.swift in Sources */,
 				8A7A601D1FFD5BCC0042F923 /* MsgViewController.swift in Sources */,
+				8AF11B042007936A000CFCBC /* ShopTabBarViewController.swift in Sources */,
+				8AF9A33C2007B71E0089BAF7 /* ShopDetailViewController.swift in Sources */,
+				8AF9A33F2007B71E0089BAF7 /* ShopSearchBar.swift in Sources */,
 				8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */,
+				8AF9A34B2007B71E0089BAF7 /* ConstraintsExtension.swift in Sources */,
+				8AF9A33B2007B71E0089BAF7 /* ShopSearchController.swift in Sources */,
+				8AF9A33D2007B71E0089BAF7 /* GoodsCell.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
+				8AF9A3402007B71E0089BAF7 /* ShopSearchViewController.swift in Sources */,
 				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,
+				8AF9A34A2007B71E0089BAF7 /* CategoryModel.swift in Sources */,
 				8A3F8E851FFF9F1300E7990B /* SplashViewController.swift in Sources */,
 				8A91C1261FF8CAF200524200 /* HomeShopTableViewCell.swift in Sources */,
 				8A66787D1FFB6D530001D13F /* CreateUpdateArticleViewController.swift in Sources */,
@@ -873,8 +929,8 @@
 				8AE3E0B32003E205007C5592 /* ReadArticleChildCommentTableViewCell.swift in Sources */,
 				8AE4E2032000780D00FAD30A /* LogInViewController.swift in Sources */,
 				8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */,
-				8AD750032001ED8B00689285 /* ShopViewController.swift in Sources */,
 				8A91C1221FF8C69900524200 /* HomeViewController.swift in Sources */,
+				8AF9A33E2007B71E0089BAF7 /* CategoryCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
