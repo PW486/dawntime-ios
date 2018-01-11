@@ -243,11 +243,9 @@ class CommunityViewController: BaseViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        UIView.performWithoutAnimation({
-            if dropdownSelected == true { menuDropdownAction(menuDropdownBtn) }
-            self.navigationController?.navigationBar.shadowImage = nil
-            self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        })
+        if dropdownSelected == true { menuDropdownAction(menuDropdownBtn) }
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
     }
     
     override func viewDidLoad() {
@@ -309,7 +307,7 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        return 88
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

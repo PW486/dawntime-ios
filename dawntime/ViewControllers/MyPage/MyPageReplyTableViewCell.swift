@@ -11,6 +11,7 @@ import Kingfisher
 
 class MyPageReplyTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
+    @IBOutlet weak var boardImageContainer: UIView!
     @IBOutlet weak var boardImageView: UIImageView!
     @IBOutlet weak var contentLabel: UILabel!
     
@@ -19,8 +20,10 @@ class MyPageReplyTableViewCell: UITableViewCell {
             self.categoryLabel.text = comment?.board_tag
             if let img = comment?.board_image {
                 self.boardImageView.kf.setImage(with: URL(string: img))
+                self.boardImageContainer.isHidden = false
             } else {
                 self.boardImageView.image = nil
+                self.boardImageContainer.isHidden = true
             }
             self.contentLabel.text = comment?.com_content
         }

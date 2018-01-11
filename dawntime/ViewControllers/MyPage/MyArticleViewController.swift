@@ -115,6 +115,14 @@ class MyArticleViewController: BaseViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         reloadDatas()
+        let img = UIImage()
+        self.navigationController?.navigationBar.shadowImage = img
+        self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.navigationBar.shadowImage = nil
+        self.navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
     }
     
     override func viewDidLoad() {
@@ -134,6 +142,9 @@ class MyArticleViewController: BaseViewController {
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        self.tableView.estimatedRowHeight = 44
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
         self.tableView.register(UINib(nibName: MyPageReplyTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MyPageReplyTableViewCell.reuseIdentifier)
@@ -182,6 +193,14 @@ extension MyArticleViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
+        if trueArticleFalseComment {
+            return 88
+        } else {
+            if comments[indexPath.row].board_image == nil {
+                return 62
+            } else {
+                return 88
+            }
+        }
     }
 }

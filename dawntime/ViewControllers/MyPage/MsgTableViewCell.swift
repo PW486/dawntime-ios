@@ -17,7 +17,15 @@ class MsgTableViewCell: UITableViewCell {
         didSet {
             self.titleLabel.text = (message?.board_title)! + " 에서 보낸 쪽지"
             self.contentLabel.text = message?.msg_content
-            self.dateLabel.text = message?.msg_date
+            
+            let dateFormatterGet = DateFormatter()
+            dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss'.000Z'"
+            
+            let dateFormatterPrint = DateFormatter()
+            dateFormatterPrint.dateFormat = "yyyy.MM.dd\nHH시mm분"
+            
+            let date = dateFormatterGet.date(from: (message?.msg_date)!)
+            self.dateLabel.text = dateFormatterPrint.string(from: date!)
         }
     }
 

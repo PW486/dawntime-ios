@@ -15,7 +15,7 @@ class HomeViewController: BaseViewController {
     var goodsItems = [GoodsItem]()
     var columns = [Column]()
     var articles = [Article]()
-    var cellHeights: [CGFloat] = [125,125,1120]
+    var cellHeights: [CGFloat] = [125, UIScreen.main.bounds.size.width * 72 / 360 + 42, 1120]
     
     @IBOutlet weak var tableView: UITableView!
     

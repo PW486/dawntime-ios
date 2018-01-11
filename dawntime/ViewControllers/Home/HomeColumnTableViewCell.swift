@@ -13,20 +13,29 @@ protocol ColumnClickProtocol {
     func columnDidSelect(_ column: Column)
 }
 
-class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     var delegate: ColumnClickProtocol?
     var columns = [Column]()
     
     @IBOutlet weak var columnCollectionView: UICollectionView!
     
     @objc func scrollToNext() {
-        if columns.count > 0 {
+        if columns.count > 0 && columnCollectionView.indexPathsForVisibleItems.count != 0 {
             let indexPath = columnCollectionView.indexPathsForVisibleItems[0]
+            if columnCollectionView.isDragging == false, indexPath.row == columns.count-1  {
+                let firstIndexPath = IndexPath(row: 0, section: indexPath.section)
+                columnCollectionView.scrollToItem(at: firstIndexPath, at: UICollectionViewScrollPosition.right, animated: false)
+            }
+            
             if columnCollectionView.isDragging == false, indexPath.row < columns.count-1  {
                 let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
                 columnCollectionView.scrollToItem(at: nextIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
             }
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.width * 72 / 360)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
