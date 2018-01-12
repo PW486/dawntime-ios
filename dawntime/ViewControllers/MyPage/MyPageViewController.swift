@@ -80,9 +80,8 @@ extension MyPageViewController: UITableViewDelegate, UITableViewDataSource {
                 guard let vc = storyBoard.instantiateViewController(withIdentifier: MsgViewController.reuseIdentifier) as? MsgViewController else { return }
                 self.navigationController?.pushViewController(vc, animated: true)
             case 3:
-                print("ShopWishList")
-//                guard let vc = storyBoard.instantiateViewController(withIdentifier: MyWishlistViewController.reuseIdentifier) as? MyWishlistViewController else { return }
-//                self.navigationController?.pushViewController(vc, animated: true)
+                guard let vc = storyBoard.instantiateViewController(withIdentifier: MyWishlistViewController.reuseIdentifier) as? MyWishlistViewController else { return }
+                self.navigationController?.pushViewController(vc, animated: true)
             case 4:
                 guard let vc = storyBoard.instantiateViewController(withIdentifier: SettingViewController.reuseIdentifier) as? SettingViewController else { return }
                 self.navigationController?.pushViewController(vc, animated: true)

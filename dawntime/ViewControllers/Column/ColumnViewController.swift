@@ -96,7 +96,7 @@ class ColumnViewController: BaseViewController {
         var newColumns = [Column]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
-            Alamofire.request("http://13.125.78.152:6789/column/search", method: .post, parameters: ["column_title": keyword], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+            Alamofire.request("http://13.125.78.152:6789/column/searchIos", method: .post, parameters: ["column_title": keyword], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
                 case .success:

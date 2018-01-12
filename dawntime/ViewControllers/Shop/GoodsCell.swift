@@ -8,21 +8,47 @@
 
 import UIKit
 import Kingfisher
+import Alamofire
+import SwiftyJSON
 
 @IBDesignable class GoodsCell: UICollectionViewCell {
+    let defaults = UserDefaults.standard
+    
     @IBOutlet weak var goodsImageView: UIImageView!
     @IBOutlet weak var goodsTitleLabel: UILabel!
     @IBOutlet weak var goodsPriceLabel: UILabel!
     @IBOutlet weak var likeButton: UIButton!
     
     @IBAction func likeAction(_ sender: Any) {
-        
+        if let userToken = defaults.string(forKey: "userToken"), let goodsID = goodsItem?.goods_id {
+            Alamofire.request("http://13.125.78.152:6789/shop/like/\(goodsID)", method: .put, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        print(json)
+                        if json["status"].bool!, let like = self.goodsItem?.goods_like, like == 1 {
+                            self.goodsItem?.goods_like = 0
+                            self.likeButton.setImage(#imageLiteral(resourceName: "shop_tab_heart_line"), for: .normal)
+                        } else {
+                            self.goodsItem?.goods_like = 1
+                            self.likeButton.setImage(#imageLiteral(resourceName: "shop_tab_heart_solid"), for: .normal)
+                        }
+                    }
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
     }
     
     var goodsItem: GoodsItem? {
         didSet {
             self.goodsTitleLabel.text = goodsItem?.goods_name
-            self.goodsPriceLabel.text = (goodsItem?.goods_price)! + "원"
+            self.goodsPriceLabel.text = goodsItem?.goods_price ?? "0" + "원"
             if let img = goodsItem?.goods_image {
                 self.goodsImageView.kf.setImage(with: URL(string: img))
             }

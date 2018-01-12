@@ -46,6 +46,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="61" height="34"/>
             <connections>
+                <outlet property="titleContainer" destination="8Wu-9z-Okm" id="OJE-L0-NtD"/>
                 <outlet property="titleLabel" destination="p67-p3-xzT" id="pLL-Hc-MCX"/>
             </connections>
             <point key="canvasLocation" x="39.5" y="46"/>

@@ -100,9 +100,6 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
         loginConn?.requestThirdPartyLogin()
     }
     
-    @IBAction func googleLogin(_ sender: Any) {
-    }
-    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

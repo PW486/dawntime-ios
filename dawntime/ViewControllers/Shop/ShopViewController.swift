@@ -50,7 +50,6 @@ class ShopViewController: BaseViewController {
         } else {
             url = "http://13.125.78.152:6789/shop/\(shopModel.category.rawValue)/\(keywordEncode)/\(shopModel.sort.rawValue)"
         }
-        print(url!)
         var newGoodsItems = [GoodsItem]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
@@ -102,7 +101,9 @@ class ShopViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        if shopModel.keyword == "NEW" || shopModel.keyword == "BEST" || shopModel.keyword == "CATEGORY" || shopModel.keyword == "BRAND" {
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
+        }
     }
     
     override func viewDidLoad() {
@@ -122,6 +123,15 @@ class ShopViewController: BaseViewController {
             self.shopModel.sort = ShopModel.Sort(rawValue: index+1)!
             self.sortButton.setTitle(item, for: .normal)
             self.reloadDatas()
+        }
+        
+        if shopModel.keyword != "NEW" && shopModel.keyword != "BEST" && shopModel.keyword != "CATEGORY" && shopModel.keyword != "BRAND" {
+            let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "shop_navi_back"), style: .plain, target: self, action: #selector(backAction))
+            self.navigationItem.setHidesBackButton(true, animated: false)
+            self.navigationItem.setLeftBarButton(backButton, animated: false)
+            
+            self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+            self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
         
         self.shopCollectionView.collectionViewLayout.invalidateLayout()

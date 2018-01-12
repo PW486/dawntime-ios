@@ -10,8 +10,12 @@ import UIKit
 
 class DetailCategoryCell: UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleContainer: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        titleContainer.layer.masksToBounds = false
+        titleContainer.layer.cornerRadius = 3
+        titleContainer.clipsToBounds = true
     }
 }

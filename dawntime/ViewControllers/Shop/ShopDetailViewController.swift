@@ -40,10 +40,38 @@ class ShopDetailViewController: BaseViewController {
             if let price = self.goodsItem?.goods_price {
                 self.priceLabel.text = price
             }
+            if let like = self.goodsItem?.goods_like, like == 1 {
+                self.likeButton.setImage(#imageLiteral(resourceName: "shop_view_heart_solid"), for: .normal)
+            } else {
+                self.likeButton.setImage(#imageLiteral(resourceName: "shop_view_heart_line"), for: .normal)
+            }
         }
     }
     
     @IBAction func likeAction(_ sender: Any) {
+        if let userToken = defaults.string(forKey: "userToken"), let goodsID = goodsItem?.goods_id {
+            Alamofire.request("http://13.125.78.152:6789/shop/like/\(goodsID)", method: .put, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+                (res) in
+                switch res.result {
+                case .success:
+                    if let value = res.result.value {
+                        let json = JSON(value)
+                        print(json)
+                        if json["status"].bool!, let like = self.goodsItem?.goods_like, like == 1 {
+                            self.goodsItem?.goods_like = 0
+                            self.likeButton.setImage(#imageLiteral(resourceName: "shop_view_heart_line"), for: .normal)
+                        } else {
+                            self.goodsItem?.goods_like = 1
+                            self.likeButton.setImage(#imageLiteral(resourceName: "shop_view_heart_solid"), for: .normal)
+                        }
+                    }
+                    break
+                case .failure(let err):
+                    print(err.localizedDescription)
+                    break
+                }
+            }
+        }
     }
     
     @IBAction func goToShop(_ sender: Any) {

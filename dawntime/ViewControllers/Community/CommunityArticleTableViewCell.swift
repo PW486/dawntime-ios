@@ -22,45 +22,43 @@ class CommunityArticleTableViewCell: UITableViewCell {
     
     var article: Article? {
         willSet {
-            self.categoryLabel.text = ""
-            self.categoryLabel.text = article?.board_tag
-            if let img = article?.board_image {
+            self.categoryLabel.text = newValue?.board_tag
+            if let img = newValue?.board_image {
                 self.boardImageView.kf.setImage(with: URL(string: img))
             } else {
                 self.boardImageView.image = nil
             }
-            if let title = article?.board_title {
+            if let title = newValue?.board_title {
                 self.titleLabel.text = title
             } else {
                 self.titleLabel.text = ""
             }
-            if let content = article?.board_content {
+            if let content = newValue?.board_content {
                 self.contentLabel.text = content
             } else {
                 self.contentLabel.text = ""
             }
-            
-            if let user_like = article?.user_like, user_like {
+            if let user_like = newValue?.user_like, user_like {
                 self.fireImage.image = #imageLiteral(resourceName: "view_fire_red")
             } else {
                 self.fireImage.image = #imageLiteral(resourceName: "view_unfire_navy")
             }
-            if let board_like = article?.board_like {
+            if let board_like = newValue?.board_like {
                 self.fireLabel.text = "\(board_like)"
             } else {
                 self.fireLabel.text = "0"
             }
-            if let com_count = article?.com_count {
+            if let com_count = newValue?.com_count {
                 self.commentLabel.text = "\(com_count)"
             } else {
                 self.commentLabel.text = "0"
             }
-            if let user_scrap = article?.user_scrap, user_scrap {
+            if let user_scrap = newValue?.user_scrap, user_scrap {
                 self.scrapImage.image = #imageLiteral(resourceName: "view_scrap_yellow")
             } else {
                 self.scrapImage.image = #imageLiteral(resourceName: "view_unscrap_navy")
             }
-            if let scrap_count = article?.scrap_count {
+            if let scrap_count = newValue?.scrap_count {
                 self.scrapLabel.text = "\(scrap_count)"
             } else {
                 self.scrapLabel.text = "0"

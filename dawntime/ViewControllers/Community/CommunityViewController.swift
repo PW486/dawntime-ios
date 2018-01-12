@@ -11,7 +11,11 @@ import Alamofire
 import SwiftyJSON
 
 class CommunityViewController: BaseViewController {
-    var articles = [Article]()
+    var articles = [Article]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
     var searchTags = [String]()
     var searchKeywords = [String]()
     var dimEnabled: Bool = false
@@ -45,7 +49,6 @@ class CommunityViewController: BaseViewController {
                         }
                     }
                     self.articles = newArticles
-                    self.tableView.reloadData()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -76,7 +79,6 @@ class CommunityViewController: BaseViewController {
                         }
                     }
                     self.articles = newArticles
-                    self.tableView.reloadData()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -107,7 +109,6 @@ class CommunityViewController: BaseViewController {
                         }
                     }
                     self.articles = newArticles
-                    self.tableView.reloadData()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -261,8 +262,6 @@ class CommunityViewController: BaseViewController {
         tableView.refreshControl?.addTarget(self, action: #selector(startReloadTableView), for: .valueChanged)
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
-        
-        reloadDatas()
     }
 }
 
@@ -312,12 +311,12 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier, for: indexPath) as! CommunityArticleTableViewCell
+        cell.article = nil
         DispatchQueue.main.async {
-            
-            cell.article = self.articles[indexPath.row]
+            [weak self] in
+            cell.article = self?.articles[indexPath.row]
             cell.selectionStyle = .none
         }
-       
         return cell
     }
 }

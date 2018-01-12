@@ -8,6 +8,8 @@
 
 import UIKit
 
+extension ShopViewController: UIGestureRecognizerDelegate {}
+
 extension ShopViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -104,7 +106,7 @@ extension ShopViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDe
             self.view.layoutIfNeeded()
         })
         timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(reshowExitButton), userInfo: nil, repeats: false)
+        timer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(reshowExitButton), userInfo: nil, repeats: false)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

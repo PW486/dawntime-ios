@@ -12,9 +12,28 @@ import SwiftyJSON
 
 class HomeViewController: BaseViewController {
     var shopCell: HomeShopTableViewCell?
-    var goodsItems = [GoodsItem]()
-    var columns = [Column]()
-    var articles = [Article]()
+    var columnCell: HomeColumnTableViewCell?
+    var peakCell: HomePeakTimeTableViewCell?
+    var goodsItems = [GoodsItem]() {
+        willSet{
+            self.shopCell?.goodsItems = newValue
+            self.shopCell?.shopCollectionView.reloadData()
+        }
+    }
+    var columns = [Column]() {
+        willSet{
+            self.columnCell?.columns = newValue
+            self.columnCell?.columnCollectionView.reloadData()
+        }
+    }
+    var articles = [Article]() {
+        willSet{
+            self.cellHeights[2] = CGFloat((newValue.count+1)/2 * 215 + 35)
+            self.peakCell?.articles = newValue
+            self.peakCell?.peakTimeCollectionView.reloadData()
+            self.tableView.reloadData()
+        }
+    }
     var cellHeights: [CGFloat] = [125, UIScreen.main.bounds.size.width * 72 / 360 + 42, 1120]
     
     @IBOutlet weak var tableView: UITableView!
@@ -112,8 +131,6 @@ class HomeViewController: BaseViewController {
                     self.goodsItems = newGoodsItems
                     self.columns = newColumns
                     self.articles = newArticles
-                    self.cellHeights[2] = CGFloat((self.articles.count+1)/2 * 215 + 35)
-                    self.tableView.reloadData()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -130,7 +147,7 @@ class HomeViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navi_dawntime_navy"))
         self.navigationController?.navigationBar.barTintColor = UIColor.white
-        self.shopCell?.shopCollectionView.reloadData()
+        reloadDatas()
     }
     
     override func viewDidLoad() {
@@ -140,7 +157,6 @@ class HomeViewController: BaseViewController {
         initSettingAndCheckLock()
         
         self.tableView.separatorStyle = .none
-        reloadDatas()
     }
 }
 
@@ -200,20 +216,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             shopCell = tableView.dequeueReusableCell(withIdentifier: HomeShopTableViewCell.reuseIdentifier) as? HomeShopTableViewCell
             shopCell?.delegate = self
             shopCell?.goodsItems = self.goodsItems
-            shopCell?.shopCollectionView.reloadData()
             return shopCell!
         case 1:
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomeColumnTableViewCell.reuseIdentifier) as! HomeColumnTableViewCell
-            cell.delegate = self
-            cell.columns = self.columns
-            cell.columnCollectionView.reloadData()
-            return cell
+            columnCell = tableView.dequeueReusableCell(withIdentifier: HomeColumnTableViewCell.reuseIdentifier) as? HomeColumnTableViewCell
+            columnCell?.delegate = self
+            columnCell?.columns = self.columns
+            return columnCell!
         default:
-            let cell = tableView.dequeueReusableCell(withIdentifier: HomePeakTimeTableViewCell.reuseIdentifier) as! HomePeakTimeTableViewCell
-            cell.delegate = self
-            cell.articles = self.articles
-            cell.peakTimeCollectionView.reloadData()
-            return cell
+            peakCell = tableView.dequeueReusableCell(withIdentifier: HomePeakTimeTableViewCell.reuseIdentifier) as? HomePeakTimeTableViewCell
+            peakCell?.delegate = self
+            peakCell?.articles = self.articles
+            return peakCell!
         }
     }
 }

@@ -29,7 +29,8 @@ class HomePeakTimeTableViewCell: UITableViewCell, UICollectionViewDelegate, UICo
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PeakTimeCollectionViewCell.reuseIdentifier, for: indexPath) as! PeakTimeCollectionViewCell
-        cell.backgroundImage.image = backImages[Int(arc4random_uniform(4))]
+        //        cell.backgroundImage.image = backImages[Int(arc4random_uniform(4))]
+        cell.backgroundImage.image = backImages[indexPath.row % 4]
         cell.article = articles[indexPath.row]
         return cell
     }

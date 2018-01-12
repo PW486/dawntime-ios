@@ -11,8 +11,16 @@ import Alamofire
 import SwiftyJSON
 
 class MyArticleViewController: BaseViewController {
-    var articles = [Article]()
-    var comments = [Comment]()
+    var articles = [Article]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
+    var comments = [Comment]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
     var trueArticleFalseComment = true
     
     @IBOutlet weak var tableView: UITableView!
@@ -68,7 +76,6 @@ class MyArticleViewController: BaseViewController {
                             }
                         }
                         self.articles = newArticles
-                        self.tableView.reloadData()
                         break
                     case .failure(let err):
                         print(err.localizedDescription)
@@ -102,7 +109,6 @@ class MyArticleViewController: BaseViewController {
                             }
                         }
                         self.comments = newComments
-                        self.tableView.reloadData()
                         break
                     case .failure(let err):
                         print(err.localizedDescription)
@@ -114,10 +120,10 @@ class MyArticleViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        reloadDatas()
         let img = UIImage()
         self.navigationController?.navigationBar.shadowImage = img
         self.navigationController?.navigationBar.setBackgroundImage(img, for: UIBarMetrics.default)
+        reloadDatas()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -148,8 +154,6 @@ class MyArticleViewController: BaseViewController {
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
         self.tableView.register(UINib(nibName: MyPageReplyTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: MyPageReplyTableViewCell.reuseIdentifier)
-        
-        reloadDatas()
     }
 }
 
@@ -181,13 +185,21 @@ extension MyArticleViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if trueArticleFalseComment {
             let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier) as! CommunityArticleTableViewCell
-            cell.article = articles[indexPath.row]
-            cell.selectionStyle = .none
+            cell.article = nil
+            DispatchQueue.main.async {
+                [weak self] in
+                cell.article = self?.articles[indexPath.row]
+                cell.selectionStyle = .none
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: MyPageReplyTableViewCell.reuseIdentifier) as! MyPageReplyTableViewCell
-            cell.comment = comments[indexPath.row]
-            cell.selectionStyle = .none
+            cell.comment = nil
+            DispatchQueue.main.async {
+                [weak self] in
+                cell.comment = self?.comments[indexPath.row]
+                cell.selectionStyle = .none
+            }
             return cell
         }
     }

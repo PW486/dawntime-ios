@@ -64,6 +64,9 @@
 		8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */; };
 		8A91C12C1FF8D62000524200 /* HomePeakTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */; };
 		8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91C12D1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift */; };
+		8A9D59BA2009174400F43E76 /* ShopSearchPopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D59B92009174400F43E76 /* ShopSearchPopCollectionViewCell.swift */; };
+		8A9D59BE2009178700F43E76 /* ShopSearchRecentCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D59BD2009178700F43E76 /* ShopSearchRecentCollectionViewCell.swift */; };
+		8A9D59C02009198200F43E76 /* ShopSearchDelegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9D59BF2009198200F43E76 /* ShopSearchDelegation.swift */; };
 		8AC05C051FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C041FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift */; };
 		8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */; };
 		8AC05C0B1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC05C0A1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift */; };
@@ -203,6 +206,9 @@
 		8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeColumnTableViewCell.swift; sourceTree = "<group>"; };
 		8A91C12B1FF8D62000524200 /* HomePeakTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePeakTimeTableViewCell.swift; sourceTree = "<group>"; };
 		8A91C12D1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeakTimeCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A9D59B92009174400F43E76 /* ShopSearchPopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSearchPopCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A9D59BD2009178700F43E76 /* ShopSearchRecentCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSearchRecentCollectionViewCell.swift; sourceTree = "<group>"; };
+		8A9D59BF2009198200F43E76 /* ShopSearchDelegation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopSearchDelegation.swift; sourceTree = "<group>"; };
 		8AC05C041FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUpdateArticleCategoryViewController.swift; sourceTree = "<group>"; };
 		8AC05C061FFC7FB600D99A23 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		8AC05C0A1FFCC3D200D99A23 /* ReadArticleImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadArticleImageTableViewCell.swift; sourceTree = "<group>"; };
@@ -403,6 +409,9 @@
 				8AF9A32D2007B71A0089BAF7 /* ShopSearchBar.swift */,
 				8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */,
 				8AF9A32E2007B71A0089BAF7 /* ShopSearchViewController.swift */,
+				8A9D59BF2009198200F43E76 /* ShopSearchDelegation.swift */,
+				8A9D59B92009174400F43E76 /* ShopSearchPopCollectionViewCell.swift */,
+				8A9D59BD2009178700F43E76 /* ShopSearchRecentCollectionViewCell.swift */,
 				8AD750042002103900689285 /* ShopDetailViewController.swift */,
 				8A809EDB20086F3D003E62B6 /* ShopDetailCollectionViewCell.swift */,
 			);
@@ -919,6 +928,7 @@
 				8A7A60131FFD57940042F923 /* MyPageViewController.swift in Sources */,
 				8A7A601B1FFD5B7E0042F923 /* MyScrapViewController.swift in Sources */,
 				8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */,
+				8A9D59BE2009178700F43E76 /* ShopSearchRecentCollectionViewCell.swift in Sources */,
 				8AC05C141FFCD59300D99A23 /* ReadColumnViewController.swift in Sources */,
 				8A66787F1FFB92020001D13F /* CreateUpdateArticlePhotoCollectionViewCell.swift in Sources */,
 				8A2006EB2007E3BE00E27185 /* ShopNaviViewController.swift in Sources */,
@@ -926,6 +936,7 @@
 				8A7A601D1FFD5BCC0042F923 /* MsgViewController.swift in Sources */,
 				8AF9A33F2007B71E0089BAF7 /* ShopSearchBar.swift in Sources */,
 				8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */,
+				8A9D59C02009198200F43E76 /* ShopSearchDelegation.swift in Sources */,
 				8AF9A34B2007B71E0089BAF7 /* ConstraintsExtension.swift in Sources */,
 				8AF9A33B2007B71E0089BAF7 /* ShopSearchController.swift in Sources */,
 				8AF9A33D2007B71E0089BAF7 /* GoodsCell.swift in Sources */,
@@ -940,6 +951,7 @@
 				8A91C1261FF8CAF200524200 /* HomeShopTableViewCell.swift in Sources */,
 				8A66787D1FFB6D530001D13F /* CreateUpdateArticleViewController.swift in Sources */,
 				8AD7500720021DD000689285 /* HomeColumnCollectionViewCell.swift in Sources */,
+				8A9D59BA2009174400F43E76 /* ShopSearchPopCollectionViewCell.swift in Sources */,
 				8A6678671FF9CAAA0001D13F /* GoodsItem.swift in Sources */,
 				8A66786D1FF9CBAE0001D13F /* Message.swift in Sources */,
 				8AC05C161FFCD5D300D99A23 /* ReadColumnTableViewCell.swift in Sources */,

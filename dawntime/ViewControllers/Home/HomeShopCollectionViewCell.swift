@@ -12,7 +12,7 @@ import Kingfisher
 class HomeShopCollectionViewCell: UICollectionViewCell {
     let defaults = UserDefaults.standard
     let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)[0] as String
-    let blindImages: [UIImage] = [#imageLiteral(resourceName: "view_blind_pink"),#imageLiteral(resourceName: "view_blind_green"),#imageLiteral(resourceName: "view_blind_purple"),#imageLiteral(resourceName: "view_blind_orange")]
+    let blindImages: [UIImage] = [#imageLiteral(resourceName: "view_blind_pink"),#imageLiteral(resourceName: "view_blind_green"),#imageLiteral(resourceName: "view_blind_purple"),#imageLiteral(resourceName: "view_blind_orange"),#imageLiteral(resourceName: "view_blind_blue")]
     
     @IBOutlet weak var itemImage: UIImageView!
     @IBOutlet weak var itemLabel: UILabel!
@@ -25,7 +25,8 @@ class HomeShopCollectionViewCell: UICollectionViewCell {
             if let img = goodsItem?.goods_image, defaults.bool(forKey: "logInStatus"), dic!["블라인드"] == false {
                 self.itemImage.kf.setImage(with: URL(string: img))
             } else {
-                self.itemImage.image = blindImages[Int(arc4random_uniform(4))]
+//                self.itemImage.image = blindImages[Int(arc4random_uniform(5))]
+                self.itemImage.image = blindImages[Int(arc4random_uniform(5))]
             }
         }
     }

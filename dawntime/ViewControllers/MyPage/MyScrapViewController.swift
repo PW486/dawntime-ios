@@ -11,7 +11,11 @@ import Alamofire
 import SwiftyJSON
 
 class MyScrapViewController: BaseViewController {
-    var articles = [Article]()
+    var articles = [Article]() {
+        didSet{
+            self.tableView.reloadData()
+        }
+    }
     @IBOutlet weak var tableView: UITableView!
     
     func reloadDatas() {
@@ -35,7 +39,6 @@ class MyScrapViewController: BaseViewController {
                         }
                     }
                     self.articles = newArticles
-                    self.tableView.reloadData()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
@@ -68,8 +71,6 @@ class MyScrapViewController: BaseViewController {
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
         
         self.tableView.register(UINib(nibName: CommunityArticleTableViewCell.reuseIdentifier, bundle: nil), forCellReuseIdentifier: CommunityArticleTableViewCell.reuseIdentifier)
-        
-        reloadDatas()
     }
 }
 
@@ -89,8 +90,12 @@ extension MyScrapViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier) as! CommunityArticleTableViewCell
-        cell.article = articles[indexPath.row]
-        cell.selectionStyle = .none
+        cell.article = nil
+        DispatchQueue.main.async {
+            [weak self] in
+            cell.article = self?.articles[indexPath.row]
+            cell.selectionStyle = .none
+        }
         return cell
     }
     
