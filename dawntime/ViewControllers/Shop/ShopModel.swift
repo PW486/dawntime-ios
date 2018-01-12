@@ -5,15 +5,23 @@ protocol Detailable {}
 extension String : Detailable {}
 
 final class ShopModel {
-    var categorys: [String : [String]] = [
-        "CATEGORY" : ["바이레이터", "커플토이", "하네스 벨트", "딜도", "에널 게겔", "PARTY용품", "코스튬", "BDSM", "속옷", "콘돔", "러브젤"],
-        "BRAND" : ["플레저랩", "은하선 토파즈", "레드 컨테이너"]]
+    var categories: [String : [String]] = [
+        "CATEGORY" : ["BDSM", "PARTY 용품", "딜도", "러브젤", "바이브레이터", "애널케겔", "커플토이", "콘돔"],
+        "BRAND" : ["바른생각", "식스티 원", "은하선 토이즈", "플레저 랩"]]
+    var sortList = ["최신순", "인기순", "높은가격순", "낮은가격순"]
+    
     static let sharedInstance = ShopModel()
     private init() {}
     
     var goodsItems = [GoodsItem]()
     
-    enum Board: String  {
+    enum Sort: Int {
+        case recent = 1
+        case pop = 2
+        case high = 3
+        case row = 4
+    }
+    enum Board: String {
         case New = "new"
         case Best = "best"
     }
@@ -21,10 +29,15 @@ final class ShopModel {
         case CategoryMode
         case GoodsMode
     }
-    var board: Board = .New
+    enum Category: String {
+        case category = "category"
+        case brand = "brand"
+    }
     
-//    var beforeMode: CellMode = .GoodsMode
+    var sort: Sort = .recent
+    var board: Board = .New
     var mode: CellMode = .GoodsMode
+    var category: Category = .category
     
     var largeCategory: [String] {
         get{
@@ -49,20 +62,24 @@ final class ShopModel {
     }
     
     //아래 카테고리
-    private var internalCategory: [String] = []
+    var internalCategory: [String] = []
     
     var keyword: String = "NEW" {
         willSet{
             if(newValue == "CATEGORY") {
-                internalCategory = categorys[newValue] ?? [""]
+                internalCategory = categories[newValue] ?? [""]
                 mode = .CategoryMode
+                category = .category
             } else if(newValue == "BRAND") {
-                internalCategory = categorys[newValue] ?? [""]
+                internalCategory = categories[newValue] ?? [""]
                 mode = .CategoryMode
-            } else {
+                category = .brand
+            } else if(newValue == "NEW" || newValue == "BEST"){
                 mode = .GoodsMode
-                // 네트워크되면 largeCategory다른걸로 바꾸기
-                // internalCategory = largeCategory
+                internalCategory = largeCategory
+                selectedIndex = IndexPath(item: 0, section: 0)
+            }else{
+                mode = .GoodsMode
             }
         }
     }

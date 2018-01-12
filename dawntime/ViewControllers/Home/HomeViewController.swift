@@ -22,9 +22,10 @@ class HomeViewController: BaseViewController {
     @IBAction func shopButtonAction(_ sender: Any) {
         if defaults.bool(forKey: "logInStatus") {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopViewController.reuseIdentifier) as? ShopViewController else { return }
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopNaviViewController.reuseIdentifier) as? ShopNaviViewController else { return }
             ShopModel.sharedInstance.board = .Best
-            self.navigationController?.pushViewController(vc, animated: true)
+            ShopModel.sharedInstance.keyword = "BEST"
+            self.present(vc, animated: true, completion: nil)
         } else {
             logInPopUp()
         }
@@ -128,6 +129,7 @@ class HomeViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         self.navigationItem.titleView = UIImageView(image: #imageLiteral(resourceName: "navi_dawntime_navy"))
+        self.navigationController?.navigationBar.barTintColor = UIColor.white
         self.shopCell?.shopCollectionView.reloadData()
     }
     
@@ -156,8 +158,8 @@ extension HomeViewController: ItemClickProtocol, ColumnClickProtocol, ArticleCli
     func itemDidSelect(_ goodsItem: GoodsItem) {
         if defaults.bool(forKey: "logInStatus") {
             let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-            guard let vc = storyBoard.instantiateViewController(withIdentifier: ReadItemViewController.reuseIdentifier) as? ReadItemViewController else { return }
-             vc.goodsItem = goodsItem
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopDetailViewController.reuseIdentifier) as? ShopDetailViewController else { return }
+             vc.goodsID = goodsItem.goods_id
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
             logInPopUp(goodsItem)

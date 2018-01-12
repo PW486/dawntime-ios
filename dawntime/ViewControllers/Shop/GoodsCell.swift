@@ -13,7 +13,11 @@ import Kingfisher
     @IBOutlet weak var goodsImageView: UIImageView!
     @IBOutlet weak var goodsTitleLabel: UILabel!
     @IBOutlet weak var goodsPriceLabel: UILabel!
-    @IBOutlet weak var heartButon: UIButton!
+    @IBOutlet weak var likeButton: UIButton!
+    
+    @IBAction func likeAction(_ sender: Any) {
+        
+    }
     
     var goodsItem: GoodsItem? {
         didSet {
@@ -21,6 +25,11 @@ import Kingfisher
             self.goodsPriceLabel.text = (goodsItem?.goods_price)! + "원"
             if let img = goodsItem?.goods_image {
                 self.goodsImageView.kf.setImage(with: URL(string: img))
+            }
+            if let like = goodsItem?.goods_like, like == 1 {
+                self.likeButton.setImage(#imageLiteral(resourceName: "shop_tab_heart_solid"), for: .normal)
+            } else {
+                self.likeButton.setImage(#imageLiteral(resourceName: "shop_tab_heart_line"), for: .normal)
             }
         }
     }

@@ -26,6 +26,7 @@ class TabRootViewController: UITabBarController, UITabBarControllerDelegate {
         } else if let _ = viewController as? ShopTabViewController{
             if defaults.bool(forKey: "logInStatus") {
                 ShopModel.sharedInstance.board = .New
+                ShopModel.sharedInstance.keyword = "NEW"
                 let storyBoard = UIStoryboard(name: "Main", bundle: nil)
                 guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopNaviViewController.reuseIdentifier) as? ShopNaviViewController else { return false }
                 self.present(vc, animated: true, completion: nil)

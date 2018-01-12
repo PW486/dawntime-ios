@@ -58,13 +58,13 @@
                                 <rect key="frame" x="10" y="2" width="92" height="48"/>
                                 <subviews>
                                     <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="파워블렛" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZc-Oo-PUY">
-                                        <rect key="frame" x="0.0" y="0.0" width="45" height="24"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="48" height="24"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="13"/>
                                         <color key="textColor" red="0.92941176470588238" green="0.31372549019607843" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="48,600원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-Wo-X8M">
-                                        <rect key="frame" x="0.0" y="24" width="43.5" height="24"/>
+                                        <rect key="frame" x="0.0" y="24" width="44" height="24"/>
                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="11"/>
                                         <color key="textColor" red="0.62745098039215685" green="0.62745098039215685" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -77,6 +77,9 @@
                                     <constraint firstAttribute="width" secondItem="0ay-QL-6Ec" secondAttribute="height" multiplier="1:1" id="VBa-WM-XO2"/>
                                 </constraints>
                                 <state key="normal" image="shop_tab_heart_line"/>
+                                <connections>
+                                    <action selector="likeAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="GdG-pg-KZr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <constraints>
@@ -113,7 +116,7 @@
                 <outlet property="goodsImageView" destination="Atb-NA-UN6" id="Y3y-3A-jrh"/>
                 <outlet property="goodsPriceLabel" destination="3kY-Wo-X8M" id="5wQ-Cf-oX8"/>
                 <outlet property="goodsTitleLabel" destination="IZc-Oo-PUY" id="Kob-JK-tjg"/>
-                <outlet property="heartButon" destination="0ay-QL-6Ec" id="fuV-eC-Ied"/>
+                <outlet property="likeButton" destination="0ay-QL-6Ec" id="MxQ-6Q-wf2"/>
             </connections>
             <point key="canvasLocation" x="116" y="139"/>
         </collectionViewCell>

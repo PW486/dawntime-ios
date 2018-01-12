@@ -39,11 +39,10 @@ extension ShopViewController: UICollectionViewDataSource, UICollectionViewDelega
             }
         } else {
             let cell = collectionView.dequeueReusableCell(forIndexPath: indexPath) as CategoryCell
-            
             if shopModel.keyword == "NEW" || shopModel.keyword == "BEST" {
-                self.sortButton.isHidden = true
+                self.sortView.isHidden = true
             } else {
-                self.sortButton.isHidden = false
+                self.sortView.isHidden = false
             }
             if(shopModel.mode == .CategoryMode){
                 cell.categoryLabel.text = shopModel.largeCategory[indexPath.row]
@@ -62,9 +61,11 @@ extension ShopViewController: UICollectionViewDataSource, UICollectionViewDelega
                 shopModel.selectedIndex = indexPath
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: ShopViewController.reuseIdentifier) as! ShopViewController
                 shopModel.mode = .GoodsMode
+                shopModel.keyword = shopModel.externalCategory[indexPath.item]
                 self.navigationController?.pushViewController(vc, animated: true)
             } else {
                 let vc = self.storyboard?.instantiateViewController(withIdentifier: ShopDetailViewController.reuseIdentifier) as! ShopDetailViewController
+                vc.goodsID = shopModel.goodsItems[indexPath.row].goods_id
                 self.navigationController?.pushViewController(vc, animated: true)
             }
         } else {
@@ -72,15 +73,14 @@ extension ShopViewController: UICollectionViewDataSource, UICollectionViewDelega
             shopModel.keyword = cell.categoryLabel.text!
             
             if(shopModel.mode == .CategoryMode){
-                sortContainerConstant = sortContainerConstant.setMultiplier(multiplier: 0.001)
-                self.sortButton.isHidden = true
+                self.sortView.isHidden = true
             } else {
-                sortContainerConstant = sortContainerConstant.setMultiplier(multiplier: 0.5)
                 if shopModel.keyword == "NEW" || shopModel.keyword == "BEST" {
-                    self.sortButton.isHidden = true
+                    self.sortView.isHidden = true
                 } else {
-                    self.sortButton.isHidden = false
+                    self.sortView.isHidden = false
                 }
+                reloadDatas()
             }
             self.view.layoutIfNeeded()
             self.shopCollectionView.reloadData()
@@ -91,6 +91,22 @@ extension ShopViewController: UICollectionViewDataSource, UICollectionViewDelega
 }
 
 extension ShopViewController: UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
+    @objc func reshowExitButton() {
+        self.exitBottom.constant = 20
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.exitBottom.constant = -100
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        })
+        timer?.invalidate()
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(reshowExitButton), userInfo: nil, repeats: false)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if(collectionView == self.shopCollectionView){
             if(shopModel.mode == .CategoryMode){

@@ -65,7 +65,7 @@ class ColumnViewController: BaseViewController {
         var newColumns = [Column]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
-            Alamofire.request("http://13.125.78.152:6789/column/list", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
+            Alamofire.request("http://13.125.78.152:6789/column/listIos", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
                 case .success:
@@ -152,7 +152,7 @@ extension ColumnViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 170
+        return UIScreen.main.bounds.size.width * 211 / 521 + 20
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -312,8 +312,12 @@ extension CommunityViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CommunityArticleTableViewCell.reuseIdentifier, for: indexPath) as! CommunityArticleTableViewCell
-        cell.article = articles[indexPath.row]
-        cell.selectionStyle = .none
+        DispatchQueue.main.async {
+            
+            cell.article = self.articles[indexPath.row]
+            cell.selectionStyle = .none
+        }
+       
         return cell
     }
 }

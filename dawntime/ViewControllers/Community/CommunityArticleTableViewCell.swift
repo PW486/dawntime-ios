@@ -21,15 +21,25 @@ class CommunityArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var scrapImage: UIImageView!
     
     var article: Article? {
-        didSet {
+        willSet {
+            self.categoryLabel.text = ""
             self.categoryLabel.text = article?.board_tag
             if let img = article?.board_image {
                 self.boardImageView.kf.setImage(with: URL(string: img))
             } else {
                 self.boardImageView.image = nil
             }
-            self.titleLabel.text = article?.board_title
-            self.contentLabel.text = article?.board_content
+            if let title = article?.board_title {
+                self.titleLabel.text = title
+            } else {
+                self.titleLabel.text = ""
+            }
+            if let content = article?.board_content {
+                self.contentLabel.text = content
+            } else {
+                self.contentLabel.text = ""
+            }
+            
             if let user_like = article?.user_like, user_like {
                 self.fireImage.image = #imageLiteral(resourceName: "view_fire_red")
             } else {
