@@ -9,14 +9,9 @@
 import UIKit
 
 class DetailCategoryCell: UICollectionViewCell {
-
-    @IBOutlet weak var titleLable: UILabel!
-  
+    @IBOutlet weak var titleLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-      
     }
-
 }

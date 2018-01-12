@@ -7,19 +7,30 @@
 //
 
 import UIKit
+import Kingfisher
 
 @IBDesignable class GoodsCell: UICollectionViewCell {
-//    @IBOutlet weak var underlineView: UIView!
+    @IBOutlet weak var goodsImageView: UIImageView!
+    @IBOutlet weak var goodsTitleLabel: UILabel!
+    @IBOutlet weak var goodsPriceLabel: UILabel!
     @IBOutlet weak var heartButon: UIButton!
     
-    @IBOutlet weak var goodsPriceLabel: UILabel!
-    @IBOutlet weak var goodsTitleLabel: UILabel!
-    @IBOutlet weak var goodsImageView: UIImageView!
+    var goodsItem: GoodsItem? {
+        didSet {
+            self.goodsTitleLabel.text = goodsItem?.goods_name
+            self.goodsPriceLabel.text = (goodsItem?.goods_price)! + "원"
+            if let img = goodsItem?.goods_image {
+                self.goodsImageView.kf.setImage(with: URL(string: img))
+            }
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-   //     self.underlineView.addBottomBorderWithColor(color: UIColor.white, width:0.5)
-      
-       
+        self.layer.borderWidth = 0.3
+        self.layer.masksToBounds = false
+        self.layer.borderColor = UIColor.hexStringToUIColor(hex: "#777777").cgColor
+        self.layer.cornerRadius = 10
+        self.clipsToBounds = true
     }
-
 }

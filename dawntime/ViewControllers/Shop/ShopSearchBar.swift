@@ -9,13 +9,12 @@
 import UIKit
 
 class ShopSearchBar: UISearchBar {
+    
     override func setShowsCancelButton(_ showsCancelButton: Bool, animated: Bool) {
         super.setShowsCancelButton(false, animated: false)
     }
     
-    
     override func draw(_ rect: CGRect) {
         
-       
     }
 }

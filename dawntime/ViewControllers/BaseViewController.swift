@@ -58,6 +58,14 @@ class BaseViewController: UIViewController {
         view.clipsToBounds = true
     }
     
+    func logInPopUp() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: LogInPopUpViewController.reuseIdentifier) as? LogInPopUpViewController else { return }
+        vc.modalPresentationStyle = .overFullScreen
+        vc.modalTransitionStyle = UIModalTransitionStyle.crossDissolve
+        self.present(vc, animated: true, completion: nil)
+    }
+    
     @objc func dismissKeyBoard() {
         self.view.endEditing(true)
     }

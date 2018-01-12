@@ -8,13 +8,6 @@
 
 import UIKit
 
-@IBDesignable class UnderBarView: UIView{
-    @IBInspectable var color : UIColor = .clear
-    override func draw(_ rect: CGRect) {
-        self.addBottomBorderWithColor(color: color, width: 1)
-    }
-}
-
 extension UIView {
     func addTopBorderWithColor(color: UIColor, width: CGFloat) {
         let border = CALayer()

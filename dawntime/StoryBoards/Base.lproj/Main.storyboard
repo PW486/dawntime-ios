@@ -721,7 +721,7 @@
         <!--커뮤니티-->
         <scene sceneID="5g4-Mf-RaI">
             <objects>
-                <navigationController id="QIK-lo-qX4" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="CommunityNaviViewController" id="QIK-lo-qX4" customClass="CommunityNaviViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="커뮤니티" image="tabbar_unactive_comu_gray" selectedImage="tabbar_active_comu_navy" id="6hF-1A-1dn"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="g60-Sl-JNN">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -739,7 +739,7 @@
         <!--새벽타임-->
         <scene sceneID="4Y8-Gu-26H">
             <objects>
-                <tabBarController storyboardIdentifier="TabRootViewController" title="새벽타임" id="o2e-hJ-GnU" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="TabRootViewController" title="새벽타임" id="o2e-hJ-GnU" customClass="TabRootViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" itemPositioning="fill" id="w3V-kZ-HwH">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -749,7 +749,7 @@
                     <connections>
                         <segue destination="S4x-kh-35J" kind="relationship" relationship="viewControllers" id="D8H-Xi-dJ2"/>
                         <segue destination="QIK-lo-qX4" kind="relationship" relationship="viewControllers" id="eWK-OV-Uhz"/>
-                        <segue destination="dwC-xx-FfX" kind="relationship" relationship="viewControllers" id="Not-NT-B5I"/>
+                        <segue destination="vea-Ml-eTZ" kind="relationship" relationship="viewControllers" id="t6J-xa-Cm2"/>
                         <segue destination="4C1-3w-QkB" kind="relationship" relationship="viewControllers" id="h8z-Su-cpQ"/>
                     </connections>
                 </tabBarController>
@@ -782,7 +782,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NR4-lI-DRj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540" y="250"/>
+            <point key="canvasLocation" x="3228" y="287"/>
         </scene>
         <!--마이페이지-->
         <scene sceneID="wBQ-BF-9sD">
@@ -1854,7 +1854,7 @@
         <!--홈-->
         <scene sceneID="CQ0-Aa-v8q">
             <objects>
-                <navigationController id="S4x-kh-35J" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="HomeNaviViewController" id="S4x-kh-35J" customClass="HomeNaviViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="홈" image="tabbar_active_home_navy" selectedImage="tabbar_unactive_home_gray" id="xTv-9g-2yi"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9ZY-0i-86n">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -2591,7 +2591,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Xwx-9U-xik">
-                                <rect key="frame" x="0.0" y="154" width="375" height="513"/>
+                                <rect key="frame" x="0.0" y="138" width="375" height="529"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xUS-sK-iZu">
                                     <size key="itemSize" width="0.0" height="0.0"/>
@@ -2600,34 +2600,34 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <view key="backgroundView" contentMode="scaleToFill" fixedFrame="YES" misplaced="YES" id="28r-q9-f9P">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="513"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="529"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <cells/>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96I-NM-6Ue" customClass="UnderBarView" customModule="DawnTimeApp" customModuleProvider="target">
-                                <rect key="frame" x="10" y="64" width="355" height="50"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96I-NM-6Ue">
+                                <rect key="frame" x="10" y="64" width="355" height="41"/>
                                 <subviews>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oYd-2k-ioq">
-                                        <rect key="frame" x="0.0" y="0.0" width="355" height="50"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="355" height="41"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="uXj-3o-4ck">
-                                            <size key="itemSize" width="70" height="64"/>
+                                            <size key="itemSize" width="70" height="20"/>
                                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="eZH-ey-ynV" customClass="CategoryCell" customModule="DawnTimeApp" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="-7" width="70" height="64"/>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CategoryCell" id="eZH-ey-ynV" customClass="CategoryCell" customModule="dawntime" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="10.5" width="70" height="20"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="64"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="70" height="20"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="35" translatesAutoresizingMaskIntoConstraints="NO" id="qaF-0e-Dyh">
-                                                            <rect key="frame" x="18" y="25" width="35" height="21"/>
+                                                            <rect key="frame" x="17.5" y="0.5" width="35" height="21"/>
                                                             <fontDescription key="fontDescription" name="NotoSansCJKkr-Light" family="Noto Sans CJK KR" pointSize="14"/>
                                                             <color key="textColor" red="0.92941176469999998" green="0.31372549020000001" blue="0.5568627451" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -2649,16 +2649,16 @@
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="oYd-2k-ioq" secondAttribute="bottom" id="K7l-bB-ca6"/>
                                     <constraint firstItem="oYd-2k-ioq" firstAttribute="top" secondItem="96I-NM-6Ue" secondAttribute="top" id="TNT-1m-b4x"/>
-                                    <constraint firstAttribute="height" constant="50" id="YrR-Lq-bPq"/>
+                                    <constraint firstAttribute="height" constant="41" id="YrR-Lq-bPq"/>
                                     <constraint firstItem="oYd-2k-ioq" firstAttribute="leading" secondItem="96I-NM-6Ue" secondAttribute="leading" id="xgJ-xY-vds"/>
                                     <constraint firstAttribute="trailing" secondItem="oYd-2k-ioq" secondAttribute="trailing" id="zd7-zS-g56"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5ow-kv-9mV">
-                                <rect key="frame" x="0.0" y="114" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="105" width="375" height="33"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="coA-2J-cYJ">
-                                        <rect key="frame" x="319" y="10" width="46" height="28"/>
+                                        <rect key="frame" x="319" y="10" width="46" height="19.5"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
@@ -2695,8 +2695,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="categoryCollectionContainer" destination="96I-NM-6Ue" id="i8F-xj-iUT"/>
                         <outlet property="categoryCollectionView" destination="oYd-2k-ioq" id="jnK-ii-g8S"/>
                         <outlet property="shopCollectionView" destination="Xwx-9U-xik" id="qoj-QE-kEu"/>
                         <outlet property="sortButton" destination="coA-2J-cYJ" id="pYm-hf-Ogx"/>
@@ -2705,7 +2705,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QjH-kp-iRH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1129" y="250"/>
+            <point key="canvasLocation" x="1841" y="287"/>
         </scene>
         <!--Shop Search View Controller-->
         <scene sceneID="mfU-3U-HrF">
@@ -2718,7 +2718,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9AS-xx-WpF">
                                 <rect key="frame" x="10" y="64" width="355" height="93.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGv-To-v3l" customClass="UnderBarView" customModule="DawnTimeApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JGv-To-v3l" customClass="UnderBarView" customModule="dawntime" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="가격대" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ozr-4F-kVV">
@@ -2739,16 +2739,16 @@
                                         <rect key="frame" x="0.0" y="36.5" width="355" height="57"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OUh-qk-F6b">
-                                                <rect key="frame" x="10" y="18" width="106" height="22.5"/>
+                                                <rect key="frame" x="10" y="17.5" width="106" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAC-Cb-n6f">
-                                                        <rect key="frame" x="83" y="1" width="13" height="21"/>
+                                                        <rect key="frame" x="83" y="1.5" width="13" height="21"/>
                                                         <fontDescription key="fontDescription" name="NotoSansCJKkr-Light" family="Noto Sans CJK KR" pointSize="14"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1000" textAlignment="center" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="xOG-jJ-Rfr">
-                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="22.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="81" height="22"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -2765,10 +2765,10 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vVr-ap-F0K">
-                                                <rect key="frame" x="169" y="18" width="105.5" height="22.5"/>
+                                                <rect key="frame" x="168" y="17.5" width="105.5" height="22"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="원" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PaO-Jm-6wf">
-                                                        <rect key="frame" x="80.5" y="1" width="15" height="21"/>
+                                                        <rect key="frame" x="80.5" y="1.5" width="15" height="21"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="15" id="lbd-nv-J9g"/>
                                                         </constraints>
@@ -2777,7 +2777,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="700000" textAlignment="center" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="AQn-9e-N2E">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="22.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="78.5" height="22"/>
                                                         <nil key="textColor"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits"/>
@@ -2794,7 +2794,7 @@
                                                 </constraints>
                                             </view>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GMF-bS-NwI">
-                                                <rect key="frame" x="294.5" y="12" width="50.5" height="33"/>
+                                                <rect key="frame" x="293.5" y="12" width="51.5" height="33"/>
                                                 <fontDescription key="fontDescription" name="NotoSansCJKkr-Light" family="Noto Sans CJK KR" pointSize="14"/>
                                                 <state key="normal" title="초기화"/>
                                             </button>
@@ -2813,7 +2813,7 @@
                                         </constraints>
                                     </view>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2FB-Jy-igg">
-                                        <rect key="frame" x="131" y="54.5" width="23" height="22.5"/>
+                                        <rect key="frame" x="131" y="54" width="22" height="22"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="2FB-Jy-igg" secondAttribute="height" multiplier="1:1" id="ubN-2Z-b7E"/>
                                         </constraints>
@@ -2838,7 +2838,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="idN-h8-cLE">
                                 <rect key="frame" x="10" y="157.5" width="355" height="233.5"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-5B-FZ4" customClass="UnderBarView" customModule="DawnTimeApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C0d-5B-FZ4" customClass="UnderBarView" customModule="dawntime" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="인기 검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t5h-qg-b7b">
@@ -2890,7 +2890,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mKH-hh-RGR">
                                 <rect key="frame" x="10" y="391" width="355" height="276"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H47-oz-brH" customClass="UnderBarView" customModule="DawnTimeApp" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H47-oz-brH" customClass="UnderBarView" customModule="dawntime" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="355" height="37"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 검색어" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eZ-ry-7tj">
@@ -2960,12 +2960,28 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aLC-TS-vBb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1841" y="250"/>
+            <point key="canvasLocation" x="2540" y="287"/>
+        </scene>
+        <!--쇼핑-->
+        <scene sceneID="jPC-CG-Bta">
+            <objects>
+                <viewController storyboardIdentifier="ShopTabViewController" id="vea-Ml-eTZ" customClass="ShopTabViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HC6-UA-BbS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="618"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="dK9-vj-Mqa"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="쇼핑" image="tabbar_unactive_shop_gray" selectedImage="tabbar_active_shop_navy" id="7KX-j8-nzL"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AE0-Zr-ZS7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="174" y="288"/>
         </scene>
         <!--쇼핑-->
         <scene sceneID="3Ex-IV-e0G">
             <objects>
-                <navigationController storyboardIdentifier="ShopNaviViewController" id="dwC-xx-FfX" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="ShopNaviViewController" id="dwC-xx-FfX" customClass="ShopNaviViewController" customModule="dawntime" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="쇼핑" image="tabbar_active_shop_navy" id="tM4-tv-e1l"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="k9k-70-tte">
@@ -2975,12 +2991,12 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Vp7-Iw-Mgz" kind="relationship" relationship="rootViewController" id="8bf-c3-nLj"/>
+                        <segue destination="Vp7-Iw-Mgz" kind="relationship" relationship="rootViewController" id="N9j-0z-bFp"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M73-Hq-8kR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="174" y="250"/>
+            <point key="canvasLocation" x="1129" y="288"/>
         </scene>
     </scenes>
     <resources>
@@ -2994,6 +3010,7 @@
         <image name="tabbar_unactive_comu_gray" width="30" height="30"/>
         <image name="tabbar_unactive_home_gray" width="30" height="30"/>
         <image name="tabbar_unactive_my_gray" width="30" height="30"/>
+        <image name="tabbar_unactive_shop_gray" width="30" height="30"/>
         <image name="view_bubble_white" width="355" height="114"/>
         <image name="view_button0_white" width="82" height="82"/>
         <image name="view_button1_white" width="82" height="82"/>

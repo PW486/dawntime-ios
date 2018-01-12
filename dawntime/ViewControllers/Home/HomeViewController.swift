@@ -20,9 +20,14 @@ class HomeViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     
     @IBAction func shopButtonAction(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopViewController.reuseIdentifier) as? ShopViewController else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        if defaults.bool(forKey: "logInStatus") {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopViewController.reuseIdentifier) as? ShopViewController else { return }
+            ShopModel.sharedInstance.board = .Best
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            logInPopUp()
+        }
     }
     
     @IBAction func columnButtonAction(_ sender: Any) {
@@ -32,9 +37,13 @@ class HomeViewController: BaseViewController {
     }
     
     @IBAction func peakTimeButtonAction(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        guard let vc = storyBoard.instantiateViewController(withIdentifier: PeakTimeViewController.reuseIdentifier) as? PeakTimeViewController else { return }
-        self.navigationController?.pushViewController(vc, animated: true)
+        if defaults.bool(forKey: "logInStatus") {
+            let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+            guard let vc = storyBoard.instantiateViewController(withIdentifier: PeakTimeViewController.reuseIdentifier) as? PeakTimeViewController else { return }
+            self.navigationController?.pushViewController(vc, animated: true)
+        } else {
+            logInPopUp()
+        }
     }
     
     func logInPopUp(_ model: Any) {
@@ -59,6 +68,16 @@ class HomeViewController: BaseViewController {
                 case .success:
                     if let value = res.result.value {
                         let json = JSON(value)
+                        
+                        let path = self.documentDirectory.appending("/Setting.plist")
+                        var dic = NSDictionary(contentsOfFile: path) as? [String: Bool]
+                        if let blind = json["user_blind"].int, blind == 1 {
+                            dic!["블라인드"] = true
+                        } else {
+                            dic!["블라인드"] = false
+                        }
+                        NSDictionary(dictionary: dic!).write(toFile: path, atomically: true)
+                        
                         for (_, subJson):(String, JSON) in json["main_shop"] {
                             do {
                                 let goodsItem = try decoder.decode(GoodsItem.self, from: subJson.rawData())
@@ -68,6 +87,7 @@ class HomeViewController: BaseViewController {
                                 print(error)
                             }
                         }
+                        
                         for (_, subJson):(String, JSON) in json["main_column"] {
                             do {
                                 let column = try decoder.decode(Column.self, from: subJson.rawData())
@@ -77,6 +97,7 @@ class HomeViewController: BaseViewController {
                                 print(error)
                             }
                         }
+                        
                         for (_, subJson):(String, JSON) in json["main_peaktime"] {
                             do {
                                 let article = try decoder.decode(Article.self, from: subJson.rawData())

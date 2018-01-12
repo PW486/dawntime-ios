@@ -1,92 +1,95 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSansCJKkr-Bold.otf">
+            <string>NotoSansCJKkr-Bold</string>
+        </array>
+        <array key="NotoSansCJKkr-Regular.otf">
+            <string>NotoSansCJKkr-Regular</string>
+        </array>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoodsCell" id="gTV-IL-0wX" customClass="GoodsCell" customModule="DawnTimeApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="144" height="187"/>
+        <collectionViewCell autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoodsCell" id="gTV-IL-0wX" customClass="GoodsCell" customModule="dawntime" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="144" height="198"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="144" height="187"/>
+                <rect key="frame" x="0.0" y="0.0" width="144" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ci9-nH-NXG">
-                        <rect key="frame" x="0.0" y="0.0" width="144" height="187"/>
+                        <rect key="frame" x="0.0" y="0.0" width="144" height="198"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Atb-NA-UN6">
                         <rect key="frame" x="0.0" y="0.0" width="144" height="144"/>
-                        <color key="backgroundColor" red="1" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.46666666666666667" green="0.46666666666666667" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="Atb-NA-UN6" secondAttribute="height" multiplier="1:1" id="Ivt-br-PHb"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dw6-ir-oh5">
-                        <rect key="frame" x="0.0" y="144" width="144" height="43"/>
+                        <rect key="frame" x="0.0" y="144" width="144" height="54"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gH-PY-8a8" customClass="UnderBarView" customModule="DawnTimeApp" customModuleProvider="target">
-                                <rect key="frame" x="8" y="0.0" width="96.5" height="21.5"/>
-                                <color key="backgroundColor" red="0.9988437294960022" green="0.18447217345237732" blue="0.57182186841964722" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0gH-PY-8a8">
+                                <rect key="frame" x="5" y="26.5" width="100" height="1"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.31372549019607843" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="FK7-22-XQP"/>
+                                </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="color">
                                         <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZc-Oo-PUY">
-                                <rect key="frame" x="8" y="4" width="42" height="14"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="파워블렛">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="NotoSansCJKkr-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-Wo-X8M">
-                                <rect key="frame" x="8" y="25.5" width="40.5" height="14"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="420000">
-                                        <attributes>
-                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="NotoSansCJKkr-Regular"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ay-QL-6Ec">
-                                <rect key="frame" x="109" y="6" width="30" height="30"/>
-                                <state key="normal" title="하트"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Wfz-GF-oMO">
+                                <rect key="frame" x="10" y="2" width="92" height="48"/>
+                                <subviews>
+                                    <label autoresizesSubviews="NO" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="파워블렛" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IZc-Oo-PUY">
+                                        <rect key="frame" x="0.0" y="0.0" width="45" height="24"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Bold" family="Noto Sans CJK KR" pointSize="13"/>
+                                        <color key="textColor" red="0.92941176470588238" green="0.31372549019607843" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="48,600원" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kY-Wo-X8M">
+                                        <rect key="frame" x="0.0" y="24" width="43.5" height="24"/>
+                                        <fontDescription key="fontDescription" name="NotoSansCJKkr-Regular" family="Noto Sans CJK KR" pointSize="11"/>
+                                        <color key="textColor" red="0.62745098039215685" green="0.62745098039215685" blue="0.62745098039215685" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0ay-QL-6Ec">
+                                <rect key="frame" x="107" y="10" width="34" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="0ay-QL-6Ec" secondAttribute="height" multiplier="1:1" id="VBa-WM-XO2"/>
+                                </constraints>
+                                <state key="normal" image="shop_tab_heart_line"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="0ay-QL-6Ec" firstAttribute="centerY" secondItem="dw6-ir-oh5" secondAttribute="centerY" id="0dh-V1-z8Y"/>
-                            <constraint firstItem="0gH-PY-8a8" firstAttribute="leading" secondItem="IZc-Oo-PUY" secondAttribute="leading" id="0vs-EI-93Y"/>
-                            <constraint firstItem="3kY-Wo-X8M" firstAttribute="centerY" secondItem="dw6-ir-oh5" secondAttribute="centerY" multiplier="1.5" id="8y9-vZ-dMK"/>
-                            <constraint firstItem="IZc-Oo-PUY" firstAttribute="centerY" secondItem="dw6-ir-oh5" secondAttribute="centerY" multiplier="0.5" id="A8d-Ay-iMH"/>
-                            <constraint firstItem="0gH-PY-8a8" firstAttribute="height" secondItem="dw6-ir-oh5" secondAttribute="height" multiplier="0.5" id="ArB-zM-TYo"/>
-                            <constraint firstAttribute="trailing" secondItem="0ay-QL-6Ec" secondAttribute="trailing" constant="5" id="OzA-rk-01Y"/>
-                            <constraint firstItem="3kY-Wo-X8M" firstAttribute="leading" secondItem="IZc-Oo-PUY" secondAttribute="leading" id="Sxt-15-263"/>
-                            <constraint firstItem="IZc-Oo-PUY" firstAttribute="centerX" secondItem="dw6-ir-oh5" secondAttribute="centerX" multiplier="0.4" id="ctJ-vZ-TVi"/>
-                            <constraint firstItem="0gH-PY-8a8" firstAttribute="top" secondItem="dw6-ir-oh5" secondAttribute="top" id="xwn-fs-enq"/>
-                            <constraint firstItem="0gH-PY-8a8" firstAttribute="width" secondItem="dw6-ir-oh5" secondAttribute="width" multiplier="0.67" id="zyt-pF-1kc"/>
+                            <constraint firstItem="0ay-QL-6Ec" firstAttribute="leading" secondItem="0gH-PY-8a8" secondAttribute="trailing" constant="2" id="7Mg-bW-8Qx"/>
+                            <constraint firstItem="0ay-QL-6Ec" firstAttribute="leading" secondItem="Wfz-GF-oMO" secondAttribute="trailing" constant="5" id="MBn-xi-JdM"/>
+                            <constraint firstItem="Wfz-GF-oMO" firstAttribute="leading" secondItem="dw6-ir-oh5" secondAttribute="leading" constant="10" id="MKA-jQ-uRp"/>
+                            <constraint firstAttribute="bottom" secondItem="Wfz-GF-oMO" secondAttribute="bottom" constant="4" id="SK0-gs-a29"/>
+                            <constraint firstItem="0ay-QL-6Ec" firstAttribute="top" secondItem="dw6-ir-oh5" secondAttribute="top" constant="10" id="Z9n-D1-Ws4"/>
+                            <constraint firstItem="Wfz-GF-oMO" firstAttribute="top" secondItem="dw6-ir-oh5" secondAttribute="top" constant="2" id="cSe-eg-VMt"/>
+                            <constraint firstAttribute="trailing" secondItem="0ay-QL-6Ec" secondAttribute="trailing" constant="3" id="ekj-W1-d5a"/>
+                            <constraint firstAttribute="bottom" secondItem="0ay-QL-6Ec" secondAttribute="bottom" constant="10" id="kQY-ub-RXC"/>
+                            <constraint firstItem="0gH-PY-8a8" firstAttribute="centerY" secondItem="dw6-ir-oh5" secondAttribute="centerY" id="piJ-D5-iJ0"/>
+                            <constraint firstItem="0gH-PY-8a8" firstAttribute="leading" secondItem="dw6-ir-oh5" secondAttribute="leading" constant="5" id="y1P-w8-YZM"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -105,14 +108,17 @@
                 <constraint firstAttribute="bottom" secondItem="ci9-nH-NXG" secondAttribute="bottom" id="yMN-Tj-Qzf"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="144" height="187"/>
+            <size key="customSize" width="144" height="198"/>
             <connections>
                 <outlet property="goodsImageView" destination="Atb-NA-UN6" id="Y3y-3A-jrh"/>
                 <outlet property="goodsPriceLabel" destination="3kY-Wo-X8M" id="5wQ-Cf-oX8"/>
                 <outlet property="goodsTitleLabel" destination="IZc-Oo-PUY" id="Kob-JK-tjg"/>
                 <outlet property="heartButon" destination="0ay-QL-6Ec" id="fuV-eC-Ied"/>
             </connections>
-            <point key="canvasLocation" x="116" y="133.5"/>
+            <point key="canvasLocation" x="116" y="139"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="shop_tab_heart_line" width="48" height="48"/>
+    </resources>
 </document>

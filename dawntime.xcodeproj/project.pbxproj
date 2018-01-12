@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		3BA89B7C287C557EFAF21B65 /* Pods_dawntimeUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 238A4A2CCC7982365A5DB4B2 /* Pods_dawntimeUITests.framework */; };
+		8A2006EB2007E3BE00E27185 /* ShopNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2006EA2007E3BE00E27185 /* ShopNaviViewController.swift */; };
+		8A2006ED20082ED500E27185 /* HomeNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2006EC20082ED500E27185 /* HomeNaviViewController.swift */; };
+		8A2006EF20082F9D00E27185 /* CommunityNaviViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2006EE20082F9D00E27185 /* CommunityNaviViewController.swift */; };
+		8A2006F120083D6D00E27185 /* ShopTabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2006F020083D6D00E27185 /* ShopTabViewController.swift */; };
+		8A2006F3200852B900E27185 /* TabRootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2006F2200852B900E27185 /* TabRootViewController.swift */; };
 		8A3F8E851FFF9F1300E7990B /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */; };
 		8A6678371FF91C190001D13F /* CommunityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678361FF91C190001D13F /* CommunityViewController.swift */; };
 		8A6678391FF91CCA0001D13F /* CommunityArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */; };
@@ -81,7 +86,6 @@
 		8AF11AFC200658F3000CFCBC /* MsgDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */; };
 		8AF11B0020066D51000CFCBC /* MsgDetailYouTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */; };
 		8AF11B0220066D5E000CFCBC /* MsgDetailMeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */; };
-		8AF11B042007936A000CFCBC /* ShopTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF11B032007936A000CFCBC /* ShopTabBarViewController.swift */; };
 		8AF9A33B2007B71E0089BAF7 /* ShopSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */; };
 		8AF9A33C2007B71E0089BAF7 /* ShopDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32A2007B7190089BAF7 /* ShopDetailViewController.swift */; };
 		8AF9A33D2007B71E0089BAF7 /* GoodsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A32B2007B71A0089BAF7 /* GoodsCell.swift */; };
@@ -92,8 +96,8 @@
 		8AF9A3422007B71E0089BAF7 /* GoodsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AF9A3302007B71B0089BAF7 /* GoodsCell.xib */; };
 		8AF9A3442007B71E0089BAF7 /* ShopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */; };
 		8AF9A3452007B71E0089BAF7 /* DetailCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3332007B71C0089BAF7 /* DetailCategoryCell.swift */; };
-		8AF9A3492007B71E0089BAF7 /* ShopDelegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3372007B71C0089BAF7 /* ShopDelegation.swift */; };
-		8AF9A34A2007B71E0089BAF7 /* CategoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3382007B71D0089BAF7 /* CategoryModel.swift */; };
+		8AF9A3492007B71E0089BAF7 /* ShopViewDelegation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3372007B71C0089BAF7 /* ShopViewDelegation.swift */; };
+		8AF9A34A2007B71E0089BAF7 /* ShopModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3382007B71D0089BAF7 /* ShopModel.swift */; };
 		8AF9A34B2007B71E0089BAF7 /* ConstraintsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A3392007B71D0089BAF7 /* ConstraintsExtension.swift */; };
 		8AF9A34C2007B71E0089BAF7 /* CollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF9A33A2007B71D0089BAF7 /* CollectionViewExtension.swift */; };
 		CBD9DBCAC4B78362662CA705 /* Pods_dawntimeTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */; };
@@ -137,6 +141,11 @@
 		238A4A2CCC7982365A5DB4B2 /* Pods_dawntimeUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dawntimeUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FBAEEC06602B8634A04847 /* Pods_dawntime.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dawntime.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70568083B59ECD13B5A07CB7 /* Pods_dawntimeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_dawntimeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2006EA2007E3BE00E27185 /* ShopNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopNaviViewController.swift; sourceTree = "<group>"; };
+		8A2006EC20082ED500E27185 /* HomeNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNaviViewController.swift; sourceTree = "<group>"; };
+		8A2006EE20082F9D00E27185 /* CommunityNaviViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityNaviViewController.swift; sourceTree = "<group>"; };
+		8A2006F020083D6D00E27185 /* ShopTabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTabViewController.swift; sourceTree = "<group>"; };
+		8A2006F2200852B900E27185 /* TabRootViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabRootViewController.swift; sourceTree = "<group>"; };
 		8A3F8E841FFF9F1300E7990B /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		8A6678361FF91C190001D13F /* CommunityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityViewController.swift; sourceTree = "<group>"; };
 		8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommunityArticleTableViewCell.swift; sourceTree = "<group>"; };
@@ -217,7 +226,6 @@
 		8AF11AFB200658F3000CFCBC /* MsgDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailViewController.swift; sourceTree = "<group>"; };
 		8AF11AFF20066D51000CFCBC /* MsgDetailYouTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailYouTableViewCell.swift; sourceTree = "<group>"; };
 		8AF11B0120066D5E000CFCBC /* MsgDetailMeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MsgDetailMeTableViewCell.swift; sourceTree = "<group>"; };
-		8AF11B032007936A000CFCBC /* ShopTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTabBarViewController.swift; sourceTree = "<group>"; };
 		8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopSearchController.swift; sourceTree = "<group>"; };
 		8AF9A32A2007B7190089BAF7 /* ShopDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDetailViewController.swift; sourceTree = "<group>"; };
 		8AF9A32B2007B71A0089BAF7 /* GoodsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsCell.swift; sourceTree = "<group>"; };
@@ -228,8 +236,8 @@
 		8AF9A3302007B71B0089BAF7 /* GoodsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GoodsCell.xib; sourceTree = "<group>"; };
 		8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewController.swift; sourceTree = "<group>"; };
 		8AF9A3332007B71C0089BAF7 /* DetailCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailCategoryCell.swift; sourceTree = "<group>"; };
-		8AF9A3372007B71C0089BAF7 /* ShopDelegation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopDelegation.swift; sourceTree = "<group>"; };
-		8AF9A3382007B71D0089BAF7 /* CategoryModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryModel.swift; sourceTree = "<group>"; };
+		8AF9A3372007B71C0089BAF7 /* ShopViewDelegation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopViewDelegation.swift; sourceTree = "<group>"; };
+		8AF9A3382007B71D0089BAF7 /* ShopModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShopModel.swift; sourceTree = "<group>"; };
 		8AF9A3392007B71D0089BAF7 /* ConstraintsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConstraintsExtension.swift; sourceTree = "<group>"; };
 		8AF9A33A2007B71D0089BAF7 /* CollectionViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewExtension.swift; sourceTree = "<group>"; };
 		A3F90D5F4940CBC6B4229F00 /* Pods-dawntime.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dawntime.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dawntime/Pods-dawntime.debug.xcconfig"; sourceTree = "<group>"; };
@@ -284,6 +292,7 @@
 			isa = PBXGroup;
 			children = (
 				8AD750002001E98E00689285 /* BaseViewController.swift */,
+				8A2006F2200852B900E27185 /* TabRootViewController.swift */,
 				8AE4E201200077B600FAD30A /* SplashLockLogIn */,
 				8A6678331FF91AF40001D13F /* Home */,
 				8A66786E1FF9CFCA0001D13F /* Shop */,
@@ -298,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				8A91C1211FF8C69900524200 /* HomeViewController.swift */,
+				8A2006EC20082ED500E27185 /* HomeNaviViewController.swift */,
 				8A91C1251FF8CAF200524200 /* HomeShopTableViewCell.swift */,
 				8A91C1271FF8CBE100524200 /* HomeShopCollectionViewCell.swift */,
 				8A91C1291FF8D5E900524200 /* HomeColumnTableViewCell.swift */,
@@ -322,6 +332,7 @@
 			isa = PBXGroup;
 			children = (
 				8A6678361FF91C190001D13F /* CommunityViewController.swift */,
+				8A2006EE20082F9D00E27185 /* CommunityNaviViewController.swift */,
 				8A6678381FF91CCA0001D13F /* CommunityArticleTableViewCell.swift */,
 				8A66787A1FFA6FA70001D13F /* CommunityCategoryCollectionViewCell.swift */,
 				8A6678741FF9F3CA0001D13F /* ReadArticleViewController.swift */,
@@ -377,21 +388,22 @@
 		8A66786E1FF9CFCA0001D13F /* Shop */ = {
 			isa = PBXGroup;
 			children = (
+				8AF9A3382007B71D0089BAF7 /* ShopModel.swift */,
+				8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */,
+				8AF9A3372007B71C0089BAF7 /* ShopViewDelegation.swift */,
+				8A2006F020083D6D00E27185 /* ShopTabViewController.swift */,
+				8A2006EA2007E3BE00E27185 /* ShopNaviViewController.swift */,
 				8AF9A32C2007B71A0089BAF7 /* CategoryCell.swift */,
-				8AF9A3382007B71D0089BAF7 /* CategoryModel.swift */,
 				8AF9A33A2007B71D0089BAF7 /* CollectionViewExtension.swift */,
 				8AF9A3392007B71D0089BAF7 /* ConstraintsExtension.swift */,
 				8AF9A3332007B71C0089BAF7 /* DetailCategoryCell.swift */,
 				8AF9A32F2007B71B0089BAF7 /* DetailCategoryCell.xib */,
 				8AF9A32B2007B71A0089BAF7 /* GoodsCell.swift */,
 				8AF9A3302007B71B0089BAF7 /* GoodsCell.xib */,
-				8AF9A3372007B71C0089BAF7 /* ShopDelegation.swift */,
 				8AF9A32A2007B7190089BAF7 /* ShopDetailViewController.swift */,
 				8AF9A32D2007B71A0089BAF7 /* ShopSearchBar.swift */,
 				8AF9A3292007B7190089BAF7 /* ShopSearchController.swift */,
 				8AF9A32E2007B71A0089BAF7 /* ShopSearchViewController.swift */,
-				8AF9A3322007B71B0089BAF7 /* ShopViewController.swift */,
-				8AF11B032007936A000CFCBC /* ShopTabBarViewController.swift */,
 				8AD750042002103900689285 /* ReadItemViewController.swift */,
 			);
 			path = Shop;
@@ -867,8 +879,10 @@
 				8A66783C1FF91F350001D13F /* Article.swift in Sources */,
 				8AF11AF82006477D000CFCBC /* SendMsgViewController.swift in Sources */,
 				8A7A60191FFD5B4E0042F923 /* MyArticleViewController.swift in Sources */,
+				8A2006EF20082F9D00E27185 /* CommunityNaviViewController.swift in Sources */,
 				8AC05C121FFCCF2800D99A23 /* ColumnTableViewCell.swift in Sources */,
 				8A91C12A1FF8D5E900524200 /* HomeColumnTableViewCell.swift in Sources */,
+				8A2006F120083D6D00E27185 /* ShopTabViewController.swift in Sources */,
 				8A6678751FF9F3CA0001D13F /* ReadArticleViewController.swift in Sources */,
 				8AF11AFC200658F3000CFCBC /* MsgDetailViewController.swift in Sources */,
 				8AD750012001E98E00689285 /* BaseViewController.swift in Sources */,
@@ -892,7 +906,7 @@
 				8A91C1281FF8CBE100524200 /* HomeShopCollectionViewCell.swift in Sources */,
 				8AF9A34C2007B71E0089BAF7 /* CollectionViewExtension.swift in Sources */,
 				8AC05C071FFC7FB600D99A23 /* UIColorExtension.swift in Sources */,
-				8AF9A3492007B71E0089BAF7 /* ShopDelegation.swift in Sources */,
+				8AF9A3492007B71E0089BAF7 /* ShopViewDelegation.swift in Sources */,
 				8AC05C051FFBC0CD00D99A23 /* CreateUpdateArticleCategoryViewController.swift in Sources */,
 				8A7A60171FFD58150042F923 /* MyPageMenuTableViewCell.swift in Sources */,
 				8A91C12F1FF8D6D200524200 /* PeakTimeCollectionViewCell.swift in Sources */,
@@ -904,20 +918,22 @@
 				8AE4E2052000782200FAD30A /* LogInPopUpViewController.swift in Sources */,
 				8AC05C141FFCD59300D99A23 /* ReadColumnViewController.swift in Sources */,
 				8A66787F1FFB92020001D13F /* CreateUpdateArticlePhotoCollectionViewCell.swift in Sources */,
+				8A2006EB2007E3BE00E27185 /* ShopNaviViewController.swift in Sources */,
 				8A7A602C1FFF508E0042F923 /* UISwitchCustom.swift in Sources */,
 				8A7A601D1FFD5BCC0042F923 /* MsgViewController.swift in Sources */,
-				8AF11B042007936A000CFCBC /* ShopTabBarViewController.swift in Sources */,
 				8AF9A33C2007B71E0089BAF7 /* ShopDetailViewController.swift in Sources */,
 				8AF9A33F2007B71E0089BAF7 /* ShopSearchBar.swift in Sources */,
 				8AC05C0D1FFCC40500D99A23 /* ReadArticleCommentTableViewCell.swift in Sources */,
 				8AF9A34B2007B71E0089BAF7 /* ConstraintsExtension.swift in Sources */,
 				8AF9A33B2007B71E0089BAF7 /* ShopSearchController.swift in Sources */,
 				8AF9A33D2007B71E0089BAF7 /* GoodsCell.swift in Sources */,
+				8A2006F3200852B900E27185 /* TabRootViewController.swift in Sources */,
 				8A6678691FF9CB8F0001D13F /* Comment.swift in Sources */,
 				8A6678771FFA0B640001D13F /* ReadArticleTableViewCell.swift in Sources */,
 				8AF9A3402007B71E0089BAF7 /* ShopSearchViewController.swift in Sources */,
 				8A6678791FFA43FB0001D13F /* UIViewExtension.swift in Sources */,
-				8AF9A34A2007B71E0089BAF7 /* CategoryModel.swift in Sources */,
+				8A2006ED20082ED500E27185 /* HomeNaviViewController.swift in Sources */,
+				8AF9A34A2007B71E0089BAF7 /* ShopModel.swift in Sources */,
 				8A3F8E851FFF9F1300E7990B /* SplashViewController.swift in Sources */,
 				8A91C1261FF8CAF200524200 /* HomeShopTableViewCell.swift in Sources */,
 				8A66787D1FFB6D530001D13F /* CreateUpdateArticleViewController.swift in Sources */,
@@ -1102,7 +1118,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K73ZKZ284P;
+				DEVELOPMENT_TEAM = 4WHGPUX58D;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1116,7 +1132,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/dawntime/ThridParty/NaverLogin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.peaktime.dawntime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peaktime.dawntime.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -1133,7 +1149,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = K73ZKZ284P;
+				DEVELOPMENT_TEAM = 4WHGPUX58D;
 				ENABLE_BITCODE = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1147,7 +1163,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/dawntime/ThridParty/NaverLogin",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.peaktime.dawntime;
+				PRODUCT_BUNDLE_IDENTIFIER = com.peaktime.dawntime.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;

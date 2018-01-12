@@ -12,41 +12,34 @@ import UIKit
 protocol ReusableView: class {}
 
 extension ReusableView where Self: UIView {
-    
     static var reuseIdentifier: String {
         return String(describing: self)
     }
 }
 
-
 protocol NibLoadableView: class { }
 
 extension NibLoadableView where Self: UIView {
-    
     static var NibName: String {
         return String(describing: self)
     }
 }
+
 extension GoodsCell: NibLoadableView, ReusableView { }
 extension DetailCategoryCell: NibLoadableView, ReusableView { }
 extension CategoryCell: NibLoadableView, ReusableView{}
 
-
-
 extension UICollectionView {
-    
     func dequeueReusableCell<T: UICollectionViewCell>(forIndexPath indexPath: IndexPath) -> T where T: ReusableView {
         guard let cell = dequeueReusableCell(withReuseIdentifier: T.reuseIdentifier, for: indexPath) as? T else {
             fatalError("Could not dequeue cell with identifier: \(T.reuseIdentifier)")
         }
         return cell
     }
-    
    
     func register<T: UICollectionViewCell>(_: T.Type) where T: ReusableView, T: NibLoadableView {
-        
         let Nib = UINib(nibName: T.NibName, bundle: nil)
-       register(Nib, forCellWithReuseIdentifier: T.reuseIdentifier)
+        register(Nib, forCellWithReuseIdentifier: T.reuseIdentifier)
     }
 }
 

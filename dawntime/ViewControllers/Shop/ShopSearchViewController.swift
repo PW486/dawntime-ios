@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ShopSearchViewController: UIViewController,UISearchControllerDelegate,UISearchResultsUpdating,UISearchBarDelegate {
-   
+class ShopSearchViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+    var searchController = ShopSearchController(searchResultsController: nil)
     
-    var searchController = ShopSearchController(searchResultsController:  nil)
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,36 +26,26 @@ class ShopSearchViewController: UIViewController,UISearchControllerDelegate,UISe
         self.definesPresentationContext = true
       
         self.navigationItem.setHidesBackButton(true, animated: false)
-               self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "shop_navi_search_white") , style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShopSearchViewController.searchKeyword))
-        
-        
-       
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "shop_navi_search_white") , style: UIBarButtonItemStyle.plain, target: self, action: #selector(ShopSearchViewController.searchKeyword))
         
         let searchTextField:UITextField = self.searchController.searchBar.subviews[0].subviews.last as! UITextField
         searchTextField.layer.cornerRadius = 20
         searchTextField.textAlignment = NSTextAlignment.left
         searchTextField.clipsToBounds = true
-           let image:UIImage = UIImage(named: "shop_navi_search_white")!
-         let imageView:UIImageView = UIImageView.init(image: image)
+        
+        let imageView:UIImageView = UIImageView.init(image: #imageLiteral(resourceName: "shop_navi_search_white"))
         searchTextField.leftView = nil
         searchTextField.clearButtonMode = .never
         searchTextField.placeholder = "Search"
-          searchTextField.rightView = imageView
+        searchTextField.rightView = imageView
         searchTextField.rightViewMode = UITextFieldViewMode.always
     }
    
     @objc func searchKeyword(){
-        
         self.navigationController?.popViewController(animated: true)
     }
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    
     func updateSearchResults(for searchController: UISearchController) {
         
     }
-
-    
-
 }

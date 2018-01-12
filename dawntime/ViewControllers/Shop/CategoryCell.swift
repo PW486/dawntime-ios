@@ -9,21 +9,15 @@
 import UIKit
 
 class CategoryCell: UICollectionViewCell {
-    
     @IBOutlet weak var categoryLabel: UILabel!
  
     override var isSelected: Bool {
-        
         didSet{
-            if(isSelected){
-                print(categoryLabel.font.pointSize)
-                 categoryLabel.font = UIFont(name: "NotoSansCJKkr-Bold", size: 14)
-                
-                
-            }else{
-                categoryLabel.font = UIFont(name: "NotoSansCJKkr-Light", size: 14)
+            if(isSelected) {
+                categoryLabel.font = UIFont(name: "NotoSansCJKkr-Medium", size: 15)
+            } else {
+                categoryLabel.font = UIFont(name: "NotoSansCJKkr-Light", size: 15)
             }
         }
-        
     }
 }
