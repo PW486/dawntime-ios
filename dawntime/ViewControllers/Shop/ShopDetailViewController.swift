@@ -10,6 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import Kingfisher
+import SafariServices
 
 class ShopDetailViewController: BaseViewController {
     @IBOutlet weak var brandLabel: UILabel!
@@ -24,6 +25,7 @@ class ShopDetailViewController: BaseViewController {
             collectionView.delegate = self
         }
     }
+    @IBOutlet weak var detailView: UIView!
     
     var goodsID: Int?
     var goodsItem: GoodsItem? {
@@ -75,7 +77,8 @@ class ShopDetailViewController: BaseViewController {
     }
     
     @IBAction func goToShop(_ sender: Any) {
-        print("이동하기")
+        let svc = SFSafariViewController(url: URL(string: (goodsItem?.goods_url)!)!)
+        present(svc, animated: true, completion: nil)
     }
     
     func reloadDatas() {
@@ -119,12 +122,15 @@ class ShopDetailViewController: BaseViewController {
         super.viewDidLoad()
         bottomView.addTopBorderWithColor(color: UIColor.lightGray, width: 0.5)
         
-        let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "navi_back_navy"), style: .plain, target: self, action: #selector(backAction))
+        let backButton: UIBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "shop_navi_back"), style: .plain, target: self, action: #selector(backAction))
         self.navigationItem.setHidesBackButton(true, animated: false)
         self.navigationItem.setLeftBarButton(backButton, animated: false)
         
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        
+        detailView.layer.borderWidth = 1
+        detailView.layer.borderColor = UIColor.hexStringToUIColor(hex: "#E2E5E8").cgColor
         
         reloadDatas()
     }
@@ -150,6 +156,6 @@ extension ShopDetailViewController: UICollectionViewDelegate, UICollectionViewDa
 
 extension ShopDetailViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: self.view.frame.width, height: self.view.frame.height)
+        return CGSize(width: self.view.frame.width, height: self.view.frame.height / 1.15)
     }
 }

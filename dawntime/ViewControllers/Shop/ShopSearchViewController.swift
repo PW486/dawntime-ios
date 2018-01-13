@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 
-class ShopSearchViewController: BaseViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+class ShopSearchViewController: BaseViewController, UISearchControllerDelegate, UISearchBarDelegate {
     var searchController = ShopSearchController()
     var popKeywords = [String]()
     var recentKeywords = [String]()
@@ -67,7 +67,6 @@ class ShopSearchViewController: BaseViewController, UISearchControllerDelegate, 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.searchController.searchResultsUpdater = self
         self.searchController.delegate = self
         self.searchController.searchBar.delegate = self
         
@@ -95,7 +94,11 @@ class ShopSearchViewController: BaseViewController, UISearchControllerDelegate, 
         self.navigationController?.popViewController(animated: true)
     }
     
-    func updateSearchResults(for searchController: UISearchController) {
-        print("searchResult")
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        guard let vc = storyBoard.instantiateViewController(withIdentifier: ShopNaviViewController.reuseIdentifier) as? ShopNaviViewController else { return }
+        ShopModel.sharedInstance.board = .Best
+        ShopModel.sharedInstance.keyword = "BEST"
+        self.present(vc, animated: false, completion: nil)
     }
 }

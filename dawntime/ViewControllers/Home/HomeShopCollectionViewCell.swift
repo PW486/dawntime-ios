@@ -25,7 +25,6 @@ class HomeShopCollectionViewCell: UICollectionViewCell {
             if let img = goodsItem?.goods_image, defaults.bool(forKey: "logInStatus"), dic!["블라인드"] == false {
                 self.itemImage.kf.setImage(with: URL(string: img))
             } else {
-//                self.itemImage.image = blindImages[Int(arc4random_uniform(5))]
                 self.itemImage.image = blindImages[Int(arc4random_uniform(5))]
             }
         }

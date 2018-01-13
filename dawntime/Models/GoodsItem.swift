@@ -17,4 +17,5 @@ struct GoodsItem: Codable {
     var goods_image: String?
     var goods_images: [String]?
     var goods_like: Int?
+    var goods_url: String?
 }

@@ -39,6 +39,8 @@ class ShopViewController: BaseViewController {
     }
     
     @IBAction func exitAction(_ sender: Any) {
+        ShopModel.sharedInstance.board = .New
+        ShopModel.sharedInstance.keyword = "NEW"
         dismiss(animated: true, completion: nil)
     }
     
