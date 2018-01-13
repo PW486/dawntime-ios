@@ -65,6 +65,7 @@ class ColumnViewController: BaseViewController {
         var newColumns = [Column]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
+            self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
             Alamofire.request("http://13.125.78.152:6789/column/listIos", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
@@ -83,9 +84,11 @@ class ColumnViewController: BaseViewController {
                     }
                     self.columns = newColumns
                     self.tableView.reloadData()
+                    self.stopAnimating()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
+                    self.stopAnimating()
                     break
                 }
             }
@@ -96,6 +99,7 @@ class ColumnViewController: BaseViewController {
         var newColumns = [Column]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
+            self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
             Alamofire.request("http://13.125.78.152:6789/column/searchIos", method: .post, parameters: ["column_title": keyword], encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
@@ -114,9 +118,11 @@ class ColumnViewController: BaseViewController {
                     }
                     self.columns = newColumns
                     self.tableView.reloadData()
+                    self.stopAnimating()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
+                    self.stopAnimating()
                     break
                 }
             }

@@ -69,6 +69,7 @@ class CreateUpdateArticleViewController: BaseViewController {
             let categoryData = category?.data(using: .utf8)
     
             if let userToken = defaults.string(forKey: "userToken") {
+                self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
                 Alamofire.upload(multipartFormData: { (multipartFormData) in
                     if let boardID = self.article?.board_id, let boardIdData = "\(boardID)".data(using: .utf8) {
                         multipartFormData.append(boardIdData, withName: "board_id")
@@ -94,9 +95,11 @@ class CreateUpdateArticleViewController: BaseViewController {
                                 break
                             }
                         })
+                        self.stopAnimating()
                         break
                     case .failure(let err):
                         print(err.localizedDescription)
+                        self.stopAnimating()
                         break
                     }
                 }

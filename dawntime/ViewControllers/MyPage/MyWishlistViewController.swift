@@ -23,15 +23,14 @@ class MyWishlistViewController: BaseViewController {
     func reloadDatas() {
         var newGoodsItems = [GoodsItem]()
         if let userToken = defaults.string(forKey: "userToken") {
+            self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
             Alamofire.request("http://13.125.78.152:6789/mypage/shopLikeList", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
                 case .success:
                     if let value = res.result.value {
                         let json = JSON(value)
-                        print(json)
                         for (_, subJson):(String, JSON) in json["result"] {
-                            print(subJson)
                             var goodsItem = GoodsItem()
                             if let like = subJson["goods_like"].int {
                                 goodsItem.goods_like = like
@@ -40,7 +39,6 @@ class MyWishlistViewController: BaseViewController {
                                 goodsItem.goods_name = name
                             }
                             if let price = subJson["goods_price"].int {
-                                print(price)
                                 goodsItem.goods_price = "\(price)"
                             }
                             if let brand = subJson["goods_brand"].string {
@@ -57,9 +55,11 @@ class MyWishlistViewController: BaseViewController {
                     }
                     self.goodsItems = newGoodsItems
                     self.collectionView.reloadData()
+                    self.stopAnimating()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
+                    self.stopAnimating()
                     break
                 }
             }

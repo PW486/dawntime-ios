@@ -13,6 +13,7 @@ import SwiftyJSON
 
 class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDelegate {
     func signIn(email: String, uid: String) {
+        self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
         let params = ["user_email": email, "user_uid": uid] as [String : Any]
         Alamofire.request("http://13.125.78.152:6789/home/signin", method: .post, parameters: params, encoding: JSONEncoding.default, headers: nil).responseJSON() {
             (res) in
@@ -34,10 +35,12 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
                     
                     self.defaults.set(true, forKey: "logInStatus")
                     self.dismiss(animated: true, completion: nil)
+                    self.stopAnimating()
                 }
                 break
             case .failure(let err):
                 print(err.localizedDescription)
+                self.stopAnimating()
                 break
             }
         }
@@ -50,13 +53,14 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
         let authorization = "\(tokenType!) \(accessToken!)"
         print(authorization)
         
+        self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
         Alamofire.request("https://openapi.naver.com/v1/nid/me", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization]).responseJSON() {
             (res) in
             switch res.result {
             case .success:
                 if let value = res.result.value {
                     let data = JSON(value)
-                    if let gender = data["response"]["gender"].string { // -> ,gender == "F"
+                    if let _ = data["response"]["gender"].string { // -> ,gender == "F"
                         if let email = data["response"]["email"].string, let uid = data["response"]["id"].string {
                             self.signIn(email: email, uid: uid)
                         }
@@ -65,9 +69,11 @@ class LogInViewController: BaseViewController, NaverThirdPartyLoginConnectionDel
                     }
                 }
                 loginConn?.resetToken()
+                self.stopAnimating()
                 break
             case .failure(let err):
                 print(err.localizedDescription)
+                self.stopAnimating()
                 break
             }
         }

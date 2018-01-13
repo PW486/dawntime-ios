@@ -67,6 +67,6 @@ class HomeColumnTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColl
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        Timer.scheduledTimer(timeInterval: 3, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
     }
 }

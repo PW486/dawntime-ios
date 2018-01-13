@@ -22,6 +22,7 @@ class MyScrapViewController: BaseViewController {
         let decoder = JSONDecoder()
         var newArticles = [Article]()
         if let userToken = defaults.string(forKey: "userToken") {
+            self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
             Alamofire.request("http://13.125.78.152:6789/mypage/boardScrapList", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
@@ -39,9 +40,11 @@ class MyScrapViewController: BaseViewController {
                         }
                     }
                     self.articles = newArticles
+                    self.stopAnimating()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
+                    self.stopAnimating()
                     break
                 }
             }

@@ -81,10 +81,21 @@ class ShopDetailViewController: BaseViewController {
         present(svc, animated: true, completion: nil)
     }
     
+    @objc func scrollToNext() {
+        if let count = goodsItem?.goods_images?.count, count > 0 && collectionView.indexPathsForVisibleItems.count != 0 {
+            var indexPath = collectionView.indexPathsForVisibleItems[0]
+            if collectionView.isDragging == false, indexPath.row < count-1  {
+                let nextIndexPath = IndexPath(row: indexPath.row + 1, section: indexPath.section)
+                collectionView.scrollToItem(at: nextIndexPath, at: UICollectionViewScrollPosition.right, animated: true)
+            }
+        }
+    }
+    
     func reloadDatas() {
         var newItem = GoodsItem()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken") {
+            self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
             Alamofire.request("http://13.125.78.152:6789/shop/detail/\(goodsID!)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
@@ -100,9 +111,11 @@ class ShopDetailViewController: BaseViewController {
                     }
                     self.goodsItem = newItem
                     self.collectionView.reloadData()
+                    self.stopAnimating()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
+                    self.stopAnimating()
                     break
                 }
             }
@@ -133,6 +146,7 @@ class ShopDetailViewController: BaseViewController {
         detailView.layer.borderColor = UIColor.hexStringToUIColor(hex: "#E2E5E8").cgColor
         
         reloadDatas()
+        Timer.scheduledTimer(timeInterval: 2, target: self, selector: #selector(self.scrollToNext), userInfo: nil, repeats: true)
     }
 }
 

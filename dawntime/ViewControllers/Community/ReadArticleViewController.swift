@@ -105,6 +105,7 @@ class ReadArticleViewController: BaseViewController {
         var newComments = [Comment]()
         let decoder = JSONDecoder()
         if let userToken = defaults.string(forKey: "userToken"), let boardID = article?.board_id {
+            self.startAnimating(type: .ballBeat, color: UIColor(white: 0.5, alpha: 1), backgroundColor: UIColor(white: 1, alpha: 0))
             Alamofire.request("http://13.125.78.152:6789/board/list/\(boardID)", method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["user_token": userToken]).responseJSON() {
                 (res) in
                 switch res.result {
@@ -130,9 +131,11 @@ class ReadArticleViewController: BaseViewController {
                     self.article = newArticle
                     self.comments = newComments
                     self.tableView.reloadData()
+                    self.stopAnimating()
                     break
                 case .failure(let err):
                     print(err.localizedDescription)
+                    self.stopAnimating()
                     break
                 }
             }

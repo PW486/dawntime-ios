@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import NVActivityIndicatorView
 import SwiftKeychainWrapper
 
-class BaseViewController: UIViewController {
+class BaseViewController: UIViewController, NVActivityIndicatorViewable {
     let defaults = UserDefaults.standard
     let fileManager = FileManager.default
     let keychainWrapper = KeychainWrapper.standard
